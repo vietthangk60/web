@@ -15,7 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+#from Main_Web.Main_Screen.views import Nhansuview
+#from django.views.generic import TemplateView
+#from Main_Screen.views import index
+#from pages.views import home_view, contact_view, about_view
+from Main_Screen.views import func_Mainview
+from Main_Nhansu.views import func_Nhansuview
+from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
+from Main_Yeucau.views import func_YeucauView,func_YeucauduyetView,func_TuchoiView,func_TaoyeucauView
 urlpatterns = [
+    path('index.html', func_Mainview, name='home'),
     path('admin/', admin.site.urls),
+    path('nhansu.html',func_Nhansuview,name='nhansu'),
+    path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
+    path('duan.html',func_DuanView,name='du an'),
+    path('yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
+    path('daduyet.html',func_YeucauduyetView,name=' yeu cau da duyet'), 
+    path('tuchoi.html',func_TuchoiView,name=' tu choi yeu cau '), 
+    path('taoyeucau.html',func_TaoyeucauView,name=' tu choi yeu cau '), 
+
+   # path('a/', TemplateView.as_view(template_name="index.html")),
 ]
