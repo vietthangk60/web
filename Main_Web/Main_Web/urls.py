@@ -23,6 +23,9 @@ from Main_Screen.views import func_Mainview
 from Main_Nhansu.views import func_Nhansuview
 from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
 from Main_Yeucau.views import func_YeucauView,func_YeucauduyetView,func_TuchoiView,func_TaoyeucauView
+from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView
+from Main_Baocao.views import func_BaocaoView
+
 urlpatterns = [
     path('', func_Mainview, name='home'),
     path('index.html', func_Mainview, name='home'),
@@ -33,7 +36,11 @@ urlpatterns = [
     path('yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
     path('daduyet.html',func_YeucauduyetView,name=' yeu cau da duyet'), 
     path('tuchoi.html',func_TuchoiView,name=' tu choi yeu cau '), 
-    path('taoyeucau.html',func_TaoyeucauView,name=' tu choi yeu cau '), 
+    path('taoyeucau.html',func_TaoyeucauView,name=' tu choi yeu cau '),
+    path('chamcong.html',func_ChamcongView,name=' cham cong '), 
+    path('caidatchamcong.html',func_CaidatchamcongView, name=' cai dat cham cong'),
+    path('idface.html',func_SuaanhnhandienView, name=' sua anh nhan dien '),
+    path('baocao.html', func_BaocaoView, name=' bao cao '),
 
    # path('a/', TemplateView.as_view(template_name="index.html")),
 ]
