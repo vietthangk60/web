@@ -24,6 +24,7 @@ from Main_Nhansu.views import func_Nhansuview
 from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
 from Main_Yeucau.views import func_YeucauView,func_YeucauduyetView,func_TuchoiView,func_TaoyeucauView
 urlpatterns = [
+    path('', func_Mainview, name='home'),
     path('index.html', func_Mainview, name='home'),
     path('admin/', admin.site.urls),
     path('nhansu.html',func_Nhansuview,name='nhansu'),
