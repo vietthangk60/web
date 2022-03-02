@@ -19,7 +19,7 @@ from django.urls import path
 #from django.views.generic import TemplateView
 #from Main_Screen.views import index
 #from pages.views import home_view, contact_view, about_view
-from Main_Screen.views import func_Mainview
+from Main_Screen.views import func_Mainview,func_CaidatView,func_LichsuView,func_DangxuatView
 from Main_Nhansu.views import func_Nhansuview
 from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
 from Main_Yeucau.views import func_YeucauView,func_YeucauduyetView,func_TuchoiView,func_TaoyeucauView
@@ -40,7 +40,10 @@ urlpatterns = [
     path('chamcong.html',func_ChamcongView,name=' cham cong '), 
     path('caidatchamcong.html',func_CaidatchamcongView, name=' cai dat cham cong'),
     path('idface.html',func_SuaanhnhandienView, name=' sua anh nhan dien '),
-    path('baocao.html', func_BaocaoView, name=' bao cao '),
+    path('baocao.html',func_BaocaoView, name=' bao cao '),
+    path('login.html',func_DangxuatView, name=' dang xuat '),
+    path('caidat.html',func_CaidatView, name=' cai dat '),
+    path('lichsu.html',func_LichsuView, name=' lich su '),
 
    # path('a/', TemplateView.as_view(template_name="index.html")),
 ]
