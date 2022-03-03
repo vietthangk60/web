@@ -25,7 +25,9 @@ from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
 from Main_Yeucau.views import func_YeucauView,func_YeucauduyetView,func_TuchoiView,func_TaoyeucauView
 from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView
 from Main_Baocao.views import func_BaocaoView
-
+from django.urls import path
+from Main_ThemnhanVien.views import employeeApi
+from django.conf.urls import url,include
 urlpatterns = [
     path('', func_Mainview, name='home'),
     path('index.html', func_Mainview, name='home'),
@@ -45,7 +47,8 @@ urlpatterns = [
     path('caidat.html',func_CaidatView, name=' cai dat '),
     path('lichsu.html',func_LichsuView, name=' lich su '),
     path('OTP.html', func_DangnhapView, name=' dang nhap '),
-    path('themnhanvien.html', func_Themnhanvienview, name=' them nhan vien '),
+    path('themnhanvien.html', employeeApi, name=' them nhan vien '),
+    #url(r'^',include('Main_ThemnhanVien.urls')
 
    # path('a/', TemplateView.as_view(template_name="index.html")),
 ]

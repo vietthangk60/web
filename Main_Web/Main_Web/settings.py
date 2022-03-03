@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Main_Baocao',
-    'Main_Nhansu',
+    'rest_framework',
+  #  'Main_Baocao',
+   # 'Main_Nhansu',
+    'Main_ThemnhanVien.apps.MainThemnhanvienConfig',
    # 'pages',
 ]
 
@@ -84,8 +86,9 @@ WSGI_APPLICATION = 'Main_Web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'web_server',
+  
     }
 }
 
