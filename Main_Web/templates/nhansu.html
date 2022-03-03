@@ -30,10 +30,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="caidat.html">Cài đặt</a></li>
-                        <li><a class="dropdown-item" href="lichsu.html">Lịch sử</a></li>
+                        <center>
+                        <li><img src="/static/img/avt1.jpg" alt=" " style="width: 150px; height: 150px; border-radius: 50%;" ></li>
+                        <li><a class="dropdown-item" href="lichsu.html">Chỉnh sửa thông tin</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><center><a class="btn-outline-danger" href="login.html">Đăng xuất</a></center></li>
+                        <li><a class="btn-outline-danger" href="login.html">Đăng xuất</a></li>
+                        </center>
                     </ul>
                 </li>
             </ul>
@@ -92,28 +94,33 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <table id="datatablesSimple">
-                                <thead>
-                                    <tr style="text-align: center;">
-                                        <th width=3%>STT</th>
-                                        <th width=5%>Mã nhân viên</th>
-                                        <th width=10%>Ảnh đại diện</th>
-                                        <th width=10%>Họ và tên</th>
-                                        <th width=10%>Số điện thoại</th>
-                                        <th width=10%>Email</th>
-                                        <th width=10%>Ngày sinh</th>
-                                        <th width=10%>Bộ phận</th>
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th width=3% style="text-align: center;">STT</th>
+                                        <th width=6% style="text-align: center;">Mã nhân viên</th>
+                                        <th width=10% style="text-align: center;">Ảnh đại diện</th>
+                                        <th width=10% style="text-align: center;">Họ và tên</th>
+                                        <th width=10% style="text-align: center;">Số điện thoại</th>
+                                        <th width=10% style="text-align: center;">Email</th>
+                                        <th width=10% style="text-align: center;">Ngày sinh</th>
+                                        <th width=10% style="text-align: center;">Bộ phận</th>
+                                        <th width=10% style="text-align: center;">Thao tác</th>
                                     </tr>
                                 </thead> 
                                     <tbody style="text-align: center;">
                                         <tr>
                                             <td> 1 </td>
                                             <td> 001 </td>
-                                            <td> </td>
+                                            <td> <img src="/static/img/avt1.jpg" alt=" " style="width: 50px; height: 50px; border-radius: 50%;" ></td>
                                             <td>Bùi Ngọc Đăng</td>
                                             <td>0327 20 30 40</td>
                                             <td>dangbn@horusent.com</td>
                                             <td>06/01/1997</td>
                                             <td>Support</td>
+                                            <td> <button type="button" class="btn btn-primary" id="sua" onclick="location.href='';">Sửa</button>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                 <button type="button" class="btn btn-danger" id="xoa" onclick="location.href='';">Xoá</button>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -124,15 +131,6 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -144,8 +142,21 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
