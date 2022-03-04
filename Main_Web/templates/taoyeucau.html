@@ -96,70 +96,66 @@
                             <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
                             <li class="breadcrumb-item active">Tạo yêu cầu</li>
                         </ol>
-                        <div class="card mb-4">
-                        <div class="card-header">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-5">
-                                        <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                            <div class="card-header"><h2 class="text-center font-weight-light my-4">Tạo yêu cầu</h2></div>
-                                                <div class="card-body">
-                                                <form>
-                                                <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputname" type="name" placeholder="..."/>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3">
+                                <div class="card shadow-lg border-0 rounded-lg mt-0">
+                                    <div class="card-header">
+                                        <h2 class="text-center font-weight-light my-4">Tạo yêu cầu</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputname" type="name" placeholder="..." />
                                                 <label for="inputname">Họ và tên:</label>
-                                                </div>
-                                                <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel" type="tel" placeholder="..."/>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputTel" type="tel" placeholder="..." />
                                                 <label for="inputTel">Số điện thoại:</label>
-                                                </div>
-                                                <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="Email" placeholder="..."/>
-                                                <label for="inputEmail">Lý do:</label>
-                                                </div>
-                                                <div class="form-floating mb-3" >
-                                                <form><center>
-                                                    <p>Thời gian từ:&ensp;
-                                                    <input type="datetime-local" id="time" />
-                                                    &ensp;
-                                                    đến:&ensp;
-                                                    <input type="datetime-local" id="time" />
-                                                </p>
-                                                </form></center>
-                                                <form>
-                                                    <center>
-                                                <select style="width: 285px;height: 40px;">
-                                                    <option selected>Loại yêu cầu</option>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <select class="form-control">
+                                                    <option selected>Lựa chọn</option>
                                                     <option value="1">Đi muộn</option>
                                                     <option value="2">Về sớm</option>
                                                     <option value="3">Nghỉ phép</option>
                                                     <option value="3">Nghỉ việc</option>
                                                 </select>
-                                                &ensp; &ensp;&ensp;&ensp;&ensp;
-                                                <select style="width: 285px;height: 40px;">
-                                                    <option selected>Loại nghỉ phép</option>
+                                                <label for="inputdate">Loại yêu cầu:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <select class="form-control">
+                                                    <option selected>Lựa chọn</option>
                                                     <option value="1">Nghỉ phép có lương</option>
                                                     <option value="2">Nghỉ phép không lương</option>
                                                 </select>
-                                                </center>
-                                                </form>
-                                                </p>
-                                                </div>
-                                                <br/>
-                                                <br/>
-                                                <center>
+                                                <label for="inputdate">Loại nghỉ phép:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputdate" type="datetime-local" placeholder="..." />
+                                                <label for="inputdate">Thời gian từ:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputdate" type="datetime-local" placeholder="..." />
+                                                <label for="inputdate">Đến:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="Email" placeholder="..." />
+                                                <label for="inputEmail">Lý do:</label>
+                                            </div>
+                                            <center>
                                                 <a class="small" href="nhansu.html">
-                                                <div class="btn btn-primary" id="btn1" style="width: 100px; height: 40px;">Lưu</div>
+                                                    <div class="btn btn-primary" id="btn1" style="width: 100px; height: 40px;">Lưu</div>
                                                     <script language="javascript">
                                                         var button = document.getElementById("btn1");
-                                                        button.onclick = function(){
+                                                        button.onclick = function () {
                                                             alert("Tạo nhân viên mới thành công");
                                                         }
                                                     </script>
                                                 </a>
                                                 &nbsp;&nbsp;&emsp;
                                                 <a class="small" href="nhansu.html">
-                                                <div class="btn btn-dark" style="width: 100px; height: 40px;">Huỷ bỏ</div>
-                                                </a> 
+                                                    <div class="btn btn-dark" style="width: 100px; height: 40px;">Huỷ bỏ</div>
+                                                </a>
                                             </form>
                                         </div>
                                     </div>
