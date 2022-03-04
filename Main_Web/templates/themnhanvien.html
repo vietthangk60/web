@@ -11,6 +11,8 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{%static  'css/styles.css' %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -95,42 +97,55 @@
                                             <div class="card-header"><h2 class="text-center font-weight-light my-4">Nhập thông tin</h2></div>
                                                 <div class="card-body">
                                                 <form>
-                                                <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputname" type="name" placeholder="..."/>
-                                                <label for="inputname">Họ và tên:</label>
-                                                </div>
-                                                <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel" type="tel" placeholder="..."/>
-                                                <label for="inputTel">Số điện thoại:</label>
-                                                </div>
-                                                <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="Email" placeholder="..."/>
-                                                <label for="inputEmail">Email:</label>
-                                                </div>
-                                                <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputAddress" type="text" placeholder="..."/>
-                                                <label for="inputAddress">Địa chỉ:</label>
-                                                </div>
-                                                <div class="form-floating mb-3" >
-                                                <form>
-                                                    <p>Ngày sinh:
-                                                    <input type="date" id="ngaysinh" style="width: 171px; height: 40px;" min="01/01/1980" max="31/12/2005" />
-                                                &ensp;
-                                                <select id ="bophan"  style="width: 171px;height: 40px;">
-                                                    <option selected>Bộ phận</option>
-                                                    <option value="1">Dev</option>
-                                                    <option value="2">Game design</option>
-                                                    <option value="3">Art</option>
-                                                    <option value="3">Tester</option>
-                                                </select>
-                                                &ensp;
-                                                <select id="chucvu" style="width: 171px;height: 40px;">
-                                                    <option selected>Chức danh</option>
-                                                    <option value="1">Nhân viên</option>
-                                                    <option value="2">Leader</option>
-                                                    <option value="3">Quản lý</option>
-                                                    <option value="3">Giám đốc</option>
-                                                </select>
+                                                    <div class="avatar-wrapper2">
+                                                        <img class="profile-pic" src="img/avt1.jpg" />
+                                                        <div class="upload-button">
+                                                            <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input class="file-upload" type="file" accept="image/*" />
+                                                    </div>
+                                                    <br />
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" id="inputname" type="name" placeholder="..." />
+                                                        <label for="inputname">Họ và tên:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" id="inputTel" type="tel" placeholder="..." />
+                                                        <label for="inputTel">Số điện thoại:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" id="inputEmail" type="Email" placeholder="..." />
+                                                        <label for="inputEmail">Email:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" id="inputdate" type="date" placeholder="..." />
+                                                        <label for="inputdate">Ngày sinh:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <select class="form-control" id="inputbophan" type="text" placeholder="...">
+                                                            <option value="1">Lựa chọn</option>
+                                                            <option value="1">Dev</option>
+                                                            <option value="2">Game design</option>
+                                                            <option value="3">Art</option>
+                                                            <option value="3">Tester</option>
+                                                        </select>
+                                                        <label for="inputbophan">Bộ phận:</label>
+                                                    </div>
+                                                    <br />
+                                                    <center>
+                                                        <a class="small" href="nhansu.html">
+                                                            <div class="btn btn-primary" id="btn1" style="width: 100px; height: 40px;">Lưu</div>
+                                                            <script language="javascript">
+                                                                var button = document.getElementById("btn1");
+                                                                button.onclick = function () {
+                                                                    alert("Tạo nhân viên mới thành công");
+                                                                }
+                                                            </script>
+                                                        </a>
+                                                        &nbsp;&nbsp;&emsp;
+                                                        <a class="small" href="nhansu.html">
+                                                            <div class="btn btn-dark" style="width: 100px; height: 40px;">Huỷ bỏ</div>
+                                                        </a>
                                                 </form>
                                                 </p>
                                                 </div>
