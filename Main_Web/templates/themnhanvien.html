@@ -99,7 +99,7 @@
                                         <form method="post" class="form" id="form"  enctype="multipart/form-data">
                                             {% csrf_token %}
                                             <div class="avatar-wrapper2">
-                                                <img class="profile-pic" src="img/avt1.jpg" />
+                                                <img class="profile-pic" src="{% static 'img/avt1.jpg '%}" />
                                                 <div class="upload-button">
                                                     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                                 </div>
@@ -136,7 +136,6 @@
                                                 </select>
                                                 <label for="inputbophan">Bộ phận:</label>
                                             </div>
-
                                             <div class="form-floating mb-3">
                                                 <select class="form-control" name="inputchucdanh" type="text" placeholder="...">
                                                     <option value="1">Lựa chọn</option>
