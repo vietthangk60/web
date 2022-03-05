@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'Main_Web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'web_server',
+        'NAME': 'Database',
   
     }
 }
@@ -134,7 +134,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     
 ]
-print(STATICFILES_DIRS)
+MEDIA_ROOT= os.path.join(BASE_DIR, 'MEDIA/')
+MEDIA_URL= "/MEDIA/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

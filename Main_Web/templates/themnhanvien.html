@@ -96,101 +96,103 @@
                                         <h2 class="text-center font-weight-light my-4">Nhập thông tin</h2>
                                     </div>
                                     <div class="card-body">
-                                        <form>
+                                        <form method="post" class="form" id="form"  enctype="multipart/form-data">
+                                            {% csrf_token %}
                                             <div class="avatar-wrapper2">
                                                 <img class="profile-pic" src="{% static 'img/avt1.jpg '%}" />
                                                 <div class="upload-button">
                                                     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                                 </div>
-                                                <input class="file-upload" type="file" accept="image/*" />
+                                                <input class="file-upload" name="avata" type="file" accept="image/*" />
                                             </div>
                                             <br />
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputmnv" type="text" placeholder="..." />
-                                                <label for="inputmnv">Mã nhân viên:</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputname" type="text" placeholder="..." />
+                                                <input class="form-control" name="inputname" type="text" placeholder="..." />
                                                 <label for="inputname">Họ và tên:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel" type="tel" placeholder="..." />
+                                                <input class="form-control" name="inputTel" type="tel" placeholder="..." />
                                                 <label for="inputTel">Số điện thoại:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="Email" placeholder="..." />
+                                                <input class="form-control" name="inputEmail" type="Email" placeholder="..." />
                                                 <label for="inputEmail">Email:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputdate" type="date" placeholder="..." />
+                                                <input class="form-control" name="inputdate" type="date" placeholder="..." />
                                                 <label for="inputdate">Ngày sinh:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <select class="form-control" id="inputbophan" type="text" placeholder="...">
+                                                <input class="form-control" name="diachi" type="text" placeholder="..." />
+                                                <label for="diachi ">Địa chỉ :</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <select class="form-control" name="inputbophan" type="text" placeholder="...">
                                                     <option value="1">Lựa chọn</option>
                                                     <option value="1">Dev</option>
                                                     <option value="2">Game design</option>
                                                     <option value="3">Art</option>
-                                                    <option value="3">Tester</option>
+                                                    <option value="4">Tester</option>
                                                 </select>
                                                 <label for="inputbophan">Bộ phận:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <select class="form-control" id="inputchucdanh" type="text" placeholder="...">
+                                                <select class="form-control" name="inputchucdanh" type="text" placeholder="...">
                                                     <option value="1">Lựa chọn</option>
                                                     <option value="1">Nhân viên</option>
                                                     <option value="2">Leader</option>
                                                     <option value="3">Quản lý</option>
-                                                    <option value="3">Giám đốc</option>
+                                                    <option value="4">Giám đốc</option>
                                                 </select>
                                                 <label for="inputbophan">Chức danh:</label>
                                             </div>
-                                                <center>
-                                                <a class="small" href="nhansu.html">
-                                                <div class="btn btn-primary" id="btn1" style="width: 100px; height: 40px;">Lưu</div>
+                                            <center>
 
+                                                <a class="small" href="nhansu.html">
+                                                <button type="submit" class="btn btn-primary" style="width: 100px; height: 40px;">Lưu</button>
                                                     <script language="javascript">
-                                                        var button = document.getElementById("btn1");
-                                                        button.onclick = function(){
+                                               //         var button = document.getElementById("btn1");
+                                                //        button.onclick = function(){
                                                         //document.getElementById('ngaysinh').value;
                                                        
-                                                       let url = "themnhanvien.html"
-                                                        let xhr = new XMLHttpRequest();
-                                                        xhr.open("POST", url,true);
+                                              //         let url = "themnhanvien.html"
+                                                //        let xhr = new XMLHttpRequest();
+                                                //        xhr.open("POST", url,true);
                                                         
                                              
-                                                      xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-                                                      var data={"EmployeeName": "Thanwgs","Date_of_birth": "1997-02-08","PhoneNumber" :"020188","Address_Employee": "Ninh Binh","Department": "IT7777","Position_Employee":"Nhanvien"}
-                                                   
-                                                     var var_name=document.getElementById('inputname').value;
-                                                     var var_ngaysinh =document.getElementById('ngaysinh').value;
-                                                     var var_PhoneNumber =document.getElementById('inputTel').value;
-                                                     var var_Address_Employee=document.getElementById('inputAddress').value;
-                                                     var id_Department=document.getElementById('bophan');
-                                                     var var_Department = id_Department.options[id_Department.selectedIndex].text;
-                                                     var id_Position_Employee=document.getElementById('chucvu');
-                                                     var var_Position_Employee=id_Position_Employee.options[id_Position_Employee.selectedIndex].text;
-                                                    data["EmployeeName"]=var_name;
-                                                    data["Date_of_birth"]=var_ngaysinh;
-                                                    data["PhoneNumber"]=var_PhoneNumber;
-                                                    data["Address_Employee"]=var_Address_Employee;
-                                                    data["Department"]=var_Department;
-                                                    data["Position_Employee"]=var_Position_Employee;
+                                               //       xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+                                              //        ('EmployeeId','EmployeeName','Date_of_birth','PhoneNumber','Address_Employee','Department','Position_Employee','Email','Avatar')
+                                               //       var data={'EmployeeId':'1',"EmployeeName": "Thanwgs","Date_of_birth": "1997-02-08","PhoneNumber" :"020188","Address_Employee": "Ninh Binh","Department": "IT7777","Position_Employee":"Nhanvien",'Email':'vvv','Avatar':"dddd"}
+                                                     
+                                               //      var var_name=document.getElementById('inputname').value;
+                                              //       var var_ngaysinh =document.getElementById('ngaysinh').value;
+                                              //       var var_PhoneNumber =document.getElementById('inputTel').value;
+                                                //     var var_Address_Employee=document.getElementById('inputAddress').value;
+                                               //      var id_Department=document.getElementById('bophan');
+                                                //     var var_Department = id_Department.options[id_Department.selectedIndex].text;
+                                                  //   var id_Position_Employee=document.getElementById('chucvu');
+                                                //     var var_Position_Employee=id_Position_Employee.options[id_Position_Employee.selectedIndex].text;
+                                               //     data["EmployeeName"]=var_name;
+                                               //     data["Date_of_birth"]=var_ngaysinh;
+                                               //     data["PhoneNumber"]=var_PhoneNumber;
+                                                 //   data["Address_Employee"]=var_Address_Employee;
+                                                 //   data["Department"]=var_Department;
+                                                  //  data["Position_Employee"]=var_Position_Employee;
 
-                                                      alert(data["EmployeeName"])
+                                                     // alert(data["EmployeeName"])
                                              //         alert(data["Department"]);
-                                                        xhr.onreadystatechange = function () {
-                                                        if (xhr.readyState === 4) {
-                                                           console.log(xhr.responseText);
-                                                        }
+                                                    //    xhr.onreadystatechange = function () {
+                                                   //     if (xhr.readyState === 4) {
+                                                    //       console.log(xhr.responseText);
+                                                   //     }
                                 
-                                                       };
+                                                   //    };
                                                                 
                                                        
                                                       //  var data = JSON.stringify({"EmployeeName": "Thanwgs","Date_of_birth": "1997-02-08","PhoneNumber" :"020188","Address_Employee": "Ninh Binh","Department": "IT7777","Position_Employee":"Nhanvien"});
                                                        
-                                                      var data = JSON.stringify(data)
-                                                        xhr.send(data);
+                                                    //  var data = JSON.stringify(data)
+                                                      //  xhr.send(data);
                                                         //console.log(xhr.status);
                                                       //  console.log(xhr.responseText);
                                                        // alert("Tài liệu học Lập Trình Web");
@@ -204,7 +206,7 @@
                                                         //    document.getElementById("bophan").innerHTML = response1.Department;
                                                         //    document.getElementById("chucvu").innerHTML = response1.Position_Employee;
 
-                                                          }
+                                                       //   }
                                                             
                                                             
                                                             
