@@ -48,15 +48,19 @@ def employeeApi(request):
        # InputAvatar= myfile.name
        # print(InputTen,InputSoDienThoai,InputEmail,InputBirthDate)
         print(Chuvu[str(Inputchucvu)],inputdiachi)
+        print(InputTen,InputBirthDate,InputSoDienThoai,inputdiachi,
+        bophan[str(InputTeam)],Chuvu[str(Inputchucvu)],InputEmail,myfile)
+
         employees = Employees.objects.create(EmployeeName=InputTen,Date_of_birth=InputBirthDate,PhoneNumber=InputSoDienThoai,Address_Employee=inputdiachi,Department=bophan[str(InputTeam)],Position_Employee=Chuvu[str(Inputchucvu)],Email=InputEmail,Avatar=myfile)
 
-       # print(employees)
-        employees.save()
+     #   print(employees)
+      #  employees.save()
 
         employees = Employees.objects.all()
         employees_serializer=EmployeeSerializer(employees,many=True)
 
         return render(request, "nhansu.html", {"employee":employees_serializer.data})
+    #    return  render(request, "nhansu.html",{})
 
 
   #  elif request.method=='PUT':

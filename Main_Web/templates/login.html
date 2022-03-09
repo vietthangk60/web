@@ -23,18 +23,25 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h1 class="text-center font-weight-light my-4">ĐĂNG NHẬP</h1></div>
                                     <div class="card-body">
+                                    <p>      {{data}}</p>
                                     <div class="small mb-3 text-muted">Vui lòng nhập email công ty với dạng abc@horusent.com</div>
-                                        <form>
+                                        <form  method='POST'>
+                                            {% csrf_token %}
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputTel" type="tel" placeholder="...@horusent.com" />
-                                                <label for="inputEmail">Email</label>
+                                                <input class="form-control" name="inputname" type="mail" placeholder="...@horusent.com" />
+                                                <label for="inputname">Email</label>
                                             </div>
                                             <center>
                                                 <a class="small" href="OTP.html">
-                                                    <div class="btn btn-primary">Đăng nhập</div>
+                                                    
+                                                    <button type="submit" onclick="verify_otp()" class="btn btn-primary" >Đăng nhập </button>
                                                 </a>
                                             </center>
+
+ 
+
                                         </form>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +49,21 @@
                     </div>
                 </main>
             </div>
+            <script>   
+                function verify_otp(){
+                   // if (data =="sai email")
+                  //  {
+                     //   alert(data)
+                        document.getElementById("verify_text_div").style.color="red";
+                        document.getElementById("verify_text_div").innerHTML=data;
+                        
+                //    }
+        
+                }
+            </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
     </body>
+
+
 </html>
