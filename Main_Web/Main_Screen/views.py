@@ -4,6 +4,7 @@ from Main_ThemnhanVien.models import Employees
 from Main_ThemnhanVien.serializers import EmployeeSerializer
 from django.core.mail import send_mail
 import math, random
+from django.shortcuts import redirect
 # Create your views here.
 def func_Mainview(request, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
@@ -32,8 +33,9 @@ def func_DangxuatView(request, *args, **kwargs):  # *args, **kwargs
          print(o)
         # htmlgen = '<p>Your OTP is <strong>'+o+'</strong></p>'
          send_mail('OTP request',o,'vietthangk54@gmail.com',[mail])
+         request.session['data'] = o
 
-         return render(request, "OTP.html", {"data":o})
+         return redirect("OTP.html")
       else:
          return render(request, "login.html", {"data":"mail sai"})
          
