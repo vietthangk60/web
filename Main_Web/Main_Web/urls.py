@@ -29,10 +29,11 @@ from django.urls import path
 from Main_ThemnhanVien.views import employeeApi
 from django.conf.urls import url,include
 from django.conf import settings
+from Main_Screen import views
 from django.conf.urls.static import static
 urlpatterns = [
-    path('', func_Mainview, name='home'),
-    path('index.html', func_Mainview, name='home'),
+    path('<int:id>/', func_Mainview, name='home'),
+   # path('index.html', func_Mainview, name='home'),
     path('admin/', admin.site.urls),
     path('nhansu.html',func_Nhansuview,name='nhansu'),
     path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
@@ -47,9 +48,10 @@ urlpatterns = [
     path('baocao.html',func_BaocaoView, name=' bao cao '),
     path('login.html',func_DangxuatView, name=' dang xuat '),
     path('chinhsuathongtin.html',func_ChinhsuathongtinView, name=' chinh sua thong tin '),
-    path('OTP.html', func_DangnhapView, name=' dang nhap '),
+    path('<int:id>/OTP.html', func_DangnhapView, name=' dang nhap '),
     path('themnhanvien.html', employeeApi, name=' them nhan vien '),
     #url(r'^',include('Main_ThemnhanVien.urls')
+ #   url(r'^/([0-9]+)/$', views.func_Mainview, name='home'), 
 
    # path('a/', TemplateView.as_view(template_name="index.html")),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

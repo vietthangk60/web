@@ -4,8 +4,12 @@ from Main_ThemnhanVien.models import Employees
 from Main_ThemnhanVien.serializers import EmployeeSerializer
 from django.core.mail import send_mail
 import math, random
+from django.shortcuts import redirect
+from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-def func_Mainview(request, *args, **kwargs): # *args, **kwargs
+@csrf_exempt
+def func_Mainview(request,id=0): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
@@ -31,9 +35,13 @@ def func_DangxuatView(request, *args, **kwargs):  # *args, **kwargs
          o=generateOTP()
          print(o)
         # htmlgen = '<p>Your OTP is <strong>'+o+'</strong></p>'
-         send_mail('OTP request',o,'vietthangk54@gmail.com',[mail])
+        # send_mail('OTP request',o,'vietthangk54@gmail.com',[mail])
 
-         return render(request, "OTP.html", {"data":o})
+         record = Employees.objects.filter(Email=mail)
+         id =record.values_list()[0][0]
+         request.session['data'] = o
+
+         return redirect(func_DangnhapView,id)
       else:
          return render(request, "login.html", {"data":"mail sai"})
          
@@ -49,7 +57,7 @@ def generateOTP() :
       #record = Employees.objects.get(Email)
      # print(has_bobs)
     #  return render(request, "OTP.html", {})
-def func_DangnhapView(request, *args, **kwargs):  # *args, **kwargs
+def func_DangnhapView(request,id,*args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
