@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-  #  'Main_Baocao',
-   # 'Main_Nhansu',
+    'Main_Yeucau',
+    'Main_Taoyeucau',
     'Main_ThemnhanVien.apps.MainThemnhanvienConfig',
    # 'pages',
 ]

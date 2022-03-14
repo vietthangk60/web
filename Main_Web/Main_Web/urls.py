@@ -20,9 +20,10 @@ from django.urls import path
 #from Main_Screen.views import index
 #from pages.views import home_view, contact_view, about_view
 from Main_Screen.views import func_Mainview,func_ChinhsuathongtinView ,func_DangxuatView ,func_DangnhapView
-from Main_Nhansu.views import func_Nhansuview, func_Themnhanvienview
+from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView
 from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
-from Main_Yeucau.views import func_YeucauView,func_YeucauduyetView,func_TuchoiView,func_TaoyeucauView
+from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_TaoyeucauView, func_DMVSView, func_NghiphepView, func_NghiviecView
+from Main_Taoyeucau.views import yeucauApi
 from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView
 from Main_Baocao.views import func_BaocaoView
 from django.urls import path
@@ -34,7 +35,8 @@ urlpatterns = [
     path('', func_Mainview, name='home'),
     path('index.html', func_Mainview, name='home'),
     path('admin/', admin.site.urls),
-    path('nhansu.html',func_Nhansuview,name='nhansu'),
+    path('nhansu.html',func_Nhansuview,name='nhan su'),
+    path('suanhansu.html', func_SuanhansuView, name='sua nhan su'),
     path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
     path('duan.html',func_DuanView,name='du an'),
     path('yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
@@ -49,6 +51,10 @@ urlpatterns = [
     path('chinhsuathongtin.html',func_ChinhsuathongtinView, name=' chinh sua thong tin '),
     path('OTP.html', func_DangnhapView, name=' dang nhap '),
     path('themnhanvien.html', employeeApi, name=' them nhan vien '),
+    path('taoyeucau.html', yeucauApi, name=' yeu cau '),
+    path('dmvs.html', func_DMVSView, name=' di muon '),
+    path('nghiphep.html', func_NghiphepView, name=' nghi phep '),
+    path('nghiviec.html', func_NghiviecView, name=' nghi viec '),
     #url(r'^',include('Main_ThemnhanVien.urls')
 
    # path('a/', TemplateView.as_view(template_name="index.html")),

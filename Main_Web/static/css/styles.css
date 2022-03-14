@@ -11738,6 +11738,15 @@ body {
   width: 150px;
   color: white;
 }
+#taoyeucau{
+  height: 40px;
+  background-color: #29A9FF;
+  opacity: 0.9;
+  border: 0px;
+  border-radius: 5px;
+  width: 160px;
+  color: white;
+}
 #daduyet{
   height: 40px;
   background-color: #F5F5F5;

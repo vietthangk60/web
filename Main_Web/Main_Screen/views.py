@@ -9,7 +9,11 @@ def func_Mainview(request, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    return render(request, "index.html", {})
+    Data = {'SoLuongNhanVien': Employees.objects.count()}
+    #Data = {'SoLuongDuAn': DuAn.objects.count()}
+    #Data = {'SoLuongYeuCau': YeuCau.objects.count()}
+    return render(request, "index.html", Data)
+ 
 def func_ChinhsuathongtinView(request, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)

@@ -95,7 +95,6 @@
                 <main>
                     <div class="container-fluid px-4" >
                         <h1 class="mt-4">Yêu cầu</h1>
-                        <button type="button" id="taoyeucau" onclick="location.href='taoyeucau.html';">Tạo yêu cầu</button>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
                             <li class="breadcrumb-item active">Yêu cầu</li>
@@ -104,6 +103,18 @@
                             <button type="button" id="yeucaucanduyet" onclick="location.href='yeucaucanduyet.html';">Yêu cầu cần duyệt</button>
                             <button type="button" id="daduyet1" onclick="location.href='daduyet.html';">Đã duyệt</button>
                             <button type="button" id="tuchoi" onclick="location.href='tuchoi.html';">Từ chối</button>
+                            <ul class="navbar-nav ms-auto ms-md-0 me-4 me-lg-0" style="float: right;">
+                                <li class="nav-item dropdown">
+                                    <button type="button" id="taoyeucau" href="#" data-bs-toggle="dropdown" aria-expanded="false">Tạo yêu
+                                        cầu</button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="dmvs.html">Đi muộn về sớm</a></li>
+                                        <li><a class="dropdown-item" href="nghiphep.html">Nghỉ phép</a></li>
+                                        <li><a class="dropdown-item" href="nghiviec.html">Nghỉ việc</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
                         </form>
                     </br>
                         <table class="table table-bordered" id="yeucaub">
@@ -118,46 +129,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr id="maintr">
-                                    <td> 1 </td>
-                                    <td> Bùi Ngọc Đăng </td>
-                                    <td> 13/01/2022 08:00 - 08:30</td>
-                                    <td> Thi bằng lái xe</td>
-                                    <td> Nguyễn Duy Sơn </td>
-                                    <td> 13/01/2022 07:40:39</td>
-                                </tr>
-                                <tr id="maintr">
-                                    <td> 2 </td>
-                                    <td> Chu Văn Mai </td>
-                                    <td> 13/01/2022 08:00 - 08:30</td>
-                                    <td> Thi bằng lái xe</td>
-                                    <td> Nguyễn Duy Sơn </td>
-                                    <td> 13/01/2022 07:40:39</td>
-                                </tr>
-                                <tr id="maintr">
-                                    <td> 3 </td>
-                                    <td> Doãn Thế Cường </td>
-                                    <td> 13/01/2022 08:00 - 08:30</td>
-                                    <td> Thi bằng lái xe</td>
-                                    <td> Nguyễn Duy Sơn </td>
-                                    <td> 13/01/2022 07:40:39</td>
-                                </tr>
-                                <tr id="maintr">
-                                    <td> 4 </td>
-                                    <td> Nguyễn Thị Vinh </td>
-                                    <td> 13/01/2022 08:00 - 08:30</td>
-                                    <td> Thi bằng lái xe</td>
-                                    <td> Nguyễn Duy Sơn </td>
-                                    <td> 13/01/2022 07:40:39</td>
-                                </tr>
-                                <tr id="maintr">
-                                    <td> 5 </td>
-                                    <td> Hồ Đăng Mỹ Nga </td>
-                                    <td> 13/01/2022 08:00 - 08:30</td>
-                                    <td> Thi bằng lái xe</td>
-                                    <td> Nguyễn Duy Sơn </td>
-                                    <td> 13/01/2022 07:40:39</td>
-                                </tr>
+                               
+
+
+
+                                
                             </tbody>
                         </table>
                     </div>

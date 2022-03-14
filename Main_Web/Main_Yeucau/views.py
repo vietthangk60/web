@@ -28,3 +28,24 @@ def func_TaoyeucauView(request, *args, **kwargs): # *args, **kwargs
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
     return render(request, "taoyeucau.html", {})
+
+
+def func_DMVSView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    return render(request, "dmvs.html", {})
+
+
+def func_NghiphepView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    return render(request, "nghiphep.html", {})
+ 
+ 
+def func_NghiviecView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    return render(request, "nghiviec.html", {})
