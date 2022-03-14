@@ -26,8 +26,10 @@
                     <script language="javascript">
 
                         var otp_from_back ="{{request.session.data}}"
+                       /// var test =window.location.href
+                  //      var URLSearchParamsa = new URLSearchParams(window.location.href);
                         
-                        
+                   //     console.log(URLSearchParamsa);
                         </script>
                     <div class="container">
                         <div class="row justify-content-center">
@@ -36,9 +38,11 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Mã xác nhận</h3></div>
                                     <div class="card-body">
                                         <div class="small mb-3 text-muted">Vui lòng nhập mã xác thực đã được gửi tới email của bạn.</div>
-                                        <form>
+                                        <form method="post" action="" onsubmit="return verify_otp()">
+                                            {% csrf_token %} 
                                             <div id="verify_text_div"></div>
                                             <p>{{request.session.data}} </p>
+                                            
          
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputOTP" type="text" placeholder="..."/>
@@ -49,6 +53,7 @@
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="login.html">Quay lại màn hình đăng nhập</a>
                                                 <button  onclick="verify_otp()">Verify</button>
+                                                <input type="submit" value="Submit"/>
                                                 <a class="btn btn-primary" href="index.html">Đồng ý</a>
                                             </div>
                                         </form>
@@ -69,10 +74,12 @@
                         document.getElementById("verify_text_div").innerHTML="OTP Verified";
                         document.getElementById("otp_div").style.display="none";
                         document.getElementById("form_div").style.display="block";
+                        return true
                     }
                     else{
                         document.getElementById("verify_text_div").style.color="red";
-                        document.getElementById("verify_text_div").innerHTML=otp_from_back;
+                        document.getElementById("verify_text_div").innerHTML="Ma xac nhan sai";
+                        return false
                     }
     
             }

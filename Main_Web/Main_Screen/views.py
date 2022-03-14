@@ -1,3 +1,4 @@
+from email.policy import default
 from django.shortcuts import render
 from django.http import HttpRequest
 from Main_ThemnhanVien.models import Employees
@@ -5,11 +6,12 @@ from Main_ThemnhanVien.serializers import EmployeeSerializer
 from django.core.mail import send_mail
 import math, random
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,decorators
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 @csrf_exempt
-def func_Mainview(request,id=0): # *args, **kwargs
+@decorators.login_required(login_url='/login.html')
+def func_Mainview(request,id): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
@@ -64,5 +66,15 @@ def generateOTP() :
 def func_DangnhapView(request,id,*args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
-    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method=='POST':
+       print("da dang nhap",request.POST)
+       record = Employees.objects.filter(EmployeeId=id)
+
+       tmp_name =record.values_list()[0][1]
+       tmp_sdt = record.values_list()[0][3]
+       tmp_user=authenticate(username=tmp_name,password=tmp_sdt)
+       login(request,tmp_user)
+      # print(record.va)
+       return redirect(func_Mainview,id)
+
     return render(request, "OTP.html", {})

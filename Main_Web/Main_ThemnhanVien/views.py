@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 
 
 @csrf_exempt
-def employeeApi(request):
+def employeeApi(request,id):
     if request.method=='GET':
         employees = Employees.objects.all()
         employees_serializer=EmployeeSerializer(employees,many=True)

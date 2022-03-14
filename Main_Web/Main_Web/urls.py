@@ -24,7 +24,7 @@ from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView
 from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
 from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_TaoyeucauView, func_DMVSView, func_NghiphepView, func_NghiviecView
 from Main_Taoyeucau.views import yeucauApi
-from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView, func_CauhinhchamcongwebView
+from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView
 from Main_Baocao.views import func_BaocaoView
 from django.urls import path
 from Main_ThemnhanVien.views import employeeApi
@@ -33,33 +33,30 @@ from django.conf import settings
 from Main_Screen import views
 from django.conf.urls.static import static
 urlpatterns = [
-    path('<int:id>', func_Mainview, name='home'),
+    path('<int:id>/', func_Mainview, name='home'),
+    path('<int:id>/index.html', func_Mainview, name='home'),
     path('', func_Mainview, name='home'),
-    path('index.html', func_Mainview, name='home'),
-   # path('index.html', func_Mainview, name='home'),
     path('admin/', admin.site.urls),
-    path('nhansu.html',func_Nhansuview,name='nhan su'),
-    path('suanhansu.html', func_SuanhansuView, name='sua nhan su'),
-    path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
-    path('duan.html',func_DuanView,name='du an'),
-    path('yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
-    path('daduyet.html',func_YeucauduyetView,name=' yeu cau da duyet'), 
-    path('tuchoi.html',func_TuchoiView,name=' tu choi yeu cau '), 
-    path('taoyeucau.html',func_TaoyeucauView,name=' tu choi yeu cau '),
-    path('chamcong.html',func_ChamcongView,name=' cham cong '), 
-    path('caidatchamcong.html', func_CaidatchamcongView, name=' cai dat cham cong '),
-    path('chamcongweb.html', func_ChamcongwebView, name=' cham cong web'),
-    path('cauhinhchamcongweb.html', func_CauhinhchamcongwebView, name=' cau hinh cham cong web'),
-    path('idface.html',func_SuaanhnhandienView, name=' sua anh nhan dien '),
-    path('baocao.html',func_BaocaoView, name=' bao cao '),
+    path('<int:id>/nhansu.html',func_Nhansuview,name='nhan su'),
+    path('<int:id>/suanhansu.html', func_SuanhansuView, name='sua nhan su'),
+    path('<int:id>/vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
+    path('<int:id>/duan.html',func_DuanView,name='du an'),
+    path('<int:id>/yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
+    path('<int:id>/daduyet.html',func_YeucauduyetView,name=' yeu cau da duyet'), 
+    path('<int:id>/tuchoi.html',func_TuchoiView,name=' tu choi yeu cau '), 
+    path('<int:id>/taoyeucau.html',func_TaoyeucauView,name=' tu choi yeu cau '),
+    path('<int:id>/chamcong.html',func_ChamcongView,name=' cham cong '), 
+    path('<int:id>/caidatchamcong.html',func_CaidatchamcongView, name=' cai dat cham cong'),
+    path('<int:id>/idface.html',func_SuaanhnhandienView, name=' sua anh nhan dien '),
+    path('<int:id>/baocao.html',func_BaocaoView, name=' bao cao '),
     path('login.html',func_DangxuatView, name=' dang xuat '),
     path('chinhsuathongtin.html',func_ChinhsuathongtinView, name=' chinh sua thong tin '),
     path('<int:id>/OTP.html', func_DangnhapView, name=' dang nhap '),
-    path('themnhanvien.html', employeeApi, name=' them nhan vien '),
-    path('taoyeucau.html', yeucauApi, name=' yeu cau '),
-    path('dmvs.html', func_DMVSView, name=' di muon '),
-    path('nghiphep.html', func_NghiphepView, name=' nghi phep '),
-    path('nghiviec.html', func_NghiviecView, name=' nghi viec '),
+    path('<int:id>/themnhanvien.html', employeeApi, name=' them nhan vien '),
+    path('<int:id>/taoyeucau.html', yeucauApi, name=' yeu cau '),
+    path('<int:id>/dmvs.html', func_DMVSView, name=' di muon '),
+    path('<int:id>/nghiphep.html', func_NghiphepView, name=' nghi phep '),
+    path('<int:id>/nghiviec.html', func_NghiviecView, name=' nghi viec '),
     #url(r'^',include('Main_ThemnhanVien.urls')
  #   url(r'^/([0-9]+)/$', views.func_Mainview, name='home'), 
 
