@@ -9,6 +9,7 @@ from Main_ThemnhanVien.models import Employees
 from Main_ThemnhanVien.serializers import EmployeeSerializer
 
 from django.core.files.storage import default_storage
+from django.contrib.auth.models import User
 
 
 @csrf_exempt
@@ -55,7 +56,8 @@ def employeeApi(request):
 
      #   print(employees)
       #  employees.save()
-
+        user = User.objects.create_user(InputTen,InputEmail,InputSoDienThoai)
+        user.save()
         employees = Employees.objects.all()
         employees_serializer=EmployeeSerializer(employees,many=True)
 
