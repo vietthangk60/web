@@ -6,15 +6,23 @@ from Main_ThemnhanVien.serializers import EmployeeSerializer
 from django.core.mail import send_mail
 import math, random
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login,decorators
+from django.contrib.auth import authenticate, login,decorators,logout
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 @csrf_exempt
 @decorators.login_required(login_url='/login.html')
-def func_Mainview(request,id): # *args, **kwargs
+def func_Mainview(request,id=None): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method=='POST':
+       tmp_xacnhan=request.POST.get("sua")
+       if tmp_xacnhan=="1":
+          logout(request)
+          return render(request,"login.html")
+
+
+
     Data = {'SoLuongNhanVien': Employees.objects.count()}
     #Data = {'SoLuongDuAn': DuAn.objects.count()}
     #Data = {'SoLuongYeuCau': YeuCau.objects.count()}
