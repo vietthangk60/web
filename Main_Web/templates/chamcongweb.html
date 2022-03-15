@@ -101,11 +101,13 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
+                <form action='caidatchamcong.html' method='POST'>
+                    {% csrf_token %}
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Cài đặt chấm công</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                        <li class="breadcrumb-item"><a href="chấm công.html">Chấm công</a></li>
+                        <li class="breadcrumb-item"><a href="chamcong.html">Chấm công</a></li>
                         <li class="breadcrumb-item active">Cài đặt chấm công</li>
                     </ol>
                         <form>
@@ -113,30 +115,38 @@
                             style="height: 40px; background-color: #F5F5F5; border: 0px; border-radius: 5px; width: 250px; color: rgb(61, 155, 111);">Chấm công bằng Camera AI</button>
                             <button type="button" id="daduyet" onclick="location.href='chamcongweb.html';"
                             style=" height: 40px; background-color: #29A9FF; border: 0px; border-radius: 5px; width: 250px; color: white;">Chấm công trên Website</button>
+                                <button type="button" onclick="location.href='#';"
+                                    style=" height: 40px; background-color: #29A9FF; border: 0px; border-radius: 5px; width: 80px; color: white; float: right;">Thêm</button>
                         </form>
                         <br>
-
-                    <table class="table table-bordered" id="yeucaub">
-                        <thead>
-                            <tr style="text-align: center;">
-                                <th width=3%>STT</th>
-                                <th width=10%>Ảnh đại diện</th>
-                                <th width=5%>Mã nhân viên</th>
-                                <th width=10%>Họ và tên</th>
-                                <th width=10%>Chi nhánh</th>
-                                <th width=5%>Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody style="text-align: center;">
-                            <tr id="maintr" >
-                                <td> 1 </td>
-                                <td><img src="/static/img/avt1.jpg" alt=" " style="width: 50px; height: 50px; border-radius: 50%;" ></td>
-                                <td> 001</td>
-                                <td> Bùi Ngọc Đăng</td>
-                                <td> VOV Mễ Trì</td>
-                                <td> <button type="submit" class="btn btn-danger" value="" name="delete">Xoá</button></td>
-                            </tr>
-                        </tbody>
+                        <br>
+                        
+                        
+                        <table class="table table-bordered" id="yeucaub">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th width=3%>STT</th>
+                                    <th width=5%>Mã nhân viên</th>
+                                    <th width=10%>Ảnh đại diện</th>
+                                    <th width=10%>Họ và tên</th>
+                                    <th width=10%>Bộ phận</th>
+                                    <th width=8%>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align: center;">
+                                {% for NhanVien in employee %}
+                                <tr id="maintr">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{NhanVien.EmployeeId}}</td>
+                                    <td> <img src={{NhanVien.Avatar}} alt=" " style="width: 50px; height: 50px; border-radius: 50%;"></td>
+                                    <td>{{NhanVien.EmployeeName}}</td>
+                                    <td>{{NhanVien.Department}}</td>
+                                    <td>
+                                        <button type="submit1" class="btn btn-danger" value={{NhanVien.EmployeeId}} name="delete">Xoá</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
                     </table>
                 </div>
             </main>
