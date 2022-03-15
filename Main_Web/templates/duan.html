@@ -104,8 +104,6 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <form action='nhansu.html' method='POST'>
-                    {% csrf_token %}
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Dự Án</h1>
                         <a href="themduan.html" style="float: right;">Thêm dự án</a>
@@ -119,50 +117,41 @@
                                     <thead>
                                         <tr>
                                             <th width=3% style="text-align: center;">STT</th>
-                                            <th width=10% style="text-align: center;"><a href="#" >Dự án</a></th>
+                                            <th width=15% style="text-align: center;"><a href="#" >Dự án</a></th>
                                             <th width=10% style="text-align: center;">Tỉ lệ hoàn thành</th>
-                                            <th width=15% style="text-align: center;">Ngày bắt đầu</th>
-                                            <th width=10% style="text-align: center;">Ngày kết thúc</th>
-                                            <th width=10% style="text-align: center;">Khối lượng dự án</th>
+                                            <th width=6% style="text-align: center;">Ngày bắt đầu</th>
+                                            <th width=6% style="text-align: center;">Ngày kết thúc</th>
+                                            <th width=10% style="text-align: center;">Số lượng công việc</th>
                                             <th width=10% style="text-align: center;">Trạng thái dự án</th>
                                             <th width=10% style="text-align: center;">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody style="text-align: center;">
-                                        {% for Duan in duan %}
-                                        <tr>
-                                            <td>{{ forloop.counter }}</td>
-                                            <td>{{Duan.DuanId}}</td>
-                                            <td>{{Duan.DuanName}}</td>
-                                            <td>{{Duan.Tile}}</td>
-                                            <td>{{Duan.Ngaybatdau}} </td>
-                                            <td>{{Duan.Ngayketthuc}}</td>
-                                            <td>{{Duan.Khoiluong}}</td>
-                                            <td>{{Duan.Trangthai}}</td>
-                                            <td> <button type="submit" class="btn btn-primary"
-                                                    value={{Duan.DuanId}} name="update"
-                                                    href="suaduan.html">Sửa</button>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <button type="submit1" class="btn btn-danger"
-                                                    value={{Duan.DuanId}} name="delete">Xoá</button>
-                                            </td>
-                                        </tr>
                                         <tr>
                                             <td> </td>
-                                            <td>{{Duan.DuanId}}</td>
-                                            <td><input class="form-control" name="inputname" type="text" placeholder="..." /></td>
-                                            <td>{{Duan.Tile}}</td>
-                                            <td>{{Duan.Ngaybatdau}} </td>
-                                            <td>{{Duan.Ngayketthuc}}</td>
-                                            <td>{{Duan.Khoiluong}}</td>
-                                            <td>{{Duan.Trangthai}}</td>
+                                            <td> <input type="text" class="form-control" ></td>
+                                            <td> 
+                                                <div  class="form-control">
+                                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div></td>
+                                            <td> <input type="date" class="form-control"></td>
+                                            <td> <input type="date" class="form-control"></td>
+                                            <td> <input type="text" class="form-control" value="2550" style="text-align: center;"></td>
+                                            <td>
+                                            <select class="form-control" style="text-align: center;">
+                                                <option selected>Lựa chọn</option>
+                                                <option style="color: red;">Quá hạn</option>
+                                                <option style="color: rgb(98, 219, 148);">Đã xong</option>
+                                                <option style="color: rgb(240, 194, 69);">Đang làm</option>
+                                            </select>
+                                            </td>
                                             <td> <button type="submit" class="btn btn-primary" value={{Duan.DuanId}} name="update"
                                                     href="suaduan.html">Sửa</button>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <button type="submit1" class="btn btn-danger" value={{Duan.DuanId}} name="delete">Xoá</button>
                                             </td>
                                         </tr>
-                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
