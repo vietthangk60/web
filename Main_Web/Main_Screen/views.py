@@ -38,6 +38,10 @@ def func_DangxuatView(request, *args, **kwargs):  # *args, **kwargs
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
     if request.method=='GET':
+
+       if request.user.is_authenticated:
+         return redirect(func_Mainview,int(request.user.username))
+
        return render(request, "login.html", {"data":""})
     else:
      # employee=Employees.objects.all()
@@ -78,7 +82,7 @@ def func_DangnhapView(request,id,*args, **kwargs):  # *args, **kwargs
        print("da dang nhap",request.POST)
        record = Employees.objects.filter(EmployeeId=id)
 
-       tmp_name =record.values_list()[0][1]
+       tmp_name =record.values_list()[0][0]
        tmp_sdt = record.values_list()[0][3]
        tmp_user=authenticate(username=tmp_name,password=tmp_sdt)
        login(request,tmp_user)

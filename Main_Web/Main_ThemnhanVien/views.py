@@ -10,13 +10,18 @@ from Main_ThemnhanVien.serializers import EmployeeSerializer
 
 from django.core.files.storage import default_storage
 from django.contrib.auth.models import User
-
+from django.contrib.auth.models import Permission
 
 @csrf_exempt
 def employeeApi(request,id):
+    
     if request.method=='GET':
         employees = Employees.objects.all()
         employees_serializer=EmployeeSerializer(employees,many=True)
+        current_user = request.user
+        permissions = Permission.objects.filter(user=current_user)
+
+        print("da chay",request.user.get_all_permissions())
         return render(request, "themnhanvien.html", {})
         #return JsonResponse(employees_serializer.data,safe=False)
     elif request.method=='POST':
@@ -44,6 +49,7 @@ def employeeApi(request,id):
         InputTeam = request.POST.get('inputbophan')
         Inputchucvu= request.POST.get('inputchucdanh')
         inputdiachi=request.POST.get('diachi')
+   #     print("da chay",request.user.get_all_permissions())
 
 
        # InputAvatar= myfile.name
@@ -55,8 +61,12 @@ def employeeApi(request,id):
         employees = Employees.objects.create(EmployeeName=InputTen,Date_of_birth=InputBirthDate,PhoneNumber=InputSoDienThoai,Address_Employee=inputdiachi,Department=bophan[str(InputTeam)],Position_Employee=Chuvu[str(Inputchucvu)],Email=InputEmail,Avatar=myfile)
 
      #   print(employees)
-      #  employees.save()
-        user = User.objects.create_user(InputTen,InputEmail,InputSoDienThoai)
+        employees.save()
+        record = Employees.objects.filter(Email=InputEmail)
+        id =record.values_list()[0][0]
+        print("id",id)
+        user = User.objects.create_user(id,InputEmail,InputSoDienThoai,first_name=InputTen)
+    
         user.save()
         employees = Employees.objects.all()
         employees_serializer=EmployeeSerializer(employees,many=True)
