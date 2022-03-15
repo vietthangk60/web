@@ -24,7 +24,7 @@ from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView
 from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
 from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_TaoyeucauView, func_DMVSView, func_NghiphepView, func_NghiviecView
 from Main_Taoyeucau.views import yeucauApi
-from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView
+from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView
 from Main_Baocao.views import func_BaocaoView
 from django.urls import path
 from Main_ThemnhanVien.views import employeeApi
@@ -47,9 +47,10 @@ urlpatterns = [
     path('<int:id>/taoyeucau.html',func_TaoyeucauView,name=' tu choi yeu cau '),
     path('<int:id>/chamcong.html',func_ChamcongView,name=' cham cong '), 
     path('<int:id>/caidatchamcong.html',func_CaidatchamcongView, name=' cai dat cham cong'),
+    path('<int:id>/chamcongweb.html',func_ChamcongwebView, name=' cham cong web'),
     path('<int:id>/idface.html',func_SuaanhnhandienView, name=' sua anh nhan dien '),
     path('<int:id>/baocao.html',func_BaocaoView, name=' bao cao '),
-    path('login.html',func_DangxuatView, name=' dang xuat '),
+    #path('login.html',func_DangxuatView, name=' dang xuat '),
     path('chinhsuathongtin.html',func_ChinhsuathongtinView, name=' chinh sua thong tin '),
     path('<int:id>/OTP.html', func_DangnhapView, name=' dang nhap '),
     path('<int:id>/themnhanvien.html', employeeApi, name=' them nhan vien '),
