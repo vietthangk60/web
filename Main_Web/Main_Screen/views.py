@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 @csrf_exempt
 @decorators.login_required(login_url='/login.html')
-def func_Mainview(request,id=None): # *args, **kwargs
+def func_Mainview(request): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
@@ -19,7 +19,7 @@ def func_Mainview(request,id=None): # *args, **kwargs
        tmp_xacnhan=request.POST.get("sua")
        if tmp_xacnhan=="1":
           logout(request)
-          return render(request,"login.html")
+          return redirect(func_DangxuatView)
 
 
 
@@ -40,7 +40,7 @@ def func_DangxuatView(request, *args, **kwargs):  # *args, **kwargs
     if request.method=='GET':
 
        if request.user.is_authenticated:
-         return redirect(func_Mainview,int(request.user.username))
+         return redirect(func_Mainview)
 
        return render(request, "login.html", {"data":""})
     else:
@@ -87,6 +87,6 @@ def func_DangnhapView(request,id,*args, **kwargs):  # *args, **kwargs
        tmp_user=authenticate(username=tmp_name,password=tmp_sdt)
        login(request,tmp_user)
       # print(record.va)
-       return redirect(func_Mainview,id)
+       return redirect(func_Mainview)
 
     return render(request, "OTP.html", {})
