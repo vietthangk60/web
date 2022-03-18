@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from Main_ThemnhanVien.models import Employees
-from Main_ThemnhanVien.serializers import EmployeeSerializer
+from Main_Suanhansu.models import Employees
+from Main_Suanhansu.serializers import EmployeeSerializer
 
 from django.core.files.storage import default_storage
 from django.contrib.auth.models import User
@@ -22,7 +22,7 @@ def employeeApi(request):
         permissions = Permission.objects.filter(user=current_user)
 
         print("da chay",request.user.get_all_permissions())
-        return render(request, "themnhanvien.html", {})
+        return render(request, "suanhansuclone.html", {})
         #return JsonResponse(employees_serializer.data,safe=False)
     elif request.method=='POST':
         #employee_data=JSONParser().parse(request)

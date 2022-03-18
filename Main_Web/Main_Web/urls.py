@@ -38,6 +38,7 @@ urlpatterns = [
     path('', func_Mainview, name='home'),
     path('admin/', admin.site.urls),
     path('nhansu.html',func_Nhansuview,name='nhan su'),
+    path('<int:id>/nhansu.html', func_Nhansuview, name='nhan su'),
     path('<int:id>/suanhansu.html', func_SuanhansuView, name='sua nhan su'),
     path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
     path('duan.html',func_DuanView,name='du an'),

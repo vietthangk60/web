@@ -37,7 +37,7 @@ def func_Nhansuview(request, *args, **kwargs): # *args, **kwargs
     #  employees_serializer = EmployeeSerializer(employees, many=True)
     #  return render(request, "suanhansu.html", {"employee": employees_serializer.data})
    elif request.method == 'POST' and 'update' in request.POST:
-     # print(request.POST)
+      print(request.POST)
       manhavien = request.POST['update']
     #  record = Employees.objects.get(EmployeeId=manhavien)
     #  record.update()
@@ -68,4 +68,18 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
 
 
 
-   return render(request, "suanhansu.html",{"employee":record})
+   return render(request, "suanhansuclone.html",{"employee":record})
+
+
+def func_GreenView(request, id, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+
+   if request.method == 'GET':
+      record = Employees.objects.get(EmployeeId=id)
+     # print(record)
+     # employees_serializer0 = EmployeeSerializer(record, many=True)
+    #  print(">>>>>>",employees_serializer0)
+
+   return render(request, "suanhansuclone.html", {"employee": record})

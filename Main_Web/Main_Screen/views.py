@@ -84,8 +84,9 @@ def func_DangnhapView(request,id,*args, **kwargs):  # *args, **kwargs
 
        tmp_name =record.values_list()[0][0]
        tmp_sdt = record.values_list()[0][3]
+       print("<<<<<<<<<<<<<<<<<<<<<",tmp_name, tmp_sdt)
        tmp_user=authenticate(username=tmp_name,password=tmp_sdt)
-       login(request,tmp_user)
+       login(request, tmp_user, backend='django.contrib.auth.backends.ModelBackend')
       # print(record.va)
        return redirect(func_Mainview)
 
