@@ -13,6 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jQuery/2.1.3/jQuery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -134,19 +136,40 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Báo cáo
                     </a>
-                    <center><button type="button" class="button" id="button"
+                    <script type="text/javascript">
+                        $(document).ready(function(){
+                            $("#hide").click(function(event){
+                              event.preventDefault();
+                              var d = new Date();
+                              var t = d.getHours() +':'+ d.getMinutes() +':'+ d.getSeconds();
+                              $("#p1").text('Check In vào lúc: ' + t);
+                              $(this).parent().hide();
+                              $("#p1").show();
+                            });
+                        });
+                        $('#button-to-hide').hide();
+                        </script>
+                        <form method="post" action="">
+                          <input type="hidden" name="isSignIn" value=""/>
+                          <input type="hidden" name="tableId" value=""/>
+                          <center><button type="submit" class="button" id="button"
+                        style=" text-align: center; width:65px; height:65px;border-radius: 50%; margin-top:190%;background-color:#4ab4db; border:0px; color:white; font-size:11px;">
+                          <a id="hide">Check in</a></button>
+                        <p id="p1" style="margin-top:190%;"></p>
+                        
+                    <!-- <button type="button" class="button" id="button"
                     style=" text-align: center; width:65px; height:65px;border-radius: 50%; margin-top:190%;background-color:#4ab4db; border:0px; color:white; font-size:11px;"
-                    onclick="document.getElementById('current-time-checkin').innerHTML = CheckIn">Check In</button> &ensp;&ensp;&ensp;
-                    <button type="button" class="button" id="button"
-                    style="width:65px; height:65px;border-radius: 50%; margin-right:0px;background-color:#e91b1b; border:0px; color:white; font-size:11px;"
+                    onclick="document.getElementById('current-time-checkin').innerHTML = CheckIn">Check In</button> &ensp;&ensp;&ensp;-->
+                   <button type="button" class="button" id="button"
+                    style="width:65px; height:65px;border-radius: 50%;background-color:#e91b1b; border:0px; color:white; font-size:11px;"
                     onclick="document.getElementById('current-time-checkout').innerHTML = CheckOut">Check Out</button>
                     </center>
                     <br>
-                    <center><p id="current-time-checkin"></p></center>
-                    <div id="current-time-checkin" name="checkin" style="text-align: center;"></div>
+                    <!--<center><p id="current-time-checkin"></p></center>
+                    <div id="current-time-checkin" name="checkin" style="text-align: center;"></div>-->
                     <center> <p id="current-time-checkout"></p> </center>
                     <div id="current-time-checkout" name="checkout" style="text-align: center;"></div>
-                    <script>
+                    <!--<script>
                         // curDate sẽ lưu trữ thời gian hiện tại
                         var curIn = new Date();
                         
@@ -162,7 +185,7 @@
                         var seconds = curIn.getSeconds();
                         console.log(seconds);
                         var CheckIn = "Check in vào lúc: " + hours + ":" + minutes + ":" + seconds;
-                        </script>
+                        </script>-->
                         <script>
                             // curDate sẽ lưu trữ thời gian hiện tại
                             var curOut = new Date();
@@ -180,6 +203,7 @@
                             console.log(seconds);
                             var CheckOut = "Check out ra lúc: " + hours + ":" + minutes + ":" + seconds;
                         </script>
+                    </form>
 
                        <!--<script>
                         var count = 1;

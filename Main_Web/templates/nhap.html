@@ -1,69 +1,37 @@
-<!DOCTYPE html>
-<html>
+<html class="supernova">
+<head>
+    <title>Chỉnh sửa thông tin nhân viên</title>
+    <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251" />
+    <script src="https://cdn01.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
+    <link href="{%static  'css/styles.css' %}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jQuery/2.1.3/jQuery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
 
 <body>
-    <form>
-        <label for="payFor1">Loại nghỉ phép: </label>
-        <select name="payFor1" id="payFor1">
-            <option disabled selected value>Lựa chọn</option>
-            <option value="nuangay">Nửa ngày</option>
-            <option value="trongngay">Trong ngày</option>
-            <option value="nhieungay">Nhiều ngày</option>
-        </select>
-        <div style="display: none;" id="nuangay">
-            <div>
-            <input type="date"/>
-            </div>
-            <div>
-            <input type="time" id="nuangaytu" name="nuangaytu"/>
-            </div>
-            <div>
-            <input type="time" id="nuangayden" name="nuangayden"/>
-            </div>
-        </div>
-        <div style="display: none;" id="trongngay">
-            <div>
-            <input type="date" id="trongngay"/>
-            </div>
-            <div>
-            <input type="time" id="trongngaytu" name="trongngaytu" value="08:00" />
-            </div>
-            <div>
-            <input type="time" id="trongngayden" name="trongngayden" value="17:30"/>
-            </div>
-        </div>
-        <div style="display: none;" id="nhieungay">
-            <div>
-                <input type="date" id="nhieungaytu" />
-            </div>
-            <div>
-                <input type="time" id="nhieungaytu" name="nhieungaytu" value="08:00" />
-            </div>
-            <div>
-                <input type="date" id="nhieungayden" />
-            </div>
-            <div>
-                <input type="time" id="nhieungayden" name="nhieungayden" value="17:30" />
-            </div>
-        </div>
-    </form>
-    <script>
-        document.getElementById('payFor1').addEventListener("change", function (e) {
-                if (e.target.value === 'nuangay') {
-                    document.getElementById('nuangay').style.display = 'block';
-                    document.getElementById('trongngay').style.display = 'none';
-                    document.getElementById('nhieungay').style.display = 'none';
-                }else if (e.target.value === 'trongngay') {
-                    document.getElementById('nuangay').style.display = 'none';
-                    document.getElementById('trongngay').style.display = 'block';
-                    document.getElementById('nhieungay').style.display = 'none';
-                } else {
-                    document.getElementById('nuangay').style.display = 'none';
-                    document.getElementById('trongngay').style.display = 'none';
-                    document.getElementById('nhieungay').style.display = 'block';
-            }
-            });
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#hide").click(function(event){
+          event.preventDefault();
+          var d = new Date();
+          var t = d.getHours() +':'+ d.getMinutes() +':'+ d.getSeconds();
+          $("#p1").text(d.toLocaleDateString()  +'  '+ t);
+          $(this).parent().hide();
+          $("#p1").show();
+        });
+    });
+    $('#button-to-hide').hide();
     </script>
+    <form method="post" action="">
+      <input type="hidden" name="isSignIn" value=""/>
+      <input type="hidden" name="tableId" value=""/>
+      <button type="submit">
+      <a id="hide">Hide</a></button>
+      <p id="p1"></p>
+    </form>
 </body>
 
 </html>
