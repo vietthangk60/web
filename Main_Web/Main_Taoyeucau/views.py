@@ -13,26 +13,13 @@ from django.core.files.storage import default_storage
 @csrf_exempt
 def yeucauApi(request):
     if request.method=='GET':
-        Taoyeucau = Taoyeucau.objects.all()
-        Taoyeucau_serializer=TaoyeucauSerializer(Taoyeucau,many=True)
-        return render(request, "taoyeucau.html", {})
+        current_user = request.user
+        id=str(current_user)
+        yeucau = Taoyeucau.objects.get(NguoiyeucauId=id)
+        #Taoyeucau_serializer=TaoyeucauSerializer(Taoyeucau,many=True)
+        print("YEu câu >>>>>>>>>>",yeucau)
+        return render(request, "taoyeucau.html", {"yecau":yeucau})
     elif request.method=='POST':
-        InputTen = request.POST.get('inputname')
-        InputSoDienThoai = request.POST.get('inputtel')
-        InputTu = request.POST.get('inputdate1')
-        InputDen = request.POST.get('inputdate2')
-        inputLoaiYeuCau=request.POST.get('inputloaiyeucau')
-        InputLoaiNghiPhep = request.POST.get('inputloainghiphep')
-        InputLyDo= request.POST.get('inputlydo')
-
-
-        print(Chuvu[str(Inputchucvu)],inputdiachi)
-        print(InputTen,inputdiachi, InputSoDienThoai,bophan[str(InputTeam)],Chuvu[str(Inputchucvu)],InputEmail,myfile)
-
-        yeucau = Yeucau.objects.create(Nguoiyeucau=InputTen, PhoneNumber=InputSoDienThoai, InputTu=inputdate1, InputDen=inputdate2, inputLoaiYeuCau=inputloaiyeucau, InputLoaiNghiPhep=inputloainghiphep, InputLyDo=inputlydo )
-
-        employees = Employees.objects.all()
-        employees_serializer=EmployeeSerializer(employees,many=True)
-
-        return render(request, "yeucaucanduyet.html", {"employee":employees_serializer.data})
+ 
+        return render(request, "yeucaucanduyet.html")
     #    return  render(request, "nhansu.html",{})

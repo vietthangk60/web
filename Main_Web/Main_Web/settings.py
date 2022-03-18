@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Main_Yeucau',
-    'Main_Taoyeucau',
+    'Main_Taoyeucau.apps.MainYeucauConfig',
     'Main_ThemnhanVien.apps.MainThemnhanvienConfig',
    # 'pages',
 ]

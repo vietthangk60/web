@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission
 
 @csrf_exempt
-def employeeApi(request,id):
+def employeeApi(request):
     
     if request.method=='GET':
         employees = Employees.objects.all()
