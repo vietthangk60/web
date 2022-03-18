@@ -135,8 +135,14 @@
                                                 <div class="progress-bar" role="progressbar" style="width: 75%; height:100px;" aria-valuenow="75" aria-valuemin="0"
                                                     aria-valuemax="100"></div>
                                             </div></td>
-                                            <td> <input type="date" class="form-control"></td>
-                                            <td> <input type="date" class="form-control"></td>
+                                            <td> <input type="date" class="form-control" id="tu"></td>
+                                            <script>
+                                                document.getElementById('tu').value = new Date().toISOString().substring(0, 10);
+                                            </script>
+                                            <td> <input type="date" class="form-control" id="den"></td>
+                                            <script>
+                                                document.getElementById('den').value = new Date().toISOString().substring(0, 10);
+                                            </script>
                                             <td> <input type="text" class="form-control" value="2550" style="text-align: center;"></td>
                                             <td>
                                             <select type="options" class="form-control" style="text-align: center;">

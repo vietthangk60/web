@@ -110,26 +110,149 @@
                                                 <input class="form-control" id="inputname" type="name" placeholder="..." />
                                                 <label for="inputname">Họ và tên:</label>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <select class="form-control">
-                                                    <option selected>Lựa chọn</option>
-                                                    <option value="1">Nghỉ phép có lương</option>
-                                                    <option value="2">Nghỉ phép không lương</option>
-                                                </select>
-                                                <label for="inputloainghiphep">Loại nghỉ phép:</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputdate" type="datetime-local" placeholder="..." />
-                                                <label for="inputdate1">Thời gian từ:</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputdate" type="datetime-local" placeholder="..." />
-                                                <label for="inputdate2">Đến:</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" placeholder="..." />
-                                                <label for="inputlydo">Lý do:</label>
-                                            </div>
+                                            
+                                            <form>
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-control" name="payFor" id="payFor" >
+                                                        <option selected disabled value>Lựa chọn</option>
+                                                        <option value="dmvs">Đi muộn về sớm</option>
+                                                        <option value="nghiphep">Nghỉ phép</option>
+                                                        <option value="nghiviec">Nghỉ việc</option>
+                                                    </select>
+                                                    <label  for="payFor">Loại yêu cầu</label>
+                                                </div>
+                                                <div class="form-floating mb-3" style="display: none;" id="dmvs">
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" id="datedmvs" type="date"/>
+                                                        <script>
+                                                            document.getElementById('datedmvs').value = new Date().toISOString().substring(0, 10);
+                                                        </script>
+                                                        <label for="datedmvs">Chọn ngày:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" id="tudmvs" type="time" />
+                                                        <label for="tudmvs">Thời gian từ:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" id="dendmvs" type="time" />
+                                                        <label for="dendmvs">Đến:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-floating mb-3" style="display: none;" id="nghiphep">
+                                                    <div class="form-floating mb-3">
+                                                        <select class="form-control" name="nghiphep">
+                                                            <option disabled selected value>Lựa chọn</option>
+                                                            <option value="nghiphep1">Tiêu chuẩn</option>
+                                                            <option value="nghiphep2">Không lương</option>
+                                                        </select>
+                                                        <label for="nghiphep">Ché độ nghỉ phép:</label>
+                                                    </div>
+                                                    <form>
+                                                        <div class="form-floating mb-3">
+                                                            <select class="form-control" name="payFor1" id="payFor1">
+                                                                <option selected disabled value>Lựa chọn</option>
+                                                                <option value="nuangay">Nửa ngày</option>
+                                                                <option value="trongngay">Trong ngày</option>
+                                                                <option value="nhieungay">Nhiều ngày</option>
+                                                            </select>
+                                                            <label for="payFor">Loại nghỉ phép:</label>
+                                                        </div>
+                                                        <div class="form-floating mb-3" style="display: none;" id="nuangay">
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="date" />
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="time" id="nuangaytu" name="nuangaytu" />
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="time" id="nuangayden" name="nuangayden" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-floating mb-3" style="display: none;" id="trongngay">
+                                                            <div class="form-floating mb-3">
+                                                                <input  class="form-control" type="date" id="trongngay" />
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="time" id="trongngaytu" name="trongngaytu" value="08:00" />
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="time" id="trongngayden" name="trongngayden" value="17:30" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-floating mb-3" style="display: none;" id="nhieungay">
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="date" id="nhieungaytu" />
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="time" id="nhieungaytu" name="nhieungaytu" value="08:00" />
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="date" id="nhieungayden" />
+                                                            </div>
+                                                            <div class="form-floating mb-3">
+                                                                <input class="form-control" type="time" id="nhieungayden" name="nhieungayden" value="17:30" />
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <script>
+                                                        document.getElementById('payFor1').addEventListener("change", function (e) {
+                                                            if (e.target.value === 'nuangay') {
+                                                                document.getElementById('nuangay').style.display = 'block';
+                                                                document.getElementById('trongngay').style.display = 'none';
+                                                                document.getElementById('nhieungay').style.display = 'none';
+                                                            } else if (e.target.value === 'trongngay') {
+                                                                document.getElementById('nuangay').style.display = 'none';
+                                                                document.getElementById('trongngay').style.display = 'block';
+                                                                document.getElementById('nhieungay').style.display = 'none';
+                                                            } else {
+                                                                document.getElementById('nuangay').style.display = 'none';
+                                                                document.getElementById('trongngay').style.display = 'none';
+                                                                document.getElementById('nhieungay').style.display = 'block';
+                                                            }
+                                                        });
+                                                    </script>
+
+
+
+
+
+                                                    <!--<div class="form-floating mb-3">
+                                                        <input class="form-control" type="date" id="nghipheptu" />
+                                                        <label for="nghipheptu">Ngày bắt đầu:</label>
+                                                        <script>
+                                                            document.getElementById('nghipheptu').value = new Date().toISOString().substring(0, 10);
+                                                        </script>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" type="time" id="nghipheptu" name="nghipheptu" />
+                                                        <label for="nghipheptu">Thời gian bắt đầu:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" type="date" id="nghiphepden" />
+                                                        <script>
+                                                            document.getElementById('nghiphepden').value = new Date().toISOString().substring(0, 10);
+                                                        </script>
+                                                        <label for="nghiphepden">Ngày kết thúc:</label>
+                                                    </div>
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" type="time" id="nghiphepden" name="nghiphepden" value="now" />
+                                                        <label for="nghipheptu">Thời gian kết thúc:</label>
+                                                    </div>-->
+                                                </div>
+                                                <div class="form-floating mb-3" style="display: none;" id="nghiviec">
+                                                       <div class="form-floating mb-3">
+                                                        <input class="form-control" id="datenghiviec" type="date" />
+                                                        <script>
+                                                            document.getElementById('datenghiviec').value = new Date().toISOString().substring(0, 10);
+                                                        </script>
+                                                        <label for="datenghiviec">Ngày dự định nghỉ việc:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <textarea class="form-control" id="Lydo" type="text"></textarea>
+                                                    <label for="Lydo">Lý do:</label>
+                                                </div>
+                                            </form>
                                             <center>
                                                     <a class="small" href="yeucaucanduyet.html">
                                                         <button type="submit" class="btn btn-primary" style="width: 100px; height: 40px;">Lưu</button>
@@ -148,6 +271,23 @@
                         </div>
                     </main>
                 </div>
+                <script>
+                    document.getElementById('payFor').addEventListener("change", function (e) {
+                        if (e.target.value === 'nghiphep') {
+                            document.getElementById('dmvs').style.display = 'none';
+                            document.getElementById('nghiphep').style.display = 'block';
+                            document.getElementById('nghiviec').style.display = 'none';
+                        } else if (e.target.value === 'dmvs') {
+                            document.getElementById('nghiphep').style.display = 'none';
+                            document.getElementById('dmvs').style.display = 'block';
+                            document.getElementById('nghiviec').style.display = 'none';
+                        } else {
+                            document.getElementById('nghiphep').style.display = 'none';
+                            document.getElementById('dmvs').style.display = 'none';
+                            document.getElementById('nghiviec').style.display = 'block';
+                        }
+                    });
+                </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{% static 'js/scripts.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
