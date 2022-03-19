@@ -138,16 +138,23 @@
                     </a>
                     <center>
                    <input type="button" onclick="time(), changeColor(this)" id="btncheck"
-                    style="width:80px; height:80px;border-radius: 50%;background-color:#4ab4db;margin-top:100%; border:0px; color:white; font-size:11px;" value="Check In" />
-                    </center>
-                    <center><p id="datecheck"></p></center>
+                    style="width:65px; height:65px; margin-top:100%; border-radius: 50%;background-color:#4ab4db; border:0px; color:white; font-size:11px;" value="Check In" />
+                    </center><br>
+                    <ol class="breadcrumb mb-4">
+                        &ensp;<li class="breadcrumb">Thời gian check In: </li> &ensp;
+                        <li class="breadcrumb" id="datecheck"></li>
+                    </ol>
+                    <ol class="breadcrumb mb-4">
+                        &ensp;<li class="breadcrumb">Thời gian check Out: </li> &ensp;
+                        <li class="breadcrumb" id="datecheck"></li>
+                    </ol>
                         <script>
                            function time() {
                                 var currentdate = new Date();
                                 var timenow = + currentdate.getHours() + ":"
                                     + currentdate.getMinutes() + ":"
                                     + currentdate.getSeconds();
-                                document.getElementById("datecheck").innerHTML = "Thời gian check: " + timenow;
+                                document.getElementById("datecheck").innerHTML =timenow;
                             }
                         </script>
                         <script>
@@ -161,6 +168,7 @@
                                     function (event) {
                                         if (event.target.value === "Check In") {
                                             event.target.value = "Check Out";
+                                            
                                         }
                                     },
                                     false

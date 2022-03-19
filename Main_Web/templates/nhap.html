@@ -1,57 +1,21 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
-<head>
-  <title>fullCalendar 4</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.css'>
-  <link rel='stylesheet' href='https://unpkg.com/@fullcalendar/timeline@4.2.0/main.min.css'>
-  <link rel='stylesheet' href='https://unpkg.com/@fullcalendar/resource-timeline@4.2.0/main.min.css'>
-</head>
-<!--from   w w  w . d  e mo2  s  .  c o m-->
+<body>
 
-<body translate="no">
-  <div id='calendar'></div>
-  <script src='https://unpkg.com/@fullcalendar/core@4.4.0/main.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/core@4.4.0/locales-all.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/interaction@4.4.0/main.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/daygrid@4.4.0/main.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/timegrid@4.4.0/main.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/list@4.4.0/main.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/resource-common@4.4.0/main.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/timeline@4.4.0/main.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/resource-timeline@4.4.0/main.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/rrule/main.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.2/dist/es5/rrule.min.js'></script>
-  <script src='https://unpkg.com/@fullcalendar/moment@4.4.0/main.min.js'></script>
-  <script id="rendered-js">
-    document.addEventListener("DOMContentLoaded", function () {
-      var calendarEl = document.getElementById("calendar");
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ["interaction", "dayGrid", "timeGrid", "resourceTimeline"],
-        header: {
-          left: "prev,next today",
-          center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay"
-        },
-        editable: true,
-        dayRender: function (info) {
-          info.el.innerHTML += "<button class='dayButton' data-date='" + info.date + "'>Click me</button>";
-          info.el.style.padding = "20px 0 0 10px";
-        }
-      });
-      calendar.render();
-      var buttons = document.querySelectorAll(".dayButton");
-      buttons.forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-          console.log("clicked button on " + this.dataset.date);
-        });
-      });
-    });
+  <h2>JavaScript ISO Dates</h2>
+
+  <p id="demo"></p>
+  <p id="demo2"></p>
+
+  <script>
+      var ngaysinh = new Date('Jan. 16, 2000');
+      var formatted_date = ngaysinh.getFullYear() + "-" + (ngaysinh.getMonth() + 1) + "-" +  ngaysinh.getDate()
+    document.getElementById("demo").innerHTML = formatted_date;
+    document.getElementById("demo2").innerHTML = ngaysinh;
+    </script>
   </script>
+
 </body>
 
 </html>

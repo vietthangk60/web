@@ -59,9 +59,19 @@
                     <div class="form-input-wide">
                         <span class="form-sub-label-container" style="vertical-align:top">
                             <input type="date" name="date" class="form-textbox" style="width:310px" data-masked="true" value="{{employee.Date_of_birth}}" />
+                            <input type="text" name="date" class="form-textbox" style="width:310px" data-masked="true" value="{{employee.Date_of_birth}}" />
                         </span>
                     </div>
-                </li>
+                </li>  
+                <p id="123" name="123">{{employee.Date_of_birth}}</p>
+                <p id="demo"></p>
+                <script>
+                    let ngaysinh = new Date([123])
+                    let formatted_ngaysinh = ngaysinh.getFullYear() + "-" + (ngaysinh.getMonth() + 1) + "-" + ngaysinh.getDate()
+                    console.log(formatted_ngaysinh)
+                    document.getElementById("demo").innerHTML = formatted_ngaysinh;
+                </script>
+
                 <li class="form-line form-line-column form-col-1" >
                     <label class="form-label form-label-top form-label-auto" > Số điện thoại </label>
                     <div class="form-input-wide" >
