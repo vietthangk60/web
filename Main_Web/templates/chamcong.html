@@ -136,93 +136,36 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Báo cáo
                     </a>
-                    <script type="text/javascript">
-                        $(document).ready(function(){
-                            $("#hide").click(function(event){
-                              event.preventDefault();
-                              var d = new Date();
-                              var t = d.getHours() +':'+ d.getMinutes() +':'+ d.getSeconds();
-                              $("#p1").text('Check In vào lúc: ' + t);
-                              $(this).parent().hide();
-                              $("#p1").show();
-                            });
-                        });
-                        $('#button-to-hide').hide();
-                        </script>
-                        <form method="post" action="">
-                          <input type="hidden" name="isSignIn" value=""/>
-                          <input type="hidden" name="tableId" value=""/>
-                          <center><button type="submit" class="button" id="button"
-                        style=" text-align: center; width:65px; height:65px;border-radius: 50%; margin-top:190%;background-color:#4ab4db; border:0px; color:white; font-size:11px;">
-                          <a id="hide">Check in</a></button>
-                        <p id="p1" style="margin-top:190%;"></p>
-                        
-                    <!-- <button type="button" class="button" id="button"
-                    style=" text-align: center; width:65px; height:65px;border-radius: 50%; margin-top:190%;background-color:#4ab4db; border:0px; color:white; font-size:11px;"
-                    onclick="document.getElementById('current-time-checkin').innerHTML = CheckIn">Check In</button> &ensp;&ensp;&ensp;-->
-                   <button type="button" class="button" id="button"
-                    style="width:65px; height:65px;border-radius: 50%;background-color:#e91b1b; border:0px; color:white; font-size:11px;"
-                    onclick="document.getElementById('current-time-checkout').innerHTML = CheckOut">Check Out</button>
+                    <center>
+                   <input type="button" onclick="time(), changeColor(this)" id="btncheck"
+                    style="width:80px; height:80px;border-radius: 50%;background-color:#4ab4db;margin-top:100%; border:0px; color:white; font-size:11px;" value="Check In" />
                     </center>
-                    <br>
-                    <!--<center><p id="current-time-checkin"></p></center>
-                    <div id="current-time-checkin" name="checkin" style="text-align: center;"></div>-->
-                    <center> <p id="current-time-checkout"></p> </center>
-                    <div id="current-time-checkout" name="checkout" style="text-align: center;"></div>
-                    <!--<script>
-                        // curDate sẽ lưu trữ thời gian hiện tại
-                        var curIn = new Date();
-                        
-                        // Lấy giờ hiện tại
-                        var hours = curIn.getHours();
-                        console.log(hours);
-                        
-                        // Lấy phút hiện tại
-                        var minutes = curIn.getMinutes() + 1;
-                        console.log(minutes);
-                        
-                        // Lấy giây hiện tại
-                        var seconds = curIn.getSeconds();
-                        console.log(seconds);
-                        var CheckIn = "Check in vào lúc: " + hours + ":" + minutes + ":" + seconds;
-                        </script>-->
+                    <center><p id="datecheck"></p></center>
                         <script>
-                            // curDate sẽ lưu trữ thời gian hiện tại
-                            var curOut = new Date();
-
-                            // Lấy giờ hiện tại
-                            var hours = curOut.getHours();
-                            console.log(hours);
-
-                            // Lấy phút hiện tại
-                            var minutes = curOut.getMinutes() + 1;
-                            console.log(minutes);
-
-                            // Lấy giây hiện tại
-                            var seconds = curOut.getSeconds();
-                            console.log(seconds);
-                            var CheckOut = "Check out ra lúc: " + hours + ":" + minutes + ":" + seconds;
+                           function time() {
+                                var currentdate = new Date();
+                                var timenow = + currentdate.getHours() + ":"
+                                    + currentdate.getMinutes() + ":"
+                                    + currentdate.getSeconds();
+                                document.getElementById("datecheck").innerHTML = "Thời gian check: " + timenow;
+                            }
                         </script>
-                    </form>
-
-                       <!--<script>
-                        var count = 1;
-                        function setColor(btn, color, value) {
-                            var property = document.getElementById(btn);
-                            if (count == 0) {
-                                property.style.backgroundColor = "#4ab4db"
-                                //property.get.value = "Check In"
-                                count = 1;
+                        <script>
+                            function changeColor (htmlEl) {
+                            htmlEl.style.backgroundColor="#c61313";
                             }
-                            else {
-                                property.style.backgroundColor = "#c61313"
-                                //GetPropertyValue(btn, "Check Out")
-                                count = 0;
-                            }
-                        }
-                    </script>-->
-                
-                            
+                        </script>   
+                        <script>
+                            document.getElementById("btncheck").addEventListener(
+                                    "click",
+                                    function (event) {
+                                        if (event.target.value === "Check In") {
+                                            event.target.value = "Check Out";
+                                        }
+                                    },
+                                    false
+                                );
+                        </script>
                 </div>
             </div>
         </nav>
