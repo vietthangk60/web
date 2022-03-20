@@ -1,21 +1,42 @@
+<!--http://eonasdan.github.io/bootstrap-datetimepicker/-->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<body>
+    <head>
+<!-- core-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- https://cdnjs.com/libraries/moment.js/-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>        
+<!-- https://cdnjs.com/libraries/bootstrap-datetimepicker-->
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
-  <h2>JavaScript ISO Dates</h2>
+    </head>
 
-  <p id="demo"></p>
-  <p id="demo2"></p>
+    <body>
+    
+                    <label class="form-floating mb-3" for="timepicker"></label>
+                    <div class="col-sm-10">          
+                        <input class="form-control" type="text" id="timepicker" name="timepicker" value="17:30" />
+                    </div>
+        
+        <script>
+            
+            $(function () {            
+                
+                /* setting time */
+                $("#timepicker").datetimepicker({
+                    format : "HH:mm"
+                });
+                
+            });                
+        
+        </script>
+        
 
-  <script>
-      var ngaysinh = new Date('Jan. 16, 2000');
-      var formatted_date = ngaysinh.getFullYear() + "-" + (ngaysinh.getMonth() + 1) + "-" +  ngaysinh.getDate()
-    document.getElementById("demo").innerHTML = formatted_date;
-    document.getElementById("demo2").innerHTML = ngaysinh;
-    </script>
-  </script>
-
-</body>
+    </body>
 
 </html>

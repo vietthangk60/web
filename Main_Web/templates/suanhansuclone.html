@@ -44,7 +44,7 @@
                     <label class="form-label form-label-top form-label-auto"> Họ và tên </label>
                     <div class="form-input-wide">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input type="text" name="name" class="form-textbox" autoComplete="cc-name" style="width:310px" data-masked="true" value="{{employee.EmployeeName}}" />
+                            <input type="text" name="name" class="form-textbox" style="width:310px" data-masked="true" value="{{employee.EmployeeName}}" />
                         </span>
                     </div>
                 </li>
@@ -56,35 +56,27 @@
                 </li>
                 <li class="form-line form-line-column form-col-1">
                     <label class="form-label form-label-top form-label-auto"> Ngày sinh </label>
-                    <div class="form-input-wide">
-                        <span class="form-sub-label-container" style="vertical-align:top">
-                            <input type="date" name="date" class="form-textbox" style="width:310px" data-masked="true" value="{{employee.Date_of_birth}}" />
+                    <div class="form-input-wide" >
+                        <span class="form-sub-label-container" style="vertical-align:top" >
+                            <input type="date" id="demo" type="text" class="form-textbox" style="width:310px" />
                         </span>
                     </div>
                 </li>  
-                <p id="111" hidden>{{employee.Date_of_birth}}</p>
-                <p id="demo"></p>
+                <p id="intro" hidden>{{employee.Date_of_birth}}</p>
+                <p id="de"> {{formatted_ngaysinh}} </p>
                 <script>
-                    let ngaysinh = new Date()
-                    let formatted_ngaysinh = ngaysinh.getFullYear() + "-" + (ngaysinh.getMonth() + 1) + "-" + ngaysinh.getDate()
-                    console.log(formatted_ngaysinh)
-                    document.getElementById("demo").innerHTML = "dd"+ document.getElementById("111");
+                    const element = document.getElementById("intro");
+
+                    document.getElementById("demo").innerHTML = element.innerHTML;
+
+                    let ngaysinh = new Date(element.innerHTML);
+
+                    let formatted_ngaysinh = ngaysinh.getFullYear() + "-" + ("0"+ (ngaysinh.getMonth() + 1)).slice(-2) + "-" + ("0"+ngaysinh.getDate()).slice(-2);
+
+                    console.log(formatted_ngaysinh);
+
+                    document.getElementById("demo").value = formatted_ngaysinh;
                 </script>
-
-<p id="intro">{{employee.Date_of_birth}}</p>
-<p>This example demonstrates the <b>getElementsById</b> method.</p>
-
-<p id="demo"></p>
-
-<script>
-    const element = document.getElementById("intro");
-
-    document.getElementById("demo").innerHTML =
-        "The text from the intro paragraph is: " + element.innerHTML;
-
-</script>
-                
-
                 <li class="form-line form-line-column form-col-1" >
                     <label class="form-label form-label-top form-label-auto" > Số điện thoại </label>
                     <div class="form-input-wide" >
@@ -146,7 +138,6 @@
                         </div>
                     </div>
                 </li>
-                
                 <li class="form-line" >
                     <div class="form-input-wide">
                         <div
