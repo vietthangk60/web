@@ -44,7 +44,7 @@
                     <label class="form-label form-label-top form-label-auto"> Họ và tên </label>
                     <div class="form-input-wide">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input type="text" name="name" class="form-textbox" style="width:310px" data-masked="true" value="{{employee.EmployeeName}}" />
+                            <input type="text" name="name" class="form-textbox" style="width:310px" data-masked="true" value="{{employee.EmployeeName}}" id="name"/>
                         </span>
                     </div>
                 </li>
@@ -96,7 +96,7 @@
                 <li class="form-line form-line-column form-col-2" >
                 <div class="form-input-wide">
                     <label class="form-label form-label-top form-label-auto" for="inputbophan">Bộ phận</label>
-                    <select class="form-textbox validate" name="inputbophan" type="text" style="width:310px; height: 40px;">
+                    <select class="form-textbox validate" name="inputbophan" style="width:310px; height: 40px;">
                         <option style="background-color:rgb(30, 182, 228)">{{employee.Department}}</option>
                         <option value="1">Dev</option>
                         <option value="2">Game design</option>
@@ -107,8 +107,8 @@
                 </li>
                 <li class="form-line form-line-column form-col-2">
                     <div class="form-input-wide">
-                        <label class="form-label form-label-top form-label-auto" for="inputbophan">Chức danh</label>
-                        <select class="form-textbox validate" name="inputchucdanh" type="text" style="width:310px; height: 40px;">
+                        <label class="form-label form-label-top form-label-auto" for="inputchucdanh">Chức danh</label>
+                        <select class="form-textbox validate" name="inputchucdanh" type="text" style="width:310px; height: 40px;" id= "chucdanh">
                             <option style="background-color:rgb(30, 182, 228)">{{employee.Position_Employee}} </option>
                             <option value="1">Nhân viên</option>
                             <option value="2">Leader</option>
@@ -117,10 +117,21 @@
                         </select>
                     </div>
                 </li>
+                <!-- copy van ban tu chuc danh sang quyen truy cap -->
+                <script type='text/javascript'>
+                    $(document).ready(function() {
+                        $('#chucdanh').change(function(){
+                          $('input[type=quyentruycap]').val($('option:selected',this).text());
+                          //$('input[type=price]').val($(this).val());
+                        });
+                      });
+                </script>
+                <!-- Copy văn bản   <input type="name" />
+                <input type="price" />     Copy value-->
                 <li class="form-line form-line-column form-col-1">
                     <label class="form-label form-label-top form-label-auto"> Quyền truy cập </label>
                     <div class="form-input-wide">
-                            <input type="text" class="mask-phone-number form-textbox validate" style="width:310px" value="{{employee.Position_Employee}}" disabled/>
+                            <input type="quyentruycap" class="mask-phone-number form-textbox validate" style="width:310px" value="{{employee.Position_Employee}}" disabled/>
                     </div>
                 </li>
                 <li class="form-line" >
@@ -138,6 +149,7 @@
                         </div>
                     </div>
                 </li>
+
                 <li class="form-line" >
                     <div class="form-input-wide">
                         <div
