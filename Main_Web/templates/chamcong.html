@@ -13,41 +13,91 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jQuery/2.1.3/jQuery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html" id="hd">Horus Entertainment</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-light" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-        </div>
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html" id="hd">Horus Entertainment</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-light" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                &ensp; &ensp;
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a href="#" data-bs-toggle="dropdown" aria-expanded="false" title="Thông báo">
+                    <center>
+                        <svg width="24px" height="24px" viewBox="0 0 24 24">
+                            <path fill="#707070"
+                                d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21">
+                            </path>
+                        </svg>
+                    </center>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"
+                    style="width: 400px; height:900px; border-radius: 5px; border-width: 2px;">
+                    <center>
+                        <h4>Thông báo</h4>
+                    </center>
+                    <hr style="height: 1px; ">
+                    <div id="thongbao">
+                        <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 1, nội dung thông
+                            báo số 1 đến đây là hết.</li>
+                        <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 2, nội dung thông
+                            báo số 1 đến đây là hết.</li>
+                        <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 3, nội dung thông
+                            báo số 1 đến đây là hết.</li>
+                        <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 4, nội dung thông
+                            báo số 1 đến đây là hết.</li>
+                        <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 5, nội dung thông
+                            báo số 1 đến đây là hết.</li>
+                        <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 6, nội dung thông
+                            báo số 1 đến đây là hết.</li>
+                        <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 7, nội dung thông
+                            báo số 1 đến đây là hết.</li>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <form method='POST'>
+                        {% csrf_token %}
                         <center>
-                        <li><div class="avatar-wrapper">
-                            <img class="profile-pic" src="{% static 'img/avt1.jpg '%}" />
-                            <div class="upload-button">
-                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                            </div>
-                            <input class="file-upload" type="file" accept="image/*" />
-                        </div></li>
-                        <li><a class="dropdown-item" href="chinhsuathongtin.html">Chỉnh sửa thông tin</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="btn-outline-danger" href="login.html">Đăng xuất</a></li>
+                            <li>
+                                <div class="avatar-wrapper">
+                                    <img class="profile-pic" src="{% static 'img/avt1.jpg'%}" />
+                                    <div class="upload-button">
+                                        <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                                    </div>
+                                    <input class="file-upload" type="file" accept="image/*" />
+                                </div>
+                            </li>
+                            <li><a class="dropdown-item" href="chinhsuathongtin.html">Chỉnh sửa thông tin</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <button type="submit" class="btn btn-primary" value="1" name="sua">Đăng xuất </button>
                         </center>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+                    </form>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -86,48 +136,44 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Báo cáo
                     </a>
-                    <center><button type="button" class="button" id="button" style="width:95px; height:95px;border-radius: 50%; margin-top:210%;background-color:#4ab4db; border:0px; color:white;"
-                    onclick="setColor('button', '#101010'); document.getElementById('current-time-checkinout').innerHTML = CheckInOut">Check In</button></center>
-                    <br>
-                    <center><p id="current-time-checkinout"></p></center>
-                    <div id="current-time-checkinout" name="checkinout" style="text-align: center;"></div>
-                    <script>
-                        // curDate sẽ lưu trữ thời gian hiện tại
-                        var curIn = new Date();
-                        
-                        // Lấy giờ hiện tại
-                        var hours = curIn.getHours();
-                        console.log(hours);
-                        
-                        // Lấy phút hiện tại
-                        var minutes = curIn.getMinutes() + 1;
-                        console.log(minutes);
-                        
-                        // Lấy giây hiện tại
-                        var seconds = curIn.getSeconds();
-                        console.log(seconds);
-                        var CheckInOut = "Check in vào lúc: " + hours + ":" + minutes + ":" + seconds;
-                        var CheckInOut = "Check out ra lúc: " + hours + ":" + minutes + ":" + seconds;
+                    <center>
+                   <input type="button" onclick="time(), changeColor(this)" id="btncheck"
+                    style="width:65px; height:65px; margin-top:100%; border-radius: 50%;background-color:#4ab4db; border:0px; color:white; font-size:11px;" value="Check In" />
+                    </center><br>
+                    <ol class="breadcrumb mb-4">
+                        &ensp;<li class="breadcrumb">Thời gian check In: </li> &ensp;
+                        <li class="breadcrumb" id="datecheck"></li>
+                    </ol>
+                    <ol class="breadcrumb mb-4">
+                        &ensp;<li class="breadcrumb">Thời gian check Out: </li> &ensp;
+                        <li class="breadcrumb" id="datecheck"></li>
+                    </ol>
+                        <script>
+                           function time() {
+                                var currentdate = new Date();
+                                var timenow = + ("0" + currentdate.getHours()).slice(-2) + ":"
+                                    + ("0" + currentdate.getMinutes()).slice(-2) + ":"
+                                    + ("0" + currentdate.getSeconds()).slice(-2);
+                                document.getElementById("datecheck").innerHTML =timenow;
+                            }
                         </script>
-
-                       <script>
-                        var count = 1;
-                        function setColor(btn, color, value) {
-                            var property = document.getElementById(btn);
-                            if (count == 0) {
-                                property.style.backgroundColor = "#4ab4db"
-                                //property.get.value = "Check In"
-                                count = 1;
+                        <script>
+                            function changeColor (htmlEl) {
+                            htmlEl.style.backgroundColor="#c61313";
                             }
-                            else {
-                                property.style.backgroundColor = "#c61313"
-                                //GetPropertyValue(btn, "Check Out")
-                                count = 0;
-                            }
-                        }
-                    </script>
-                
-                            
+                        </script>   
+                        <script>
+                            document.getElementById("btncheck").addEventListener(
+                                    "click",
+                                    function (event) {
+                                        if (event.target.value === "Check In") {
+                                            event.target.value = "Check Out";
+                                            
+                                        }
+                                    },
+                                    false
+                                );
+                        </script>
                 </div>
             </div>
         </nav>

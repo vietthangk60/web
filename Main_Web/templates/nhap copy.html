@@ -1,0 +1,29 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="//code.jquery.com/jquery-compat-git.js"></script>
+
+<title>Test copy select</title>
+<script type='text/javascript'>
+    $(document).ready(function() {
+        $('select').change(function(){
+      
+          $('input[type=name]').val($('option:selected',this).text());
+          $('input[type=price]').val($(this).val());
+        });
+      });
+      
+</script>
+</head>
+
+<body>
+  <form>
+    <select>
+      <option value="10">Apple</option>
+      <option value="20">Orange</option>
+    </select>
+
+    <input type="name" />
+  </form>
+</body>
+</html>

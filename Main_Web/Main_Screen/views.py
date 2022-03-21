@@ -22,8 +22,13 @@ def func_Mainview(request): # *args, **kwargs
           return redirect(func_DangxuatView)
 
 
+    current_user = request.user
+    print("user_name",current_user)
+    idnhanvien=str(current_user)
+    em =Employees.objects.get(EmployeeId=idnhanvien)
+    print(em)
 
-    Data = {'SoLuongNhanVien': Employees.objects.count()}
+    Data = {'SoLuongNhanVien': Employees.objects.count(),"nhanvien":em}
     #Data = {'SoLuongDuAn': DuAn.objects.count()}
     #Data = {'SoLuongYeuCau': YeuCau.objects.count()}
     return render(request, "index.html", Data)
@@ -84,8 +89,9 @@ def func_DangnhapView(request,id,*args, **kwargs):  # *args, **kwargs
 
        tmp_name =record.values_list()[0][0]
        tmp_sdt = record.values_list()[0][3]
+       print("<<<<<<<<<<<<<<<<<<<<<",tmp_name, tmp_sdt)
        tmp_user=authenticate(username=tmp_name,password=tmp_sdt)
-       login(request,tmp_user)
+       login(request, tmp_user, backend='django.contrib.auth.backends.ModelBackend')
       # print(record.va)
        return redirect(func_Mainview)
 

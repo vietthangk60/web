@@ -102,7 +102,7 @@
                             <div class="col-lg-3">
                                 <div class="card shadow-lg border-0 rounded-lg mt-0">
                                     <div class="card-header">
-                                        <h2 class="text-center font-weight-light my-4">Nghỉ phép</h2>
+                                        <h2 class="text-center font-weight-light my-4">Tạo yêu cầu</h2>
                                     </div>
                                     <div class="card-body">
                                         <form>
@@ -111,31 +111,49 @@
                                                 <label for="inputname">Họ và tên:</label>
                                             </div>
                                             <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputTel" type="tel" placeholder="..." />
+                                                <label for="inputTel">Số điện thoại:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <select class="form-control">
+                                                    <option selected>Lựa chọn</option>
+                                                    <option value="1">Đi muộn</option>
+                                                    <option value="2">Về sớm</option>
+                                                    <option value="3">Nghỉ phép</option>
+                                                    <option value="3">Nghỉ việc</option>
+                                                </select>
+                                                <label for="inputdate">Loại yêu cầu:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
                                                 <select class="form-control">
                                                     <option selected>Lựa chọn</option>
                                                     <option value="1">Nghỉ phép có lương</option>
                                                     <option value="2">Nghỉ phép không lương</option>
                                                 </select>
-                                                <label for="inputloainghiphep">Loại nghỉ phép:</label>
+                                                <label for="inputdate">Loại nghỉ phép:</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputdate" type="datetime-local" placeholder="..." />
-                                                <label for="inputdate1">Thời gian từ:</label>
+                                                <label for="inputdate">Thời gian từ:</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputdate" type="datetime-local" placeholder="..." />
-                                                <label for="inputdate2">Đến:</label>
+                                                <label for="inputdate">Đến:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" placeholder="..." />
-                                                <label for="inputlydo">Lý do:</label>
+                                                <input class="form-control" id="inputEmail" type="Email" placeholder="..." />
+                                                <label for="inputEmail">Lý do:</label>
                                             </div>
                                             <center>
-                                                    <a class="small" href="yeucaucanduyet.html">
-                                                        <button type="submit" class="btn btn-primary" style="width: 100px; height: 40px;">Lưu</button>
-                                                        <script language="javascript">
-                                                        </script>
-                                                    </a>
+                                                <a class="small" href="yeucaucanduyet.html">
+                                                    <div class="btn btn-primary" id="btn1" style="width: 100px; height: 40px;">Lưu</div>
+                                                    <script language="javascript">
+                                                        var button = document.getElementById("btn1");
+                                                        button.onclick = function () {
+                                                            alert("Tạo yêu cầu thành công");
+                                                        }
+                                                    </script>
+                                                </a>
                                                 &nbsp;&nbsp;&emsp;
                                                 <a class="small" href="yeucaucanduyet.html">
                                                     <div class="btn btn-dark" style="width: 100px; height: 40px;">Huỷ bỏ</div>

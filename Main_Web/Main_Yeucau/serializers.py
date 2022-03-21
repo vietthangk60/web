@@ -8,3 +8,4 @@ class yeucaudaduyetSerializer(serializers.ModelSerializer):
         model=yeucaudaduyet 
         fields=('YeucauId','NguoiyeucauId','Nguoiyeucau','Thongtinyeucau','Lydo','Nguoiduyet',
         'Ngaygui','thoigianbatdau','thoigianketthuc','Trangthaiduyet')
+        

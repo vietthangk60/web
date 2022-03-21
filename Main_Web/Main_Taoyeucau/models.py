@@ -17,3 +17,4 @@ class Taoyeucau(models.Model):
     #   Avatar = models.ImageField(upload_to='images',null='False')
     #   DateOfJoining = models.DateField()
     #   PhotoFileName = models.CharField(max_length=500)
+    

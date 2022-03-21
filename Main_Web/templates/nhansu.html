@@ -119,7 +119,7 @@
                                         </tr>
                                     </thead> 
                                         <tbody style="text-align: center;">
-                                        {% for NhanVien in employee %}    
+                                        {% for NhanVien in employee %}
                                             <tr>       
                                                 <td>{{ forloop.counter }}</td>
                                                 <td>{{NhanVien.EmployeeId}}</td>
@@ -130,12 +130,12 @@
                                                 <td>{{NhanVien.Date_of_birth}}</td>
                                                 <td>{{NhanVien.Department}}</td>
                                                 <td>{{NhanVien.Position_Employee}}</td>
-                                                <td> <button type="submit" class="btn btn-primary"  value={{NhanVien.EmployeeId}} name="update" href="suanhansu.html">Sửa</button>
+                                                <td> <button type="submit" class="btn btn-primary"  value={{NhanVien.EmployeeId}} name="update" href="suanhansuclone.html">Sửa</button>
                                                     &nbsp;&nbsp;&nbsp;
                                                      <button type="submit1" class="btn btn-danger" value={{NhanVien.EmployeeId}} name="delete">Xoá</button>
                                                 </td>
                                             </tr>
-                                        {% endfor %}
+                                      {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

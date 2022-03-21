@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Nhân sự</title>
+        <title>Sửa thông tin nhân sự</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{%static  'css/styles.css' %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -15,19 +15,19 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
+        <!-- <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            
             <a class="navbar-brand ps-3" href="index.html" id="hd">HORUSENT DAILY</a>
-            <!-- Sidebar Toggle-->
+            
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
+            
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-light" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div>
             </form>
-            <!-- Navbar-->
+            
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -47,7 +47,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <!--<div class="sb-sidenav-menu-heading">Core</div>-->
+                            
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Trang chủ
@@ -91,19 +91,22 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
                             <li class="breadcrumb-item"><a href="nhansu.html">Nhân sự</a></li>
-                            <li class="breadcrumb-item active">Thêm nhân viên</li>
-                        </ol>
-                        <div class="row justify-content-center">
+                            <li class="breadcrumb-item active">Sửa thông tin nhân sự</li>
+                        </ol>-->
+                        <div></div>
+
+                        <div class="row justify-content-center" style="margin-top:1.5%;">
                             <div class="col-lg-3">
                                 <div class="card shadow-lg border-0 rounded-lg mt-1">
                                     <div class="card-header">
-                                        <h2 class="text-center font-weight-light my-4">Nhập thông tin</h2>
+                                        <h2 class="text-center font-weight-light my-4">Cập nhật thông tin</h2>
                                     </div>
+                                    
                                     <div class="card-body">
                                         <form method="post" class="form" id="form"  enctype="multipart/form-data">
                                             {% csrf_token %}
                                             <div class="avatar-wrapper2">
-                                                <img class="profile-pic" src="{% static 'img/avt1.jpg '%}" />
+                                                <img class="profile-pic" src="/MEDIA/{{employee.Avatar}}" />
                                                 <div class="upload-button">
                                                     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                                 </div>
@@ -111,28 +114,32 @@
                                             </div>
                                             <br />
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="inputname" type="text" placeholder="..." />
+                                                <input class="form-control" name="inputname" type="text" value="{{employee.EmployeeName}}" />
                                                 <label for="inputname">Họ và tên:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="inputTel" type="tel" placeholder="..." />
+                                               <div class="form-control" name="inputId" type="text" style="background-color: rgb(218, 216, 216); color: rgb(53, 53, 53)">{{employee.EmployeeId}}</div>
+                                                <label for="inputId">Mã nhân viên:</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" name="inputTel" type="tel" value="{{employee.PhoneNumber}}" />
                                                 <label for="inputTel">Số điện thoại:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="inputEmail" type="Email" placeholder="..." />
+                                                <input class="form-control" name="inputEmail" type="Email"value="{{employee.Email}}" />
                                                 <label for="inputEmail">Email:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="inputdate" type="date" value="2000-01-01" />
+                                                <input class="form-control" name="inputdate" type="date" value="{{employee.Date_of_birth}}" />
                                                 <label for="inputdate">Ngày sinh:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="diachi" type="text" placeholder="..." />
+                                                <input class="form-control" name="diachi" type="text" value="{{employee.Address_Employee}}" />
                                                 <label for="diachi ">Địa chỉ :</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <select class="form-control" name="inputbophan" type="text" placeholder="...">
-                                                    <option value="1">Lựa chọn</option>
+                                                <select class="form-control" name="inputbophan" type="text">
+                                                    <option>{{employee.Department}}</option>
                                                     <option value="1">Dev</option>
                                                     <option value="2">Game design</option>
                                                     <option value="3">Art</option>
@@ -141,8 +148,8 @@
                                                 <label for="inputbophan">Bộ phận:</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <select class="form-control" name="inputchucdanh" type="text" placeholder="...">
-                                                    <option value="1">Lựa chọn</option>
+                                                <select class="form-control" name="inputchucdanh" type="text" >
+                                                    <option>{{employee.Position_Employee}}</option>
                                                     <option value="1">Nhân viên</option>
                                                     <option value="2">Leader</option>
                                                     <option value="3">Quản lý</option>
@@ -220,9 +227,7 @@
                                                     </script>
                                                 </a>
                                                 &nbsp;&nbsp;&emsp;
-                                                <a class="small" href="nhansu.html">
-                                                <div class="btn btn-dark" style="width: 100px; height: 40px;">Huỷ bỏ</div>
-                                                </a> 
+                                                <input class="btn btn-dark" action="action" onclick="window.history.go(-1); return false;" type="submit" value="Huỷ bỏ" style="width: 100px; height: 40px;"/>
                                             </form>
                                         </div>
                                     </div>

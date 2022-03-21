@@ -15,10 +15,10 @@ def yeucauApi(request):
     if request.method=='GET':
         current_user = request.user
         id=str(current_user)
-        yeucau = Taoyeucau.objects.get(NguoiyeucauId=id)
+        #yeucau = Taoyeucau.objects.get(NguoiyeucauId=id)
         #Taoyeucau_serializer=TaoyeucauSerializer(Taoyeucau,many=True)
-        print("YEu câu >>>>>>>>>>",yeucau)
-        return render(request, "taoyeucau.html", {"yecau":yeucau})
+        #print("YEu câu >>>>>>>>>>",yeucau)
+        return render(request, "taoyeucau.html")
     elif request.method=='POST':
  
         return render(request, "yeucaucanduyet.html")

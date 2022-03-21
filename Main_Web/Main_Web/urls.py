@@ -22,7 +22,7 @@ from django.urls import path
 from Main_Screen.views import func_Mainview,func_ChinhsuathongtinView ,func_DangxuatView ,func_DangnhapView
 from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView
 from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
-from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_TaoyeucauView, func_DMVSView, func_NghiphepView, func_NghiviecView
+from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_DMVSView, func_NghiphepView, func_NghiviecView
 from Main_Taoyeucau.views import yeucauApi
 from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView
 from Main_Baocao.views import func_BaocaoView
@@ -32,13 +32,15 @@ from django.conf.urls import url,include
 from django.conf import settings
 from Main_Screen import views
 from django.conf.urls.static import static
+#func_TaoyeucauView
 urlpatterns = [
     path('<int:id>/', func_Mainview, name='home'),
     path('index.html', func_Mainview, name='home'),
     path('', func_Mainview, name='home'),
     path('admin/', admin.site.urls),
     path('nhansu.html',func_Nhansuview,name='nhan su'),
-    path('<int:id>/suanhansu.html', func_SuanhansuView, name='sua nhan su'),
+    path('<int:id>/nhansu.html', func_Nhansuview, name='nhan su'),
+    path('<int:id>/suanhansuclone.html', func_SuanhansuView, name='sua nhan su'),
     path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
     path('duan.html',func_DuanView,name='du an'),
     path('yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
