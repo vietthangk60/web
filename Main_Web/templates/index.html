@@ -62,16 +62,11 @@
                             {% csrf_token %}
                         <center>
                         <li>
-                           <p>{{nhanvien.Avatar}}</p>
+                         <!-- <p>{{nhanvien.Avatar}}</p> --> 
                            <div class="avatar-wrapper">
                             <img class="profile-pic" src="/MEDIA/{{nhanvien.Avatar}}" />
-                            <div class="upload-button">
-                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                            </div>
-                            <input class="file-upload" type="file" accept="image/*" />
-                            </div>
+                           </div>
                         </li>
-                        <li><a class="dropdown-item" href="chinhsuathongtin.html">Chỉnh sửa thông tin</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <button type="submit"  class="btn btn-primary" value="1" name="sua">Đăng xuất</button>
                         </center>
