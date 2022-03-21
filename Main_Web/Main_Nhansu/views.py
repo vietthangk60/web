@@ -106,7 +106,8 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
         employees_serializer=EmployeeSerializer(employees,many=True)
     #  print(request.user.get_all_permissions())
         print(employees_serializer.data)
-        return render(request, "nhansu.html", {"employee":employees_serializer.data})
+        return redirect(func_Nhansuview)
+      #  return render(request, "nhansu.html", {"employee":employees_serializer.data})
 
 
 
