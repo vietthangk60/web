@@ -69,8 +69,8 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
    elif request.method=='POST':
         employees= Employees.objects.get(EmployeeId=id)
         myfile = request.FILES['avata'] 
-        bophan={"1": "Dev","2": "Game design","3": "Art","4":"Tester"}
-        Chuvu ={"1":"Nhân viên","2":"Leader","3":"Quản lý","4":"Giám đốc"}
+        bophan={"Dev": "Dev","Game Design": "Game design","Art": "Art","Tester":"Tester"}
+        Chuvu ={"Nhân viên":"Nhân viên","Leader":"Leader","Quản lý":"Quản lý","Giám đốc":"Giám đốc"}
       #  id_NV =request.POST.get('inputmnv')
         InputTen = request.POST.get('name')
         InputSoDienThoai = request.POST.get('inputTel')

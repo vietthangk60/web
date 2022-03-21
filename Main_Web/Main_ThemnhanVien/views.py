@@ -38,14 +38,14 @@ def employeeApi(request):
        # return JsonResponse("Failed to Add",safe=False)
       #  myfile = request.FILES['avata']    # lấy file từ Input Image quá Post
         myfile = request.FILES['avata'] 
-        bophan={"1": "Dev","2": "Game design","3": "Art","4":"Tester"}
-        Chuvu ={"1":"Nhân viên","2":"Leader","3":"Quản lý","4":"Giám đốc"}
+        bophan={"Dev": "Dev","Game design": "Game design","Art": "Art","Tester":"Tester"}
+        Chuvu ={"Nhân viên":"Nhân viên","Leader":"Leader","Quản lý":"Quản lý","Giám đốc":"Giám đốc"}
       #  id_NV =request.POST.get('inputmnv')
         InputTen = request.POST.get('inputname')
         InputSoDienThoai = request.POST.get('inputTel')
         InputEmail = request.POST.get('inputEmail')
         InputBirthDate = request.POST.get('inputdate')
-        inpurAddress=request.POST.get('inputdate')
+        #inpurAddress=request.POST.get('inputdate')
         InputTeam = request.POST.get('inputbophan')
         Inputchucvu= request.POST.get('inputchucdanh')
         inputdiachi=request.POST.get('diachi')
