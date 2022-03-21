@@ -2,8 +2,12 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from Main_Taoyeucau.models import Taoyeucau
 from Main_Taoyeucau.serializers import TaoyeucauSerializer
+
 from Main_ThemnhanVien.models import Employees
 from Main_ThemnhanVien.serializers import EmployeeSerializer
+
+from Main_Yeucau.models import yeucaudaduyet
+from Main_Yeucau.serializers import yeucaudaduyetSerializer
 
 from django.core.files.storage import default_storage
 from django.contrib.auth.models import User
@@ -31,23 +35,48 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
          idyecau=request.POST.get("duyet")
          yeucau=Taoyeucau.objects.get(YeucauId=idyecau)
          yeucau.Trangthaiduyet=1
-         yeucau.save()
+      #   yeucau.save()
+         print(yeucau.NguoiyeucauId,yeucau.Nguoiyeucau,yeucau.Thongtinyeucau)
+      
+         yeucaudaduyet_1 =yeucaudaduyet.objects.create(NguoiyeucauId=yeucau.NguoiyeucauId,Nguoiyeucau=yeucau.Nguoiyeucau,Thongtinyeucau=yeucau.Thongtinyeucau,Lydo=yeucau.Lydo,Nguoiduyet=yeucau.Nguoiduyet,
+         thoigianbatdau=yeucau.thoigianbatdau,thoigianketthuc=yeucau.thoigianketthuc,Trangthaiduyet=yeucau.Trangthaiduyet)
+         
+         print(yeucaudaduyet_1)
+      #   yeucaudaduyet_1.save()
+         yeucau.delete()
+
          current_user = request.user
          id=str(current_user)
-         yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
-         Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
+         tmp_id_tontai= Taoyeucau.objects.filter(NguoiyeucauId=id).exists() 
+         if tmp_id_tontai:
+            tmp_chuaduyet=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0).exists() 
+            if tmp_chuaduyet:
+               yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
+               Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
+               return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
          return render(request, "yeucaucanduyet.html", {{"yeucau":yeucau}})
     elif request.method=='POST'and 'tuchoi' in request.POST:
          idyecau=request.POST.get("duyet")
          yeucau=Taoyeucau.objects.get(YeucauId=idyecau)
          yeucau.Trangthaiduyet=2
-         yeucau.save()
+
+
+         yeucaudaduyet =yeucaudaduyet.objects.create(NguoiyeucauId=yeucau.NguoiyeucauId,Nguoiyeucau=yeucau.Nguoiyeucau,Thongtinyeucau=yeucau.Thongtinyeucau,Lydo=yeucau.Lydo,Nguoiduyet=yeucau.Nguoiduyet,
+         thoigianbatdau=yeucau.thoigianbatdau,thoigianketthuc=yeucau.thoigianketthuc,Trangthaiduyet=yeucau.Trangthaiduyet)
+         yeucaudaduyet.save()
+         yeucau.delete()
+
          current_user = request.user
          id=str(current_user)
-         yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
-         Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
-         return render(request, "yeucaucanduyet.html", {{"yeucau":yeucau}})      
 
+         tmp_id_tontai= Taoyeucau.objects.filter(NguoiyeucauId=id).exists() 
+         if tmp_id_tontai:
+            tmp_chuaduyet=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0).exists() 
+            if tmp_chuaduyet:
+               yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
+               Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
+               return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
+         return render(request, "yeucaucanduyet.html", {{"yeucau":yeucau}})
 
 
 def func_YeucauduyetView(request, *args, **kwargs): # *args, **kwargs
@@ -57,15 +86,16 @@ def func_YeucauduyetView(request, *args, **kwargs): # *args, **kwargs
        # yeucau = Taoyeucau.objects.filter(NguoiyeucauId=id)
         #Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
       #  print("YEu câu >>>>>>>>>>",yeucau)
-        tmp_id_tontai= Taoyeucau.objects.filter(NguoiyeucauId=id).exists() 
+        tmp_id_tontai= yeucaudaduyet.objects.filter(NguoiyeucauId=id).exists() 
+      #  print(tmp_id_tontai)
         if tmp_id_tontai:
-            tmp_chuaduyet=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=1).exists() 
+            tmp_chuaduyet=yeucaudaduyet.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=1).exists() 
             if tmp_chuaduyet:
-               yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=1)
-               Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
+               yeucaudaduyet_1=yeucaudaduyet.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=1)
+             #  yeucaudaduyet_serializer=yeucaudaduyetSerializer(yeucaudaduyet,many=True)
                print("da chay yeu cau")
                #return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
-               return render(request, "daduyet.html", {"yeucau":yeucau})
+               return render(request, "daduyet.html", {"yeucau":yeucaudaduyet_1})
    return render(request, "daduyet.html")
 def func_TuchoiView(request, *args, **kwargs): # *args, **kwargs
    if request.method=='GET':
@@ -74,15 +104,15 @@ def func_TuchoiView(request, *args, **kwargs): # *args, **kwargs
        # yeucau = Taoyeucau.objects.filter(NguoiyeucauId=id)
         #Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
       #  print("YEu câu >>>>>>>>>>",yeucau)
-        tmp_id_tontai= Taoyeucau.objects.filter(NguoiyeucauId=id).exists() 
+        tmp_id_tontai= yeucaudaduyet.objects.filter(NguoiyeucauId=id).exists() 
         if tmp_id_tontai:
-            tmp_chuaduyet=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=1).exists() 
+            tmp_chuaduyet=yeucaudaduyet.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=2).exists() 
             if tmp_chuaduyet:
-               yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
-               Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
+               yeucau=yeucaudaduyet.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=2)
+               #Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
                return render(request, "tuchoi.html", {"yeucau":yeucau})
 
-   return render(request, "tuchoi.html", {"yeucau":yeucau})
+   return render(request, "tuchoi.html")
 
     
 

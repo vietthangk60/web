@@ -41,9 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'Main_Yeucau',
-    'Main_Taoyeucau.apps.MainYeucauConfig',
+   # 'Main_Yeucau',
+
+    'Main_Yeucau.apps.MainYeucauConfig',
+    'Main_Taoyeucau.apps.MainTaoYeucauConfig',
     'Main_ThemnhanVien.apps.MainThemnhanvienConfig',
+    
    # 'pages',
 ]
 
