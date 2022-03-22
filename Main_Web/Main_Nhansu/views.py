@@ -68,7 +68,7 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
     #  print(">>>>>>",employees_serializer0)
    elif request.method=='POST':
         employees= Employees.objects.get(EmployeeId=id)
-        myfile = request.FILES[''] 
+        myfile = request.FILES.get('avata') 
         bophan={"Dev": "Dev","Game Design": "Game design","Art": "Art","Tester":"Tester"}
         Chuvu ={"Nhân viên":"Nhân viên","Leader":"Leader","Quản lý":"Quản lý","Giám đốc":"Giám đốc"}
       #  id_NV =request.POST.get('inputmnv')

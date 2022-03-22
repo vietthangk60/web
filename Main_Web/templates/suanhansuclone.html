@@ -33,12 +33,22 @@
                 <li class="form-input-wide">
                 <label class="form-label form-label-top form-label-auto" style="margin-left: 20px;">Ảnh đại diện </label>
                     <div class="avatar-wrapper1" >  
-                                <img class="profile-pic" src="/MEDIA/{{employee.Avatar}}" />
+                                <img id="avt" class="profile-pic" src="/MEDIA/{{employee.Avatar}}" />
                                 <div class="upload-button">
                                     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                 </div>
-                                <input class="file-upload" name="avata" type="file" accept="image/*" />
+                                <input class="file-upload" name="avata" id="anhdaidien" type="file" accept="image/*" value="/MEDIA/{{employee.Avatar}}"/>
                             </div> 
+                            <script>
+                            ajax.jsonRpc("/consulta/dni", 'call', {'document_number': document_number})
+                            .then(function (data) {
+                            if (data.error){
+                            }
+                            else {
+                            $('#image').val(data.image);
+                            }
+                            });
+                            </script>
                             </li>
                 <li class="form-line form-line-column form-col-1">
                     <label class="form-label form-label-top form-label-auto"> Họ và tên </label>
