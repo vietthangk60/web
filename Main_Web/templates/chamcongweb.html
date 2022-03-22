@@ -16,6 +16,7 @@
     <link href="{% static 'css/styles.css'%} " rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 
@@ -101,7 +102,7 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <form action='caidatchamcong.html' method='POST'>
+                <form action='#' method='POST'>
                     {% csrf_token %}
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Cài đặt chấm công</h1>
@@ -115,13 +116,41 @@
                             style="height: 40px; background-color: #F5F5F5; border: 0px; border-radius: 5px; width: 250px; color: rgb(61, 155, 111);">Chấm công bằng Camera AI</button>
                             <button type="button" id="daduyet" onclick="location.href='chamcongweb.html';"
                             style=" height: 40px; background-color: #29A9FF; border: 0px; border-radius: 5px; width: 250px; color: white;">Chấm công trên Website</button>
-                                <button type="button" onclick="location.href='#';"
-                                    style=" height: 40px; background-color: #29A9FF; border: 0px; border-radius: 5px; width: 80px; color: white; float: right;">Thêm</button>
-                        </form>
-                        <br>
-                        <br>
-                        
-                        
+                            <!--<button type="button" onclick="location.href='#';"
+                            style=" height: 40px; background-color: #29A9FF; border: 0px; border-radius: 5px; width: 80px; color: white; float: right;">Thêm</button>-->
+                            <button type="submit" class="btn btn-primary" onclick="saveSearch(#)" style="float: right;">Thêm nhân viên</button>
+                            <input type="search" class="search-form" onkeyup="searchFilter()" name="search"
+                            placeholder="Tìm kiếm... " id="search-box" style="width: 12.05%; height:40px; border-radius: 5px; float: right;" />
+                            <span class="divider-border"></span>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <section class="col-10" id="content">
+                                                <div class="row">
+                                                    <!-- Searchbar -->
+                                                    <div class="col-7">
+                                                        <div class="input-group mt-4">
+                                                            <div class="input-group-btn search-panel">
+                                                                <ul id="myUL" class="dropdown-menu col-3" role="menu" style="left:168.4%; top:-26px;width: 35%;">
+                                                                    <li><a href="#">Adele</a></li>
+                                                                    <li><a href="#">Agnes</a></li>
+                                                                    <li><a href="#">Billy</a></li>
+                                                                    <li><a href="#">Bob</a></li>
+                                                                    <li><a href="#">Calvin</a></li>
+                                                                    <li><a href="#">Christina</a></li>
+                                                                    <li><a href="#">Cindy</a></li>
+                                                                    <li><a href="#">George</a></li>
+                                                                    <li><a href="#">Sam</a></li>
+                                                                    <li><a href="#">Alis</a></li>
+                                                                    <li><a href="#">Alberto</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </form>
                         <table class="table table-bordered" id="yeucaub">
                             <thead>
                                 <tr style="text-align: center;">
@@ -155,6 +184,94 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script>
+        function searchFilter() {
+            // Declare variables
+            let input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById('search-box');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName('li');
+
+            // Loop through all list items, and hide those who don't match the search query
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    
+    <script>
+        $('#search-box').on('input', function () {
+            $('#myUL').css('display', $(this).val() !== '' ? 'block' : 'none')
+        });
+    </script>
+    
+    <script>
+        let myUL = document.getElementById("myUL");
+        let search = document.getElementById('search-box');
+        $('#search-box-btn').click(function () { // on a click on botton
+            //$('#myUL').show(); // show the div with the search results
+            $('#myUL').css({
+                //'margin-left' : -$('#search-box').outerWidth( true )
+            }).toggle();
+        })
+
+        $("li").on("click", function () {
+            $("#search-box").val($(this).text());
+            $('#myUL').hide();
+            // myFunction(); You can put this here if you want to search right after a user clicked
+        });
+    </script>
+    
+    <script>
+        $(".chart-section").on('click', function () {
+            let pieChart = $(this);
+            let table = $("#table");
+            let chartBackground = pieChart.css('background-color');
+            let chartText = pieChart.html();
+
+            $("#square2").css('transform', 'translate(590px, -26px)');
+            $("#square1").css('transform', 'translate(340px, -200px)');
+
+            table.css('background-color', chartBackground).css('transform', 'translate(0px, -458px)').html('Participants Table' + '<br>' + chartText);
+        });
+    </script>
+    
+    <script>
+
+        var contentBg = document.getElementById('content');
+        var table = document.getElementById('table');
+        var square1 = document.getElementById('square1');
+        var square2 = document.getElementById('square2');
+        var ul = document.getElementById("myUL");
+        document.onclick = function (e) {
+            if (e.target.id == 'content') {
+                table.style.transform = 'translate(0px, 0px)';
+                square1.style.transform = 'translate(0px, 0px)';
+                square2.style.transform = 'translate(0px, 0px)';
+                ul.style.display = 'none';
+            }
+
+        }
+
+    </script>
+    
+    <script>
+        function light_input() {
+            let search = document.getElementById('search-box');
+            let button = document.getElementById('search-box-btn');
+            button.style.background = 'white';
+            search.style.background = 'white';
+            search.style.boxShadow = 'inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2)';
+        }
+    </script>
 </body>
 
 </html>

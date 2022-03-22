@@ -1,29 +1,149 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <script type="text/javascript" src="//code.jquery.com/jquery-compat-git.js"></script>
+<style>
+  html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  overflow:hidden;
+}
+</style>
+<script>
+    window.showRooms = function showRooms(type) {
+        var allRooms = scheduler.serverList("rooms");
+        var visibleRooms;
+        if (type == 'all') {
+          visibleRooms = allRooms.slice();
+        } else {
+          visibleRooms = allRooms
+            .filter(function (room) {
+              return room.type == type;
+            });
+        }
 
-<title>Test copy select</title>
-<script type='text/javascript'>
-    $(document).ready(function() {
-        $('select').change(function(){
-      
-          $('input[type=name]').val($('option:selected',this).text());
-          $('input[type=price]').val($(this).val());
-        });
+        scheduler.updateCollection("visibleRooms", visibleRooms);
+      };
+
+      scheduler.locale.labels.timeline_tab = "Timeline";
+      scheduler.locale.labels.section_custom = "Section";
+      scheduler.config.details_on_create = true;
+      scheduler.config.details_on_dblclick = true;
+
+      //===============
+      //Configuration
+      //===============
+
+      scheduler.serverList("roomTypes");
+      scheduler.serverList("roomStatuses");
+      scheduler.serverList("bookingStatuses");
+      scheduler.serverList("rooms");
+
+      scheduler.createTimelineView({
+        name: "timeline",
+        x_unit: "day",
+        x_date: "%j",
+        x_step: 1,
+        x_size: 31,
+        section_autoheight: false,
+        y_unit: scheduler.serverList("visibleRooms"),
+        y_property: "room",
+        render: "bar",
+        round_position: true,
+        dy: 60,
+        second_scale: {
+          x_unit: "month",
+          x_date: "%F, %Y"
+        }
       });
-      
-</script>
+
+
+      //===============
+      //Data loading
+      //===============
+      scheduler.config.lightbox.sections = [
+        { name: "description", height: 130, map_to: "text", type: "textarea", focus: true },
+        { name: "custom", height: 23, type: "select", options: scheduler.serverList("rooms"), map_to: "room" },
+        { name: "time", height: 72, type: "time", map_to: "auto" }
+      ];
+
+      scheduler.attachEvent('onEventCreated', function (event_id) {
+        var ev = scheduler.getEvent(event_id);
+        ev.status = 1;
+        ev.is_paid = false;
+        ev.text = 'new booking';
+      });
+
+      scheduler.attachEvent("onParse", function () {
+        showRooms("all");
+
+        var roomSelect = document.querySelector("#room_filter");
+        var types = scheduler.serverList("roomTypes");
+        var typeElements = ["<option value='all'>All</option>"];
+        types.forEach(function (type) {
+          typeElements.push("<option value='" + type.key + "'>" + type.label + "</option>");
+        });
+        roomSelect.innerHTML = typeElements.join("")
+      });
+
+
+      scheduler.init('scheduler_here', new Date(2017, 2, 7), "timeline");
+      scheduler.parse(JSON.stringify({
+        "data": [
+          { "room": "1", "start_date": "2017-03-02", "end_date": "2017-03-23", "text": "A-12", "id": "1", "status": "1", "is_paid": "1" },
+          { "room": "3", "start_date": "2017-03-07", "end_date": "2017-03-21", "text": "A-45", "id": "2", "status": "2", "is_paid": "1" },
+          { "room": "5", "start_date": "2017-03-06", "end_date": "2017-03-14", "text": "A-58", "id": "3", "status": "3", "is_paid": "0" },
+          { "room": "7", "start_date": "2017-03-04", "end_date": "2017-03-18", "text": "A-28", "id": "4", "status": "4", "is_paid": "0" }],
+        "collections": {
+          "roomTypes": [
+            { "value": "1", "label": "1 bed" },
+            { "value": "2", "label": "2 beds" },
+            { "value": "3", "label": "3 beds" },
+            { "value": "4", "label": "4 beds" }
+          ],
+          "roomStatuses": [
+            { "value": "1", "label": "Ready" },
+            { "value": "2", "label": "Dirty" },
+            { "value": "3", "label": "Clean up" }
+          ],
+          "bookingStatuses": [
+            { "value": "1", "label": "New" },
+            { "value": "2", "label": "Confirmed" },
+            { "value": "3", "label": "Arrived" },
+            { "value": "4", "label": "Checked Out" }
+          ],
+          "rooms": [
+            { "value": "1", "label": "101", "type": "1", "status": "1" },
+            { "value": "2", "label": "102", "type": "1", "status": "3" },
+            { "value": "3", "label": "103", "type": "1", "status": "2" },
+            { "value": "4", "label": "104", "type": "1", "status": "1" },
+            { "value": "5", "label": "105", "type": "2", "status": "1" },
+            { "value": "6", "label": "201", "type": "2", "status": "2" },
+            { "value": "7", "label": "202", "type": "2", "status": "1" },
+            { "value": "8", "label": "203", "type": "3", "status": "3" },
+            { "value": "9", "label": "204", "type": "3", "status": "3" },
+            { "value": "10", "label": "301", "type": "4", "status": "2" },
+            { "value": "11", "label": "302", "type": "4", "status": "2" }
+          ]
+        }
+      }), "json");
+  </script>
 </head>
 
 <body>
-  <form>
-    <select>
-      <option value="10">Apple</option>
-      <option value="20">Orange</option>
-    </select>
+  <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+    <div class="dhx_cal_navline">
+      <div class="dhx_cal_prev_button">&nbsp;</div>
+      <div class="dhx_cal_next_button">&nbsp;</div>
+      <div class="dhx_cal_today_button"></div>
+      <div class="dhx_cal_date"></div>
+      <select id="room_filter" onchange='showRooms(this.value)'></select>
+    </div>
+    <div class="dhx_cal_header">
+    </div>
+    <div class="dhx_cal_data">
+    </div>
+  </div>
 
-    <input type="name" />
-  </form>
 </body>
 </html>

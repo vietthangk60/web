@@ -70,10 +70,10 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
         employees= Employees.objects.get(EmployeeId=id)
         file=request.FILES
         if 'avata' not in file:
-           myfile=employees.Avatar
-        else:
+               myfile=employees.Avatar
+        else:          
             myfile = request.FILES.get('avata') 
-        bophan={"Dev": "Dev","Game Design": "Game design","Art": "Art","Tester":"Tester"}
+        bophan={"Dev": "Dev","Game design": "Game design","Art": "Art","Tester":"Tester"}
         Chuvu ={"Nhân viên":"Nhân viên","Leader":"Leader","Quản lý":"Quản lý","Giám đốc":"Giám đốc"}
       #  id_NV =request.POST.get('inputmnv')
         InputTen = request.POST.get('name')
@@ -91,16 +91,16 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
         employees.PhoneNumber=InputSoDienThoai
         employees.Address_Employee=Inputdiachi
 
-        employees.Department=InputTeam
-        employees.Position_Employee=Inputchucvu
+        employees.Department=bophan[str(InputTeam)]
+        employees.Position_Employee=Chuvu[str(Inputchucvu)]
         employees.Email=InputEmail
         employees.Avatar=myfile
         
        # InputAvatar= myfile.name
        # print(InputTen,InputSoDienThoai,InputEmail,InputBirthDate)
         print(Chuvu[str(Inputchucvu)],Inputdiachi)
-        print(InputTen,InputBirthDate,InputSoDienThoai)
-    #    bophan[str(InputTeam)],Chuvu[str(Inputchucvu)],InputEmail,myfile)
+        print(InputTen,InputBirthDate,InputSoDienThoai,
+        bophan[str(InputTeam)],Chuvu[str(Inputchucvu)],InputEmail,myfile)
 
        # employees = Employees.objects.create(EmployeeName=InputTen,Date_of_birth=InputBirthDate,PhoneNumber=InputSoDienThoai,Address_Employee=inputdiachi,Department=bophan[str(InputTeam)],Position_Employee=Chuvu[str(Inputchucvu)],Email=InputEmail,Avatar=myfile)
 

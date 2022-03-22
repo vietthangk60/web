@@ -3,16 +3,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Thêm nhân viên</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <title>Nhân sự</title>
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -30,20 +23,59 @@
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false" title="Thông báo">
                         <center>
-                        <li><div class="avatar-wrapper">
-                            <img class="profile-pic" src="{% static 'img/avt1.jpg '%}" />
-                            <div class="upload-button">
-                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                            </div>
-                            <input class="file-upload" type="file" accept="image/*" />
-                        </div></li>
-                        <li><a class="dropdown-item" href="chinhsuathongtin.html">Chỉnh sửa thông tin</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="btn-outline-danger" href="login.html">Đăng xuất</a></li>
+                            <svg width="24px" height="24px" viewBox="0 0 24 24">
+                                <path fill="#707070"
+                                    d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21">
+                                </path>
+                            </svg>
                         </center>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"
+                        style="width: 400px; height:900px; border-radius: 5px; border-width: 2px;">
+                        <center>
+                            <h4>Thông báo</h4>
+                        </center>
+                        <hr style="height: 1px; ">
+                        <div id="thongbao">
+                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 1, nội dung thông báo số 1
+                                đến đây là hết.</li>
+                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 2, nội dung thông báo số 1
+                                đến đây là hết.</li>
+                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 3, nội dung thông báo số 1
+                                đến đây là hết.</li>
+                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 4, nội dung thông báo số 1
+                                đến đây là hết.</li>
+                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 5, nội dung thông báo số 1
+                                đến đây là hết.</li>
+                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 6, nội dung thông báo số 1
+                                đến đây là hết.</li>
+                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 7, nội dung thông báo số 1
+                                đến đây là hết.</li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <center>
+                                <li>
+                                    <div class="avatar-wrapper">
+                                        <img class="profile-pic" src="/MEDIA/{{nhanvien.Avatar}}" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <button type="submit" class="btn btn-primary" value="1" name="sua">Đăng xuất</button>
+                            </center>
+                        </form>
                     </ul>
                 </li>
             </ul>
