@@ -19,7 +19,7 @@
                     background: none;
                 }
             </style>
-            <ul class="form-section page-section">
+            <ul class="form-section page-section" style="background-color:#cfd0d3; border-radius:10px;border:0px;" >
                 <li id="cid_34" class="form-input-wide" data-type="control_head">
                     <div class="form-header-group  header-large">
                         <div class="header-text httal htvam">
@@ -45,7 +45,10 @@
                     <label class="form-label form-label-top form-label-auto"> Ngày bắt đầu </label>
                     <div class="form-input-wide" >
                         <span class="form-sub-label-container" style="vertical-align:top" >
-                            <input type="date" name="inputdate" id="demo" type="text" class="form-textbox" style="width:310px" />
+                            <input type="date" name="ngaybatdau" id="ngaybatdau" type="text" class="form-textbox" style="width:310px" />
+                            <script>
+                                document.getElementById('ngaybatdau').value = new Date().toISOString().substring(0, 10);
+                            </script>
                         </span>
                     </div>
                 </li>  
@@ -53,7 +56,10 @@
                     <label class="form-label form-label-top form-label-auto"> Ngày hoàn thành dự kiến </label>
                     <div class="form-input-wide">
                         <span class="form-sub-label-container" style="vertical-align:top">
-                            <input type="date" name="inputdate" id="demo" type="text" class="form-textbox" style="width:310px" />
+                            <input type="date" name="ngayketthuc" id="ngayketthuc" type="text" class="form-textbox" style="width:310px" />
+                            <script>
+                                document.getElementById('ngayketthuc').value = new Date().toISOString().substring(0, 10);
+                            </script>
                         </span>
                     </div>
                 </li>
@@ -62,7 +68,7 @@
                         <div class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
                             <a class="small" href="nhansu.html">
                                 <button type="submit" class="btn btn-primary" style="width: 100px; height: 40px;">Lưu</button> &nbsp;&nbsp;
-                                <input class="btn btn-dark" action="action" onclick="window.history.go(-1); return false;" type="submit" value="Huỷ bỏ" style="width: 100px; height: 40px;" />
+                                                <input class="btn btn-dark" action="action" onclick="window.history.go(-1);return false;" type="submit" value="Huỷ bỏ" style="width: 100px; height: 40px;" />
                             </a>
                         </div>
                     </div>

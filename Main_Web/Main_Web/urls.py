@@ -21,7 +21,7 @@ from django.urls import path
 #from pages.views import home_view, contact_view, about_view
 from Main_Screen.views import func_Mainview,func_ChinhsuathongtinView ,func_DangxuatView ,func_DangnhapView
 from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView
-from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView
+from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView, func_ThemduanView
 from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_DMVSView, func_NghiphepView, func_NghiviecView
 from Main_Taoyeucau.views import yeucauApi
 from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView
@@ -43,6 +43,7 @@ urlpatterns = [
     path('<int:id>/suanhansuclone.html', func_SuanhansuView, name='sua nhan su'),
     path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
     path('duan.html',func_DuanView,name='du an'),
+    path('themduan.html', func_ThemduanView, name='them du an'),
     path('yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
     path('daduyet.html',func_YeucauduyetView,name=' yeu cau da duyet'), 
     path('tuchoi.html',func_TuchoiView,name=' tu choi yeu cau '), 
