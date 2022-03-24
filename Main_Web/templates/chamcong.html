@@ -15,12 +15,11 @@
 
 </head>
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+     <nav class="sb-topnav navbar navbar-expand navbar" style="background-color:#588a64;">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html" id="hd">Horus Entertainment</a>
+        <a class="navbar-brand ps-3" href="index.html" style="color:#ffffff"><b>Horus Work</b></a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars" style="color:#ffffff;"></i></button>
 
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -37,7 +36,7 @@
                 <a href="#" data-bs-toggle="dropdown" aria-expanded="false" title="Thông báo">
                     <center>
                         <svg width="24px" height="24px" viewBox="0 0 24 24">
-                            <path fill="#707070"
+                            <path  fill="#ffffff"
                                 d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21">
                             </path>
                         </svg>
@@ -56,8 +55,8 @@
         </ul>
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#ffffff"><i class="fas fa-user fa-fw"></i></a>
+
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <form method='POST'>
                         {% csrf_token %}
@@ -84,42 +83,42 @@
     </nav>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion" style="background-color:#588a64; color: white;">
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <!--<div class="sb-sidenav-menu-heading">Core</div>-->
-                    <a class="nav-link" href="index.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Trang chủ
-                    </a>
-                    <a class="nav-link" href="nhansu.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Nhân sự
-                    </a>
-                    <a class="nav-link" href="chamcong.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Chấm công
-                    </a>
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                        Giao việc
-                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="vieccuatoi.html">Việc của tôi</a>
-                            <a class="nav-link" href="duan.html">Dự án</a>
-                        </nav>
-                    </div>
-                    </a>
-                    <a class="nav-link" href="yeucaucanduyet.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Yêu cầu
-                    </a>
-                    <a class="nav-link" href="baocao.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Báo cáo
-                    </a>
+                    <a class="nav-link" href="index.html" style="color: white;">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Trang chủ
+                            </a>
+                            <a class="nav-link" href="nhansu.html" style="color: white;">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Nhân sự
+                            </a>
+                            <a class="nav-link" href="chamcong.html" style="color: white;">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Chấm công
+                             </a>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts" style="color: white;">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Giao việc
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion" style="color: white;">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="vieccuatoi.html" style="color: white;">Việc của tôi</a>
+                                    <a class="nav-link" href="duan.html" style="color: white;">Dự án</a>
+                                </nav>
+                            </div>
+                            </a>
+                            <a class="nav-link" href="yeucaucanduyet.html" style="color: white;">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Yêu cầu
+                            </a>
+                            <a class="nav-link" href="baocao.html" style="color: white;">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Báo cáo
+                            </a>
                     <center>
                    <input type="button" onclick="time(), changeColor(this)" id="btncheck"
                     style="width:65px; height:65px; margin-top:100%; border-radius: 50%;background-color:#4ab4db; border:0px; color:white; font-size:11px;" value="Check In" />

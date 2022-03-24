@@ -8,128 +8,46 @@
     <!-- Our css -->
     <link rel="stylesheet" href="style.css">
     <title>Emails View</title>
+    <style>
+        
+    </style>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <section class="col-10" id="content">
-                <div class="row">
-                    <!-- Searchbar -->
-                    <div class="col-7">
-                        <div class="input-group mt-4">
-                            <div class="input-group-btn search-panel">
-                                <ul id="myUL" class="dropdown-menu col-3" role="menu">
-                                    <li><a href="#">Adele</a></li>
-                                    <li><a href="#">Agnes</a></li>
-                                    <li><a href="#">Billy</a></li>
-                                    <li><a href="#">Bob</a></li>
-                                    <li><a href="#">Calvin</a></li>
-                                    <li><a href="#">Christina</a></li>
-                                    <li><a href="#">Cindy</a></li>
-                                    <li><a href="#">George</a></li>
-                                    <li><a href="#">Sam</a></li>
-                                    <li><a href="#">Alis</a></li>
-                                    <li><a href="#">Alberto</a></li>
-                                </ul>
-                            </div>
-                            <input type="search" class="search-form" onkeyup="searchFilter()"
-                                name="search-template" placeholder="Chấm công trên Website... " id="search-box" style="width: 226px; border:5px; border-radius:7px;" />
-                            <span class="divider-border"></span>
-                            <button type="submit" class="btn btn-primary" onclick="saveSearch()">Thêm nhân viên</button>
-                        </div>
-                    </div>
-                    <!-- /Searchbar -->
-                </div>
-                <!-- Bootstrap and jQuery -->
-                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-                <script>
-                    function searchFilter() {
-                        // Declare variables
-                        let input, filter, ul, li, a, i, txtValue;
-                        input = document.getElementById('search-box');
-                        filter = input.value.toUpperCase();
-                        ul = document.getElementById("myUL");
-                        li = ul.getElementsByTagName('li');
-
-                        // Loop through all list items, and hide those who don't match the search query
-                        for (i = 0; i < li.length; i++) {
-                            a = li[i].getElementsByTagName("a")[0];
-                            txtValue = a.textContent || a.innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                li[i].style.display = "";
-                            } else {
-                                li[i].style.display = "none";
-                            }
-                        }
-                    }
-                </script>
-
-                <script>
-                    $('#search-box').on('input', function () {
-                        $('#myUL').css('display', $(this).val() !== '' ? 'block' : 'none')
-                    });
-                </script>
-
-                <script>
-                    let myUL = document.getElementById("myUL");
-                    let search = document.getElementById('search-box');
-                    $('#search-box-btn').click(function () { // on a click on botton
-                        //$('#myUL').show(); // show the div with the search results
-                        $('#myUL').css({
-                            //'margin-left' : -$('#search-box').outerWidth( true )
-                        }).toggle();
-                    })
-
-                    $("li").on("click", function () {
-                        $("#search-box").val($(this).text());
-                        $('#myUL').hide();
-                        // myFunction(); You can put this here if you want to search right after a user clicked
-                    });
-                </script>
-
-                <script>
-                    $(".chart-section").on('click', function () {
-                        let pieChart = $(this);
-                        let table = $("#table");
-                        let chartBackground = pieChart.css('background-color');
-                        let chartText = pieChart.html();
-
-                        $("#square2").css('transform', 'translate(590px, -26px)');
-                        $("#square1").css('transform', 'translate(340px, -200px)');
-
-                        table.css('background-color', chartBackground).css('transform', 'translate(0px, -458px)').html('Participants Table' + '<br>' + chartText);
-                    });
-                </script>
-
-                <script>
-
-                    var contentBg = document.getElementById('content');
-                    var table = document.getElementById('table');
-                    var square1 = document.getElementById('square1');
-                    var square2 = document.getElementById('square2');
-                    var ul = document.getElementById("myUL");
-                    document.onclick = function (e) {
-                        if (e.target.id == 'content') {
-                            table.style.transform = 'translate(0px, 0px)';
-                            square1.style.transform = 'translate(0px, 0px)';
-                            square2.style.transform = 'translate(0px, 0px)';
-                            ul.style.display = 'none';
-                        }
-
-                    }
-
-                </script>
-
-                <script>
-                    function light_input() {
-                        let search = document.getElementById('search-box');
-                        let button = document.getElementById('search-box-btn');
-                        button.style.background = 'white';
-                        search.style.background = 'white';
-                        search.style.boxShadow = 'inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2)';
-                    }
-                </script>
+    <div class="col">
+        <div class="con">
+            <div class="bar top"></div>
+            <div class="bar middle"></div>
+            <div class="bar bottom"></div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="con">
+            <div class="bar arrow-top"></div>
+            <div class="bar arrow-middle"></div>
+            <div class="bar arrow-bottom"></div>
+        </div>
+    </div>
+    
+    <div class="col">
+        <div class="con">
+            <div class="bar arrow-top-r"></div>
+            <div class="bar arrow-middle-r"></div>
+            <div class="bar arrow-bottom-r"></div>
+        </div>
+    </div>
+    
+    <div class="col">
+        <div class="special-con">
+            <div class="bar arrow-top-fall"></div>
+            <div class="bar arrow-middle-fall"></div>
+            <div class="bar arrow-bottom-fall"></div>
+        </div>
+    </div>
+    </main>
+    
+    <a href="https://codepen.io/tonkec//" class="ua" target="_blank">
+        <i class="fa fa-user"></i></a>
 
 </body>
 
