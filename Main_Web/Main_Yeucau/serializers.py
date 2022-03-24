@@ -6,6 +6,6 @@ from Main_Yeucau.models import yeucaudaduyet
 class yeucaudaduyetSerializer(serializers.ModelSerializer):
     class Meta:
         model=yeucaudaduyet 
-        fields=('YeucauId','NguoiyeucauId','Nguoiyeucau','Thongtinyeucau','Lydo','Nguoiduyet',
-        'Ngaygui','thoigianbatdau','thoigianketthuc','Trangthaiduyet')
+        fields=('YeucauId','NguoiyeucauId','Nguoiyeucau','Thongtinyeucau','Lydo','Nguoiduyet','thoigianbatdau','thoigianketthuc','Trangthaiduyet',
+        'Ngaygui')
         

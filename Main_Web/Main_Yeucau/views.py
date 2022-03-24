@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpRequest
 from Main_Taoyeucau.models import Taoyeucau
 from Main_Taoyeucau.serializers import TaoyeucauSerializer
@@ -37,12 +37,23 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
          yeucau.Trangthaiduyet=1
       #   yeucau.save()
          print(yeucau.NguoiyeucauId,yeucau.Nguoiyeucau,yeucau.Thongtinyeucau)
-      
-         yeucaudaduyet_1 =yeucaudaduyet.objects.create(NguoiyeucauId=yeucau.NguoiyeucauId,Nguoiyeucau=yeucau.Nguoiyeucau,Thongtinyeucau=yeucau.Thongtinyeucau,Lydo=yeucau.Lydo,Nguoiduyet=yeucau.Nguoiduyet,
-         thoigianbatdau=yeucau.thoigianbatdau,thoigianketthuc=yeucau.thoigianketthuc,Trangthaiduyet=yeucau.Trangthaiduyet)
+         NguoiyeucauId_1=yeucau.NguoiyeucauId
+         Nguoiyeucau_1=yeucau.Nguoiyeucau
+         Thongtinyeucau_1=yeucau.Thongtinyeucau
+         Lydo_1=yeucau.Lydo
+         Nguoiduyet_1=yeucau.Nguoiduyet
+         thoigianbatdau_1=yeucau.thoigianbatdau
+         thoigianketthuc_1=yeucau.thoigianketthuc
+         Trangthaiduyet_1=yeucau.Trangthaiduyet
+         Ngaygui_1=yeucau.Ngaygui
+
+
+        
+         yeucaudaduyet_1 =yeucaudaduyet.objects.create(NguoiyeucauId=NguoiyeucauId_1,Nguoiyeucau=Nguoiyeucau_1,Thongtinyeucau=Thongtinyeucau_1,Lydo=Lydo_1,Nguoiduyet=Nguoiduyet_1,
+         thoigianbatdau=thoigianbatdau_1,thoigianketthuc=thoigianketthuc_1,Trangthaiduyet=Trangthaiduyet_1,Ngaygui=Ngaygui_1)
          
-         print(yeucaudaduyet_1)
-      #   yeucaudaduyet_1.save()
+       #  print(yeucaudaduyet_1)
+         yeucaudaduyet_1.save()
          yeucau.delete()
 
          current_user = request.user
@@ -54,16 +65,31 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
                yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
                Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
                return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
-         return render(request, "yeucaucanduyet.html", {{"yeucau":yeucau}})
+         return render(request, "yeucaucanduyet.html", {"yeucau":yeucau})
     elif request.method=='POST'and 'tuchoi' in request.POST:
-         idyecau=request.POST.get("duyet")
+         idyecau=request.POST.get("tuchoi")
+         print("id",idyecau)
          yeucau=Taoyeucau.objects.get(YeucauId=idyecau)
          yeucau.Trangthaiduyet=2
 
 
-         yeucaudaduyet =yeucaudaduyet.objects.create(NguoiyeucauId=yeucau.NguoiyeucauId,Nguoiyeucau=yeucau.Nguoiyeucau,Thongtinyeucau=yeucau.Thongtinyeucau,Lydo=yeucau.Lydo,Nguoiduyet=yeucau.Nguoiduyet,
-         thoigianbatdau=yeucau.thoigianbatdau,thoigianketthuc=yeucau.thoigianketthuc,Trangthaiduyet=yeucau.Trangthaiduyet)
-         yeucaudaduyet.save()
+         NguoiyeucauId_1=yeucau.NguoiyeucauId
+         Nguoiyeucau_1=yeucau.Nguoiyeucau
+         Thongtinyeucau_1=yeucau.Thongtinyeucau
+         Lydo_1=yeucau.Lydo
+         Nguoiduyet_1=yeucau.Nguoiduyet
+         thoigianbatdau_1=yeucau.thoigianbatdau
+         thoigianketthuc_1=yeucau.thoigianketthuc
+         Trangthaiduyet_1=yeucau.Trangthaiduyet
+         Ngaygui_1=yeucau.Ngaygui
+
+
+        
+         yeucaudaduyet_1 =yeucaudaduyet.objects.create(NguoiyeucauId=NguoiyeucauId_1,Nguoiyeucau=Nguoiyeucau_1,Thongtinyeucau=Thongtinyeucau_1,Lydo=Lydo_1,Nguoiduyet=Nguoiduyet_1,
+         thoigianbatdau=thoigianbatdau_1,thoigianketthuc=thoigianketthuc_1,Trangthaiduyet=Trangthaiduyet_1,Ngaygui=Ngaygui_1)
+         
+       #  print(yeucaudaduyet_1)
+         yeucaudaduyet_1.save()
          yeucau.delete()
 
          current_user = request.user
@@ -76,7 +102,7 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
                yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
                Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
                return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
-         return render(request, "yeucaucanduyet.html", {{"yeucau":yeucau}})
+         return render(request, "yeucaucanduyet.html", {"yeucau":yeucau})
 
 
 def func_YeucauduyetView(request, *args, **kwargs): # *args, **kwargs
@@ -129,14 +155,14 @@ def func_DMVSView(request, *args, **kwargs):  # *args, **kwargs
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
     if request.method=="GET":
         current_user = request.user
-        print("user_name",current_user)
+        print("user_name>>>>>>>>>>",current_user)
         a=str(current_user)
         employees = Employees.objects.get(EmployeeId=a)
         return render(request, "dmvs.html", {"nhanvien":employees})
     elif request.method=="POST":
 
        current_user = request.user
-       print("user_name",current_user)
+       print("user_nam<<<<<<<<<<<<<<<<<<<<<<<<<<",current_user)
        idnhanvien=str(current_user)
        print("dachay>>>>>>>>>>>>>>>>>")
        name=request.POST.get("inputname")
@@ -150,7 +176,11 @@ def func_DMVSView(request, *args, **kwargs):  # *args, **kwargs
        yeucau =Taoyeucau.objects.create(NguoiyeucauId=idnhanvien,Nguoiyeucau=name,Thongtinyeucau="Đi muộn về sớm ",Lydo=lido,Nguoiduyet="thang",
        thoigianbatdau=ngay_gio_bd,thoigianketthuc=ngay_gio_kt,Trangthaiduyet=0)
        yeucau.save()
-       return render(request, "yeucaucanduyet.html", {})
+
+
+
+       
+       return redirect(func_YeucauView)
 
        
     

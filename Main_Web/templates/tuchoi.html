@@ -149,7 +149,21 @@
                             <tbody>
                                 
 
+                                <tbody style="text-align: center;">
+                                    {% for Yeucau in yeucau %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <!-- <td>{{Yeucau.yeucauId}}</td> -->
+                                        <td>{{Yeucau.Nguoiyeucau}}</td>
+                                        <td>{{Yeucau.Thongtinyeucau}}</td>
+                                        <td>{{Yeucau.Lydo}} </td>
+                                        <td>{{Yeucau.Nguoiduyet}}</td>
+                                        <td>{{Yeucau.Ngaygui}}</td>
+                                        
 
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
 
 
                                 
