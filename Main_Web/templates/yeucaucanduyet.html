@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Yêu cầu cần duyệt</title>
+        <title>Yêu cầu</title>
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -16,36 +16,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
-    <body class="sb-nav-fixed">
+    <body action="post" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="index.html" id="hd">Horus Entertainment</a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                    class="fas fa-bars"></i></button>
+    
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                        aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-light" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                    &ensp; &ensp;
                 </div>
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false" title="Thông báo">
                         <center>
-                        <li><div class="avatar-wrapper">
-                            <img class="profile-pic" src="{% static 'img/avt1.jpg '%}" />
-                            <div class="upload-button">
-                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-                            </div>
-                            <input class="file-upload" type="file" accept="image/*" />
-                        </div></li>
-                        <li><a class="dropdown-item" href="chinhsuathongtin.html">Chỉnh sửa thông tin</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="btn-outline-danger" href="login.html">Đăng xuất</a></li>
+                            <svg width="24px" height="24px" viewBox="0 0 24 24">
+                                <path fill="#707070"
+                                    d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21">
+                                </path>
+                            </svg>
                         </center>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"
+                        style="width: 400px; height:900px; border-radius: 5px; border-width: 2px;">
+                        <center>
+                            <h4>Thông báo</h4>
+                        </center>
+                        <hr style="height: 1px; ">
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <center>
+                                <li>
+                                    <div class="avatar-wrapper">
+                                        <img class="profile-pic" src="/MEDIA/{{nhanvien.Avatar}}" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <button type="submit" class="btn btn-primary" value="1" name="sua">Đăng xuất</button>
+                            </center>
+                        </form>
                     </ul>
                 </li>
             </ul>
@@ -92,7 +121,7 @@
                     </div>
                 </nav>
             </div>
-            <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content" style=" margin-top:-20px;">
                 <main>
                     <form action='yeucaucanduyet.html' method='POST'>
                         {% csrf_token %}
@@ -107,10 +136,15 @@
                             <button type="button" id="yeucaucanduyet1" onclick="location.href='yeucaucanduyet.html';">Yêu cầu cần duyệt</button>
                             <button type="button" id="daduyet" onclick="location.href='daduyet.html';">Đã duyệt</button>
                             <button type="button" id="tuchoi" onclick="location.href='tuchoi.html';">Từ chối</button>
-                            <button type="button" id="taoyeucau" onclick="location.href='taoyeucau.html';" data-bs-toggle="dropdown" aria-expanded="false" style="float: right;">Tạo yêu cầu</button>
+                            <button type="button" id="taoyeucau" data-bs-toggle="dropdown" aria-expanded="false" style="float: right;">Tạo yêu cầu</button>
+                                <ul class="dropdown-menu dropdown-menu" aria-labelledby="taoyeucau">
+                                    <li><a class="dropdown-item" href="dmvs.html">Đi muộn về sớm</a></li>
+                                    <li><a class="dropdown-item" href="nghiphep.html">Nghỉ phép</a></li>
+                                    <li><a class="dropdown-item" href="nghiviec.html">Nghỉ việc </a></li>
+                                </ul>          
                         </form>
-                    </br>
-                    </br>
+                    <br>
+                    <br>
                         <table class="table table-bordered" id="yeucaub">
                             <thead>
                                 <tr style="text-align: center;">

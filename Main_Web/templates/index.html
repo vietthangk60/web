@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
-    <body action="nhansu.html" method="post" enctype="multipart/form-data">
+    <body action="post" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -43,15 +43,6 @@
                             <h4>Thông báo</h4>
                         </center>
                         <hr style="height: 1px; ">
-                        <div id="thongbao" >
-                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 1, nội dung thông báo số 1 đến đây là hết.</li>
-                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 2, nội dung thông báo số 1 đến đây là hết.</li>
-                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 3, nội dung thông báo số 1 đến đây là hết.</li>
-                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 4, nội dung thông báo số 1 đến đây là hết.</li>
-                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 5, nội dung thông báo số 1 đến đây là hết.</li>
-                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 6, nội dung thông báo số 1 đến đây là hết.</li>
-                            <li type="button" onclick="location.href='#';">Đây là nội dung thông báo số 7, nội dung thông báo số 1 đến đây là hết.</li>
-                        </div>
                     </ul>
                 </li>
             </ul>
@@ -117,7 +108,7 @@
                     </div>
                 </nav>
             </div>
-            <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content" style=" margin-top:-20px;">
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4" id="trangchu">Trang chủ</h1>

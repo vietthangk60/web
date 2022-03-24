@@ -21,27 +21,22 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h1 class="text-center font-weight-light my-4">ĐĂNG NHẬP</h1></div>
+                                    <div class="card-header"><h2 class="text-center font-weight-light my-4">ĐĂNG NHẬP</h2></div>
                                     <div class="card-body">
-                                    <p>      {{data}}</p>
-                                    <div class="small mb-3 text-muted">Vui lòng nhập email công ty với dạng abc@horusent.com</div>
+                                    <p style="color:red;">{{data}}</p>
                                         <form  method='POST'>
                                             {% csrf_token %}
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="inputname" type="mail" placeholder="...@horusent.com" />
                                                 <label for="inputname">Email</label>
                                             </div>
+                                            <div class="small mb-3 text-muted">Vui lòng nhập email công ty với dạng abc@horusvn.com</div>
                                             <center>
                                                 <a class="small" href="OTP.html">
-                                                    
                                                     <button type="submit" onclick="verify_otp()" class="btn btn-primary" >Đăng nhập </button>
                                                 </a>
                                             </center>
-
- 
-
-                                        </form>
-                                        
+                                        </form>                                  
                                     </div>
                                 </div>
                             </div>
