@@ -66,7 +66,7 @@ def func_DangxuatView(request, *args, **kwargs):  # *args, **kwargs
 
          return redirect(func_DangnhapView,id)
       else:
-         return render(request, "login.html", {"data":"mail sai"})
+         return render(request, "login.html", {"data":"Email bạn nhập chưa được đăng ký. Vui lòng liên hệ admin công ty để được cung cấp email. Cảm ơn bạn!"})
          
 def generateOTP() :
     digits = "0123456789"

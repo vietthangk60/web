@@ -58,7 +58,7 @@
                     <label class="form-label form-label-top form-label-auto">  Thời gian từ  </label>
                     <div class="form-input-wide" >
                         <span class="form-sub-label-container" style="vertical-align:top" >
-                            <input type="time" name="inputdate" id="dmvstimetu" type="text" class="form-textbox" style="width:310px" value="08:00" />
+                            <input type="time" name="thoigianbatdau" id="dmvstimetu" type="text" class="form-textbox" style="width:310px" value="08:00" />
                         </span>
                     </div>
                 </li>
@@ -66,38 +66,24 @@
                     <label class="form-label form-label-top form-label-auto">  Đến  </label>
                     <div class="form-input-wide" >
                         <span class="form-sub-label-container" style="vertical-align:top" >
-                            <input type="time" name="inputdate" id="dmvstimeden" type="text" class="form-textbox" style="width:310px" value="17:00"/>
+                            <input type="time" name="thoigianketthuc" id="dmvstimeden" type="text" class="form-textbox" style="width:310px" value="17:00"/>
                         </span>
                     </div>
                 </li>
                 <li class="form-line" >
-                    <label class="form-label form-label-top form-label-auto" id="label_75" for="input_75_addr_line1">Lý do: </label>
-                    <div class="form-input-wide" >
-                        <div  class="form-address-table jsTest-addressField">
-                            <div class="form-address-line-wrapper jsTest-address-line-wrapperField">
-                                <span class="form-address-line form-address-street-line jsTest-address-lineField">
-                                    <span class="form-sub-label-container" style="vertical-align:top">
-                                        <input type="text" name="diachi" class="form-textbox form-address-line" value="" />
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                    <label class="form-label form-label-top form-label-auto" >Lý do: </label>
+                    <input type="text" name="lydo" class="form-textbox form-address-line" value="" />
                 </li>
-
-                <li class="form-line" >
+                <li class="form-line">
                     <div class="form-input-wide">
-                        <div
-                            class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
-                            <a class="small" href="yeucaucanduyet.html">
-                                <button type="submit" class="btn btn-primary" style="width: 100px; height: 40px;">Lưu</button>
-                                <script language="javascript">
-                                </script>
+                        <div class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField">
+                            <a class="small href="yeucaucanduyet.html">
+                                <input type="submit" class="btn btn-primary" style="width: 100px; height: 40px;" value="Lưu">
                             </a>
-                        &nbsp;&nbsp;&emsp;
-                        <a class="small" href="yeucaucanduyet.html">
-                            <div class="btn btn-dark" style="width: 100px; height: 40px;">Huỷ bỏ</div>
-                        </a>
+                            &nbsp;&nbsp;&emsp;
+                            <a>
+                                <input class="btn btn-dark" action="action" onclick="window.history.go(-1); return false;" type="submit" value="Huỷ bỏ" style="width: 100px; height: 40px;" />
+                            </a>
                         </div>
                     </div>
                 </li>
