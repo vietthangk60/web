@@ -25,7 +25,7 @@ from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView, func_Themduan
 from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_DMVSView, func_NghiphepView, func_NghiviecView
 from Main_Taoyeucau.views import yeucauApi
 from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView
-from Main_Baocao.views import func_BaocaoView
+from Main_Baocao.views import func_BaocaoView, func_TinhluongView,func_TinhthuongView
 from django.urls import path
 from Main_ThemnhanVien.views import employeeApi
 from django.conf.urls import url,include
@@ -53,6 +53,8 @@ urlpatterns = [
     path('chamcongweb.html',func_ChamcongwebView, name=' cham cong web'),
     path('idface.html',func_SuaanhnhandienView, name=' sua anh nhan dien '),
     path('baocao.html',func_BaocaoView, name=' bao cao '),
+    path('tinhluong.html', func_TinhluongView, name=' tinh luong '),
+    path('tinhthuong.html', func_TinhthuongView, name=' tinh thuong '),
     path('login.html',func_DangxuatView, name=' dang xuat '),
     path('chinhsuathongtin.html',func_ChinhsuathongtinView, name=' chinh sua thong tin '),
     path('<int:id>/OTP.html', func_DangnhapView, name=' dang nhap '),

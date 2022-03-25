@@ -11713,15 +11713,6 @@ body {
   width: 232px;
   height: 40px;
 }
-#taoyeucau{
-  height: 40px;
-  width: 100px;
-  color: white;
-  background-color: #29A9FF;
-  border: 0px;
-  border-radius: 5px;
-  float: right;
-}
 #yeucaucanduyet{
   height: 40px;
   background-color: #F5F5F5;
@@ -11738,15 +11729,7 @@ body {
   width: 150px;
   color: white;
 }
-#taoyeucau{
-  height: 40px;
-  background-color: #29A9FF;
-  opacity: 0.9;
-  border: 0px;
-  border-radius: 5px;
-  width: 160px;
-  color: white;
-}
+
 #daduyet{
   height: 40px;
   background-color: #F5F5F5;

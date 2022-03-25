@@ -30,7 +30,8 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
 
         #,Trangthaiduyet=0
         #return render(request, "taoyeucau.html", {"yecau":yeucau})
-        return render(request, "yeucaucanduyet.html")
+      
+        return render(request, "yeucaucanduyet.html",{})
     elif request.method=='POST'and 'duyet' in request.POST:
          idyecau=request.POST.get("duyet")
          yeucau=Taoyeucau.objects.get(YeucauId=idyecau)
@@ -65,7 +66,7 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
                yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
                Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
                return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
-         return render(request, "yeucaucanduyet.html", {"yeucau":yeucau})
+         return render(request, "yeucaucanduyet.html")
     elif request.method=='POST'and 'tuchoi' in request.POST:
          idyecau=request.POST.get("tuchoi")
          print("id",idyecau)
@@ -102,7 +103,7 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
                yeucau=Taoyeucau.objects.all().filter(NguoiyeucauId=id).filter(Trangthaiduyet=0)
                Taoyeucau_serializer=TaoyeucauSerializer(yeucau,many=True)
                return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
-         return render(request, "yeucaucanduyet.html", {"yeucau":yeucau})
+         return render(request, "yeucaucanduyet.html")
 
 
 def func_YeucauduyetView(request, *args, **kwargs): # *args, **kwargs
@@ -165,7 +166,7 @@ def func_DMVSView(request, *args, **kwargs):  # *args, **kwargs
        print("user_nam<<<<<<<<<<<<<<<<<<<<<<<<<<",current_user)
        idnhanvien=str(current_user)
        print("dachay>>>>>>>>>>>>>>>>>")
-       name=request.POST.get("inputname")
+       name=request.POST.get("name")
        ngayxinnghi=request.POST.get("inputdate")
        gionghi=request.POST.get("thoigianbatdau")
        gioketthuc=request.POST.get("thoigianketthuc")
@@ -182,19 +183,81 @@ def func_DMVSView(request, *args, **kwargs):  # *args, **kwargs
        
        return redirect(func_YeucauView)
 
+def func_NghiphepView(request, *args, **kwargs):  # *args, **kwargs
+       # print(args, kwargs)
+       # print(request.user)
+        #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+   if request.method == "GET":
+        current_user = request.user
+        print("user_name", current_user)
+        a = str(current_user)
+        employees = Employees.objects.get(EmployeeId=a)
+        return render(request, "nghiphep.html", {"nhanvien": employees})
+   elif request.method == "POST":
+
+       current_user = request.user
+       print("user_name", current_user)
+       idnhanvien = str(current_user)
+       print("dachay>>>>>>>>>>>>>>>>>")
+       name = request.POST.get("name")
+       print(request.POST)
+       print("dachay>>>>>>>>>>>>>>>>>",name)
+       hinhthucnghi = request.POST.get("hinhthucnghi")
+     #  loainghi = request.POST.get("loainghi")
+       ngaybatdau = request.POST.get("ngaybatdau")
+       ngayketthuc = request.POST.get("ngayketthuc")
+       giobatdau = request.POST.get("giobatdau")
+       gioketthuc = request.POST.get("gioketthuc")
+       lido = request.POST.get("Lydo")
+       print(hinhthucnghi, giobatdau, ngayketthuc, gioketthuc, lido)
+       ngay_gio_bd = ngaybatdau+" "+giobatdau
+       ngay_gio_kt = ngayketthuc+" "+gioketthuc
+       thong_tin_yc =" Nghỉ phép" + " " + hinhthucnghi 
+       yeucau = Taoyeucau.objects.create(NguoiyeucauId=idnhanvien, Nguoiyeucau=name, Thongtinyeucau=thong_tin_yc, Lydo=lido, Nguoiduyet="thang",
+                                         thoigianbatdau=ngay_gio_bd, thoigianketthuc=ngay_gio_kt, Trangthaiduyet=0)
+       yeucau.save()
+       return redirect(func_YeucauView)
+
+
+def func_NghiviecView(request, *args, **kwargs):  # *args, **kwargs
+    # print(args, kwargs)
+    # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+   if request.method == "GET":
+       current_user = request.user
+       print("user_name", current_user)
+       a = str(current_user)
+       employees = Employees.objects.get(EmployeeId=a)
+       return render(request, "nghiviec.html", {"nhanvien": employees})
+   elif request.method == "POST":
+
+       current_user = request.user
+       print("user_name", current_user)
+       idnhanvien = str(current_user)
+       print("dachay>>>>>>>>>>>>>>>>>")
+       name = request.POST.get("name")
+      # ngaybatdaulamviec = request.POST.get("ngaybatdaulamviec")
+       ngaynghi = request.POST.get("inputdate")
+       lido = request.POST.get("lydo")
+       print( ngaynghi, lido)
+       yeucau = Taoyeucau.objects.create(NguoiyeucauId=idnhanvien, Nguoiyeucau=name, Thongtinyeucau=" Nghỉ việc", Lydo=lido, Nguoiduyet="thang", Trangthaiduyet=0,
+       thoigianbatdau=ngaynghi+" 00:00", thoigianketthuc=ngaynghi+" 00:00")
+       yeucau.save()
+       return redirect(func_YeucauView)
+
        
     
 
 
-def func_NghiphepView(request, *args, **kwargs):  # *args, **kwargs
+# def func_NghiphepView(request, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
-    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    return render(request, "nghiphep.html", {})
+   # return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+   # return render(request, "nghiphep.html", {})
  
  
-def func_NghiviecView(request, *args, **kwargs):  # *args, **kwargs
+# def func_NghiviecView(request, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
-    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    return render(request, "nghiviec.html", {})
+   # return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+   # return render(request, "nghiviec.html", {})
