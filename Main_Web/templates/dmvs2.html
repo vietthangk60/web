@@ -108,7 +108,7 @@
                                         <form method="post" class="form" id="form_yecaunghi"  enctype="multipart/form-data"></form>
                                             {% csrf_token %}
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="inputname" value={{nhanvien.EmployeeName}} type="name" placeholder="..." />
+                                                <input class="form-control" name="inputname" value={{nhanvien.EmployeeName}} type="text" />
                                                 <label for="inputname">Họ và tên:</label>
                                                 <p> {{nhanvien.EmployeeName}}</p>
                                             </div>
