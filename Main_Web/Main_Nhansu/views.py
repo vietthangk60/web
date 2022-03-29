@@ -6,11 +6,29 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import redirect
+from django.contrib.auth import authenticate, login, decorators, logout
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+
+
+@csrf_exempt
+@decorators.login_required(login_url='/login.html')
 def func_Nhansuview(request, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+   if request.method == 'POST':
+       tmp_xacnhan = request.POST.get("sua")
+       if tmp_xacnhan == "1":
+          logout(request)
+          return redirect(func_DXView)
+   current_user = request.user
+   print("user_name", current_user)
+   idnhanvien = str(current_user)
+   em = Employees.objects.get(EmployeeId=idnhanvien)
+   print(em)
+   Data = { "nhanvien": em}
+    
    if request.method=='GET':
       employees = Employees.objects.all()
       employees_serializer=EmployeeSerializer(employees,many=True)
@@ -22,8 +40,8 @@ def func_Nhansuview(request, *args, **kwargs): # *args, **kwargs
       if request.user.has_perm('Main_ThemnhanVien.delete_employees'):
 
 
-         manhavien=request.POST['delete']
-         record = Employees.objects.get(EmployeeId=manhavien)
+         manhanvien=request.POST['delete']
+         record = Employees.objects.get(EmployeeId=manhanvien)
          record.delete()
          employees = Employees.objects.all()
          employees_serializer=EmployeeSerializer(employees,many=True)
@@ -38,27 +56,42 @@ def func_Nhansuview(request, *args, **kwargs): # *args, **kwargs
     #  return render(request, "suanhansu.html", {"employee": employees_serializer.data})
    elif request.method == 'POST' and 'update' in request.POST:
       print(request.POST)
-      manhavien = request.POST['update']
-    #  record = Employees.objects.get(EmployeeId=manhavien)
+      manhanvien = request.POST['update']
+    #  record = Employees.objects.get(EmployeeId=manhanvien)
     #  record.update()
      # employees = Employees.objects.all()
      # employees_serializer = EmployeeSerializer(employees, many=True)
     #  return render(request, "nhansu.html", {"employee": employees_serializer.data})
-      return redirect(func_SuanhansuView,manhavien)
+      return redirect(func_SuanhansuView,manhanvien)
+   return render(request, "nhansu.html", Data)
    
-   
-   
-   
+
 
 def func_Themnhanvienview(request, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    return render(request, "themnhanvien.html", {})
+    if request.method == 'POST':
+           tmp_xacnhan = request.POST.get("sua")
+           if tmp_xacnhan == "1":
+              logout(request)
+              return redirect(func_DXThemnhanvienView)
+            
+    current_user = request.user
+    print("user_name", current_user)
+    idnhanvien = str(current_user)
+    em = Employees.objects.get(EmployeeId=idnhanvien)
+    print(em)
+    Data = { "nhanvien": em}
+    return render(request, "themnhanvien.html", Data)
+ 
+ 
+ 
 def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+
 
    if request.method=='GET':
       record = Employees.objects.get(EmployeeId=id)
@@ -119,15 +152,38 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
   # return render(request, "suanhansuclone.html",{"employee":record})
 
 
-def func_GreenView(request, id, *args, **kwargs):  # *args, **kwargs
+#def func_GreenView(request, id, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
 
-   if request.method == 'GET':
-      record = Employees.objects.get(EmployeeId=id)
+   #if request.method == 'GET':
+    #  record = Employees.objects.get(EmployeeId=id)
      # print(record)
      # employees_serializer0 = EmployeeSerializer(record, many=True)
     #  print(">>>>>>",employees_serializer0)
 
-   return render(request, "suanhansuclone.html", {"employee": record})
+  # return render(request, "suanhansuclone.html", {"employee": record})
+
+def func_DXView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method == 'GET':
+
+       if request.user.is_authenticated:
+         return redirect(func_Nhansuview)
+
+       return render(request, "login.html", {"data": ""})
+
+
+def func_DXThemnhanvienView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method == 'GET':
+
+       if request.user.is_authenticated:
+         return redirect(func_Nhansuview)
+
+       return render(request, "login.html", {"data": ""})

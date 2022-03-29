@@ -12,8 +12,22 @@ from Main_Yeucau.serializers import yeucaudaduyetSerializer
 from django.core.files.storage import default_storage
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Permission
+from django.contrib.auth import authenticate, login, decorators, logout
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
+
+
+@csrf_exempt
+@decorators.login_required(login_url='/login.html')
+
 def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
+    if request.method == 'POST':
+       tmp_xacnhan = request.POST.get("sua")
+       if tmp_xacnhan == "1":
+          logout(request)
+          return redirect(func_DXYeucauView)
+       
     if request.method=='GET':
         current_user = request.user
         id=str(current_user)
@@ -33,8 +47,8 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
       
         return render(request, "yeucaucanduyet.html",{})
     elif request.method=='POST'and 'duyet' in request.POST:
-         idyecau=request.POST.get("duyet")
-         yeucau=Taoyeucau.objects.get(YeucauId=idyecau)
+         idyeucau=request.POST.get("duyet")
+         yeucau=Taoyeucau.objects.get(YeucauId=idyeucau)
          yeucau.Trangthaiduyet=1
       #   yeucau.save()
          print(yeucau.NguoiyeucauId,yeucau.Nguoiyeucau,yeucau.Thongtinyeucau)
@@ -68,9 +82,9 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
                return render(request, "yeucaucanduyet.html",{"yeucau":yeucau})
          return render(request, "yeucaucanduyet.html")
     elif request.method=='POST'and 'tuchoi' in request.POST:
-         idyecau=request.POST.get("tuchoi")
-         print("id",idyecau)
-         yeucau=Taoyeucau.objects.get(YeucauId=idyecau)
+         idyeucau=request.POST.get("tuchoi")
+         print("id",idyeucau)
+         yeucau=Taoyeucau.objects.get(YeucauId=idyeucau)
          yeucau.Trangthaiduyet=2
 
 
@@ -107,6 +121,12 @@ def func_YeucauView(request, *args, **kwargs): # *args, **kwargs
 
 
 def func_YeucauduyetView(request, *args, **kwargs): # *args, **kwargs
+   if request.method == 'POST':
+       tmp_xacnhan = request.POST.get("sua")
+       if tmp_xacnhan == "1":
+          logout(request)
+          return redirect(func_DXDuyetView)
+   
    if request.method=='GET':
         current_user = request.user
         id=str(current_user)
@@ -125,6 +145,13 @@ def func_YeucauduyetView(request, *args, **kwargs): # *args, **kwargs
                return render(request, "daduyet.html", {"yeucau":yeucaudaduyet_1})
    return render(request, "daduyet.html")
 def func_TuchoiView(request, *args, **kwargs): # *args, **kwargs
+   if request.method == 'POST':
+       tmp_xacnhan = request.POST.get("sua")
+       if tmp_xacnhan == "1":
+          logout(request)
+          return redirect(func_DXTuchoiView)
+   
+   
    if request.method=='GET':
         current_user = request.user
         id=str(current_user)
@@ -241,7 +268,7 @@ def func_NghiviecView(request, *args, **kwargs):  # *args, **kwargs
        lido = request.POST.get("lydo")
        print( ngaynghi, lido)
        yeucau = Taoyeucau.objects.create(NguoiyeucauId=idnhanvien, Nguoiyeucau=name, Thongtinyeucau=" Nghỉ việc", Lydo=lido, Nguoiduyet="thang", Trangthaiduyet=0,
-       thoigianbatdau=ngaynghi+" 00:00", thoigianketthuc=ngaynghi+" 00:00")
+       thoigianbatdau= ngaynghi +"00:00", thoigianketthuc= ngaynghi + "00:00")
        yeucau.save()
        return redirect(func_YeucauView)
 
@@ -261,3 +288,36 @@ def func_NghiviecView(request, *args, **kwargs):  # *args, **kwargs
    # print(request.user)
    # return HttpResponse("<h1>Hello World</h1>") # string of HTML code
    # return render(request, "nghiviec.html", {})
+def func_DXYeucauView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method == 'GET':
+
+       if request.user.is_authenticated:
+         return redirect(func_YeucauView)
+
+       return render(request, "login.html", {"data": ""})
+
+def func_DXDuyetView(request, *args, **kwargs):  # *args, **kwargs
+       # print(args, kwargs)
+       # print(request.user)
+        #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method == 'GET':
+
+       if request.user.is_authenticated:
+         return redirect(func_YeucauView)
+
+       return render(request, "login.html", {"data": ""})
+
+
+def func_DXTuchoiView(request, *args, **kwargs):  # *args, **kwargs
+    # print(args, kwargs)
+    # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method == 'GET':
+
+       if request.user.is_authenticated:
+         return redirect(func_YeucauView)
+
+       return render(request, "login.html", {"data": ""})

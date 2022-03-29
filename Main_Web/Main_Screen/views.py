@@ -28,9 +28,7 @@ def func_Mainview(request): # *args, **kwargs
     em =Employees.objects.get(EmployeeId=idnhanvien)
     print(em)
 
-    Data = {'SoLuongNhanVien': Employees.objects.count(),"nhanvien":em}
-    #Data = {'SoLuongDuAn': DuAn.objects.count()}
-    #Data = {'SoLuongYeuCau': YeuCau.objects.count()}
+    Data = {'SoLuongNhanVien': Employees.objects.count(), "nhanvien": em}
     return render(request, "index.html", Data)
  
 def func_ChinhsuathongtinView(request, *args, **kwargs):  # *args, **kwargs

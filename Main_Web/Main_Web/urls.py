@@ -19,13 +19,13 @@ from django.urls import path
 #from django.views.generic import TemplateView
 #from Main_Screen.views import index
 #from pages.views import home_view, contact_view, about_view
-from Main_Screen.views import func_Mainview,func_ChinhsuathongtinView ,func_DangxuatView ,func_DangnhapView
-from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView
-from Main_Giaoviec.views import func_VieccuatoiView,func_DuanView, func_ThemduanView
-from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_DMVSView, func_NghiphepView, func_NghiviecView
+from Main_Screen.views import func_Mainview, func_DangxuatView, func_DangnhapView
+from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView, func_DXView, func_DXThemnhanvienView
+from Main_Giaoviec.views import func_VieccuatoiView, func_DuanView, func_ThemduanView, func_DXVieccuatoiView,  func_DXDuanView
+from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_DMVSView, func_NghiphepView, func_NghiviecView, func_DXYeucauView, func_DXDuyetView, func_DXTuchoiView
 from Main_Taoyeucau.views import yeucauApi
-from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView
-from Main_Baocao.views import func_BaocaoView, func_TinhluongView,func_TinhthuongView
+from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView, func_DXChamcongView
+from Main_Baocao.views import func_BaocaoView, func_TinhluongView, func_TinhthuongView, func_DXBaocaoView, func_DXLuongView, func_DXThuongView
 from django.urls import path
 from Main_ThemnhanVien.views import employeeApi
 from django.conf.urls import url,include
@@ -56,13 +56,24 @@ urlpatterns = [
     path('tinhluong.html', func_TinhluongView, name=' tinh luong '),
     path('tinhthuong.html', func_TinhthuongView, name=' tinh thuong '),
     path('login.html',func_DangxuatView, name=' dang xuat '),
-    path('chinhsuathongtin.html',func_ChinhsuathongtinView, name=' chinh sua thong tin '),
+    path('login.html', func_DXView, name=' dx '),
+    path('login.html', func_DXThemnhanvienView, name=' dx '),
+    path('login.html', func_DXChamcongView, name=' dxcc '),
+    path('login.html', func_DXVieccuatoiView, name=' dx '),
+    path('login.html', func_DXDuanView, name=' dx '),
+    path('login.html', func_DXYeucauView, name=' dx '),
+    path('login.html', func_DXDuyetView, name=' dx '),
+    path('login.html', func_DXTuchoiView, name=' dx '),
+    path('login.html', func_DXBaocaoView, name=' dx '),
+    path('login.html', func_DXLuongView, name=' dx '),
+    path('login.html', func_DXThuongView, name=' dx '),
     path('<int:id>/OTP.html', func_DangnhapView, name=' dang nhap '),
     path('themnhanvien.html', employeeApi, name=' them nhan vien '),
     path('taoyeucau.html', yeucauApi, name=' yeu cau '),
     path('dmvs.html', func_DMVSView, name=' di muon '),
     path('nghiphep.html', func_NghiphepView, name=' nghi phep '),
     path('nghiviec.html', func_NghiviecView, name=' nghi viec '),
+    
     #url(r'^',include('Main_ThemnhanVien.urls')
  #   url(r'^/([0-9]+)/$', views.func_Mainview, name='home'), 
 
