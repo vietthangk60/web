@@ -11,5 +11,6 @@ class Employees(models.Model):
     Department = models.CharField(max_length=500)
     Position_Employee=models.CharField(max_length=500)
     Avatar = models.ImageField(upload_to='images',null='False')
+    Image = models.ImageField(upload_to='images',null='True')
   #  DateOfJoining = models.DateField()
  #   PhotoFileName = models.CharField(max_length=500)

@@ -101,6 +101,7 @@ def func_SuanhansuView(request,id, *args, **kwargs): # *args, **kwargs
    elif request.method=='POST':
         employees= Employees.objects.get(EmployeeId=id)
         file=request.FILES
+      #  print("FILE",file)
         if 'avata' not in file:
                myfile=employees.Avatar
         else:          

@@ -219,7 +219,7 @@
         </div>
         <div id="layoutSidenav_content" style=" margin-top:-20px;">
             <main>
-                <form action='caidatchamcong.html' method='POST'>
+                <form  method='POST'>
                         {% csrf_token %}
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Cài đặt chấm công</h1>
@@ -259,7 +259,7 @@
                                 <td> <img src={{NhanVien.Avatar}} alt=" " style="width: 50px; height: 50px; border-radius: 50%;" ></td>
                                 <td>{{NhanVien.EmployeeName}}</td>
                                 <td>{{NhanVien.Department}}</td>
-                                <td> <img src={{NhanVien.Avatar}} alt=" " style="width: 50px; height: 50px; border-radius: 50%;" ></td>
+                                <td> <img src={{NhanVien.Image}} alt=" " style="width: 50px; height: 50px; border-radius: 50%;" ></td>
                                 <td> <button type="submit" class="btn btn-primary"  value={{NhanVien.EmployeeId}} name="update" href="idface.html">Sửa ảnh</button>
                                      &nbsp;&nbsp;&nbsp;
                                      <button type="submit1" class="btn btn-danger" value={{NhanVien.EmployeeId}} name="delete">Xoá</button>

@@ -225,6 +225,8 @@
                         <li class="breadcrumb-item active">Sửa ảnh nhận diện Camera AI</li>
                     </ol>
                     <center>
+                    <form  method='POST'enctype="multipart/form-data" name="form" id="form" accept-charset="utf-8" style="border:2px;">
+                            {% csrf_token %}
                     <ul class="form-section page-section" style="background-color:#eaeeee;border-radius:10px; width:30%;">
                         <li id="cid_34" class="form-input-wide" data-type="control_head">
                             <div class="form-header-group  header-large">
@@ -255,13 +257,13 @@
                                 <div class="upload-button">
                                     <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                                 </div>
-                                <input class="file-upload" type="file" accept="image/*" />
+                                <input class="file-upload" name =Image type="file" accept="image/*" />
                             </div>   
                         </li>
                         <li class="form-line" >
                             <div class="form-input-wide">
                                 <div class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField">
-                                    <a class="small" href="nhansu.html">
+                                    <a>
                                         <input type="submit" class="btn btn-primary" style="width: 100px; height: 40px;" value="Lưu"/> 
                                     </a>
                                     &nbsp;&nbsp;&emsp;

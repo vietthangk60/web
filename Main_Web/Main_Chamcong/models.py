@@ -12,5 +12,5 @@ class Chamcong(models.Model):
     Giobatdau=models.TimeField()
     Gioketthuc=models.TimeField()
 
-class CaidatCamera(Employees):
-        Image = models.ImageField(upload_to='images',null='False')
+#class CaidatCamera(Employees):
+      #  Image = models.ImageField(upload_to='images',null='False')

@@ -73,7 +73,30 @@ def func_CaidatchamcongView(request, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    return render(request, "caidatchamcong.html", {})
+   if request.method=='GET':
+      employees = Employees.objects.all()
+      employees_serializer=EmployeeSerializer(employees,many=True)
+    #  print(request.user.get_all_permissions())
+     
+      return render(request, "caidatchamcong.html", {"employee":employees_serializer.data})
+   elif request.method == 'POST' and 'update' in request.POST:
+      
+      manhanvien = request.POST['update']
+      return redirect(func_SuaanhnhandienView,manhanvien)
+   elif request.method=='POST' and 'delete' in request.POST:
+
+         manhanvien=request.POST['delete']
+         employees1 = Employees.objects.get(EmployeeId=manhanvien)
+         employees1.Image=None
+         employees1.save()
+         employees = Employees.objects.all()
+         employees_serializer=EmployeeSerializer(employees,many=True)
+         return render(request, "caidatchamcong.html", {"employee": employees_serializer.data})
+
+
+
+
+  # return render(request, "caidatchamcong.html", {})
 
 def func_ChamcongwebView(request, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
@@ -108,23 +131,43 @@ def func_LienketCamView(request, *args, **kwargs):  # *args, **kwargs
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
     return render(request, "lienket_cam.html", {})
  
-def func_SuaanhnhandienView(request, *args, **kwargs): # *args, **kwargs
+def func_SuaanhnhandienView(request,id, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    return render(request, "idface.html", {})
+
+   if request.method=='GET':
+      record = Employees.objects.get(EmployeeId=id)
+      return render(request, "idface.html",{"employee":record})
+   elif request.method=='POST':
+        employees= Employees.objects.get(EmployeeId=id)
+        file=request.FILES
+        print("FIle",file)
+        if 'Image' not in file:
+              # myfile=employees.Avatar
+              return redirect(func_CaidatchamcongView)
+        else:          
+            myfile = request.FILES.get('Image') 
+            print("mMMMM",myfile)
+            employees.Image=myfile
+            employees.save()
+            employees = Employees.objects.all()
+            employees_serializer=EmployeeSerializer(employees,many=True)
+            return redirect(func_CaidatchamcongView)
+   return render(request, "idface.html", {})
 
 
 def func_DXChamcongView(request, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    if request.method == 'GET':
+   if request.method == 'GET':
 
        if request.user.is_authenticated:
          return redirect(func_ChamcongView)
 
        return render(request, "login.html", {"data": ""})
+
 
 def func_DXCamView(request, *args, **kwargs):  # *args, **kwargs
      # print(args, kwargs)
