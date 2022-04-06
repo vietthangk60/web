@@ -38,33 +38,38 @@
                     <div class="form-input-wide">
                         <span class="form-sub-label-container" style="vertical-align:top">
                             <input type="text" name="name" class="form-textbox" style="width:310px" data-masked="true"
-                                value="{{employee.EmployeeName}}" id="name" />
+                                value=" " id="name" />
                         </span>
                     </div>
                 </li>
                 <li class="form-line form-line-column form-col-2">
-                    <label class="form-label form-label-top form-label-auto"> Tên gợi nhớ *</label>
+                    <label class="form-label form-label-top form-label-auto"> Tên gợi nhớ </label>
                     <div class="form-input-wide">
                         <input type="text" class="form-textbox" style="width:310px" size="310"
-                            value="{{employee.EmployeeId}}" data-component="textbox" />
+                            value=" " data-component="textbox" />
                     </div>
                 </li>
-                <li class="form-line form-line-column form-col-1">
-                    <label class="form-label form-label-top form-label-auto"> Chi nhánh </label>
+                <li class="form-line form-line-column form-col-2">
                     <div class="form-input-wide">
-                        <span class="form-sub-label-container" style="vertical-align:top">
-                            <input type="text" name="inputchinhanh" id="demo" type="text" class="form-textbox"
-                                style="width:310px" />
-                        </span>
+                        <label class="form-label form-label-top form-label-auto" for="inputbophan">Chi nhánh</label>
+                        <select class="form-textbox validate" name="inputbophan" style="width:310px; height: 40px;">
+                            <option style="background-color:rgb(30, 182, 228)" >Lựa chọn</option>
+                            <option value=""> Chi nhánh 1</option>
+                            <option value=""> Chi nhánh 2</option>
+                            
+                        </select>
                     </div>
                 </li>
-                <li class="form-line form-line-column form-col-1">
-                    <label class="form-label form-label-top form-label-auto"> Loại ghi nhận </label>
+                <li class="form-line form-line-column form-col-2">
                     <div class="form-input-wide">
-                        <span class="form-sub-label-container" style="vertical-align:top">
-                            <input type="tel" name="inputTel" class="mask-phone-number form-textbox validate[Fill Mask]"
-                                style="width:310px" data-masked="true" value="{{employee.PhoneNumber}}" />
-                        </span>
+                        <label class="form-label form-label-top form-label-auto" for="inputbophan">Loại ghi nhận</label>
+                        <select class="form-textbox validate" name="inputbophan" style="width:310px; height: 40px;">
+                            <option style="background-color:rgb(30, 182, 228)" > Lựa chọn </option>
+                            <option value=""> Chỉ vào</option>
+                            <option value=""> Chỉ ra</option>
+                            <option value=""> Vào/ra</option>
+                
+                        </select>
                     </div>
                 </li>
                 <li class="form-line">
