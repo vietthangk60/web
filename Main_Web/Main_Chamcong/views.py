@@ -3,6 +3,14 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from Main_ThemnhanVien.models import Employees
 from Main_ThemnhanVien.serializers import EmployeeSerializer
+
+
+from Main_Chamcong.models import Chamcong
+
+from Main_Chamcong.serializers import ChamcongSerializer
+
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
 from django.core.mail import send_mail
 import math
 import random
@@ -19,21 +27,46 @@ def func_ChamcongView(request, *args, **kwargs): # *args, **kwargs
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
     
- if request.method == 'POST':
-       if request.method == 'POST':
-           tmp_xacnhan = request.POST.get("sua")
-       if tmp_xacnhan == "1":
-          logout(request)
-          return redirect(func_DXChamcongView)
-       
- current_user = request.user
- print("user_name", current_user)
- idnhanvien = str(current_user)
- em = Employees.objects.get(EmployeeId=idnhanvien)
- print(em)
+   if request.method == 'POST':
+         if request.method == 'POST':
+            tmp_xacnhan = request.POST.get("sua")
+            
+            if tmp_xacnhan == "1":
+               logout(request)
+               return redirect(func_DXChamcongView)
+            data=JSONParser().parse(request)
+            print(data["date"])
+            current_user = request.user
+            idnhanvien = str(current_user)
+            em = Employees.objects.get(EmployeeId=idnhanvien)   
 
- Data = { "nhanvien": em}
- return render(request, "chamcong.html", Data)
+            tmp_id_tontai= Chamcong.objects.filter(NguoichamcongId=idnhanvien).exists() 
+      #  print(tmp_id_tontai)
+            if tmp_id_tontai:
+               tmp_dacheckin=Chamcong.objects.all().filter(NguoichamcongId=idnhanvien).filter(Ngaycham=data["date"]).exists() 
+               print("tmp_dacheckin",tmp_dacheckin)
+               if tmp_dacheckin:
+                  checkin=Chamcong.objects.all().filter(NguoichamcongId=idnhanvien).get(Ngaycham=data["date"])
+                  checkin.Gioketthuc=data["time"]
+                  print(checkin)
+                  checkin.save()
+               else:
+            
+                  nhanvienchamcong=Chamcong.objects.create(NguoichamcongId=idnhanvien,Tennguoichamcong=em.EmployeeName,Thongtin="Gio hanh chinh",Ngaycham=data["date"],Giobatdau=data["time"],Gioketthuc=None)
+                  nhanvienchamcong.save()
+            else:
+                  nhanvienchamcong=Chamcong.objects.create(NguoichamcongId=idnhanvien,Tennguoichamcong=em.EmployeeName,Thongtin="Gio hanh chinh",Ngaycham=data["date"],Giobatdau=data["time"],Gioketthuc=None)
+                  nhanvienchamcong.save()              
+
+
+   current_user = request.user
+   
+   idnhanvien = str(current_user)
+   em = Chamcong.objects.all()
+  
+   print("user_name", em)
+   Data = { "nhanvien": em}
+   return render(request, "chamcong.html", Data)
 
 
 def func_CaidatchamcongView(request, *args, **kwargs): # *args, **kwargs

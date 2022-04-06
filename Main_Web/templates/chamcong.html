@@ -223,6 +223,16 @@
                                     + ("0" + currentdate.getMinutes()).slice(-2) + ":"
                                     + ("0" + currentdate.getSeconds()).slice(-2);
                                 document.getElementById("datecheck").innerHTML =timenow;
+                                let url = "chamcong.html"
+                                let xhr = new XMLHttpRequest();
+                                xhr.open("POST", url,true);
+                                xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+                                var date = currentdate.getFullYear()+'-'+(currentdate.getMonth()+1)+'-'+currentdate.getDate();
+                               // var data = JSON.stringify()
+                                var data={"time":timenow,"date":date}
+                                var data = JSON.stringify(data)
+                                //var data = JSON.stringify(data)
+                                xhr.send(data);
                             }
                         </script>
                         <script>
@@ -237,6 +247,10 @@
                                         if (event.target.value === "Check In") {
                                             event.target.value = "Check Out";
                                             
+                                        }
+                                        else
+                                        {
+                                            event.target.value = "Check In"
                                         }
                                     },
                                     false
@@ -266,6 +280,7 @@
                     <div class="card-body">
                         <table id="datatablesSimple">
                             <thead>
+                                
                                 <tr>
                                     <th width="10%" >Nhân viên</th>
                                     <th width="3%" >01</th>
@@ -303,8 +318,9 @@
                                 
                             </thead>
                             <tbody>
+                                {% for NhanVien in nhanvien %}
                                 <tr>
-                                    <td>Bùi Ngọc Đăng</td>
+                                    <td>{{NhanVien.Tennguoichamcong}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -338,6 +354,7 @@
                                     <td></td>
                                     
                                 </tr>
+                                {% endfor %}
                                 <tr>
                                     <td>Doãn Thế Cường</td>
                                     <td></td>

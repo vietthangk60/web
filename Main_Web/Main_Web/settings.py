@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Main_Yeucau.apps.MainYeucauConfig',
     'Main_Taoyeucau.apps.MainTaoYeucauConfig',
     'Main_ThemnhanVien.apps.MainThemnhanvienConfig',
+    'Main_Chamcong.apps.MainChamcongConfig'
     
    # 'pages',
 ]
