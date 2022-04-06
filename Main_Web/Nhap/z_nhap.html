@@ -2,52 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <!-- Bootstrap css -->
-
-    <!-- Our css -->
-    <link rel="stylesheet" href="style.css">
-    <title>Emails View</title>
-    <style>
-        
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timeline chart.js 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 
 <body>
-    <div class="col">
-        <div class="con">
-            <div class="bar top"></div>
-            <div class="bar middle"></div>
-            <div class="bar bottom"></div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="con">
-            <div class="bar arrow-top"></div>
-            <div class="bar arrow-middle"></div>
-            <div class="bar arrow-bottom"></div>
-        </div>
-    </div>
-    
-    <div class="col">
-        <div class="con">
-            <div class="bar arrow-top-r"></div>
-            <div class="bar arrow-middle-r"></div>
-            <div class="bar arrow-bottom-r"></div>
-        </div>
-    </div>
-    
-    <div class="col">
-        <div class="special-con">
-            <div class="bar arrow-top-fall"></div>
-            <div class="bar arrow-middle-fall"></div>
-            <div class="bar arrow-bottom-fall"></div>
-        </div>
-    </div>
+    <main>
+
+        <canvas id="gantt-chart"></canvas>
+
+        <script>
+            data = [
+                { id: 2, name: "Season Apples", start_date: "2022-03-07 15:00:00.000", end_date: "2022-03-10 15:00:00.000" },
+                { id: 1, name: "Cut Apples", start_date: "2022-03-05 15:00:00.000", end_date: "2022-03-07 15:00:00.000" },
+                { id: 3, name: "Bake Apples", start_date: "2022-03-11 15:00:00.000", end_date: "2022-03-15 15:00:00.000" }
+            ]
+
+            // sort objects by start_date
+            data.sort(function (a, b) {
+                return new Date(a.start_date) - new Date(b.start_date);
+            });
+            // chart js needs labels in separate array
+            const labels = data.map(x => {
+                return [x.name];
+            })
+            // transform the data from how the backend outputs it to how the chart js needs it
+            const newData = data.map(x => {
+                return [x.start_date.split(' ')[0], x.end_date.split(' ')[0]]
+            });
+
+            data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Make Apple Recipe',
+                    data: newData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false,
+                    barPercentage: 0.3
+                }]
+            };
+
+            options = {
+                indexAxis: 'y',
+                responsive: true,
+                scales: {
+                    x: {
+                        min: newData[0][0],
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            };
+
+            new Chart(document.getElementById('gantt-chart').getContext('2d'), {
+                type: 'bar', data: data, options: options
+            });
+
+        </script>
     </main>
-    
-    <a href="https://codepen.io/tonkec//" class="ua" target="_blank">
-        <i class="fa fa-user"></i></a>
 
 </body>
 

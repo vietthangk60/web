@@ -48,6 +48,18 @@ def func_ChamcongwebView(request, *args, **kwargs):  # *args, **kwargs
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
     return render(request, "chamcongweb.html", {})
  
+def func_DanhsachCamView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    return render(request, "danhsach_cam.html", {})
+ 
+def func_LienketCamView(request, *args, **kwargs):  # *args, **kwargs
+   # print(args, kwargs)
+   # print(request.user)
+    #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    return render(request, "lienket_cam.html", {})
+ 
 def func_SuaanhnhandienView(request, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)

@@ -21,10 +21,10 @@ from django.urls import path
 #from pages.views import home_view, contact_view, about_view
 from Main_Screen.views import func_Mainview, func_DangxuatView, func_DangnhapView
 from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView, func_DXView, func_DXThemnhanvienView
-from Main_Giaoviec.views import func_VieccuatoiView, func_DuanView, func_ThemduanView, func_DXVieccuatoiView,  func_DXDuanView
+from Main_Giaoviec.views import func_VieccuatoiView, func_DuanView, func_ThemduanView, func_DXVieccuatoiView,  func_DXDuanView, func_KanBanView
 from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_DMVSView, func_NghiphepView, func_NghiviecView, func_DXYeucauView, func_DXDuyetView, func_DXTuchoiView
 from Main_Taoyeucau.views import yeucauApi
-from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView, func_DXChamcongView
+from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView, func_DXChamcongView, func_DanhsachCamView, func_LienketCamView
 from Main_Baocao.views import func_BaocaoView, func_TinhluongView, func_TinhthuongView, func_DXBaocaoView, func_DXLuongView, func_DXThuongView
 from django.urls import path
 from Main_ThemnhanVien.views import employeeApi
@@ -43,6 +43,7 @@ urlpatterns = [
     path('<int:id>/suanhansuclone.html', func_SuanhansuView, name='sua nhan su'),
     path('vieccuatoi.html',func_VieccuatoiView,name='giao viec'),
     path('duan.html',func_DuanView,name='du an'),
+    path('kanban.html', func_KanBanView, name='du an'),
     path('themduan.html', func_ThemduanView, name='them du an'),
     path('yeucaucanduyet.html',func_YeucauView,name=' yeu cau'),
     path('daduyet.html',func_YeucauduyetView,name=' yeu cau da duyet'), 
@@ -51,6 +52,8 @@ urlpatterns = [
     path('chamcong.html',func_ChamcongView,name=' cham cong '), 
     path('caidatchamcong.html',func_CaidatchamcongView, name=' cai dat cham cong'),
     path('chamcongweb.html',func_ChamcongwebView, name=' cham cong web'),
+    path('danhsach_cam.html', func_DanhsachCamView, name=' danh sach cam'),
+    path('lienket_cam.html', func_LienketCamView, name=' lien ket cam'),
     path('idface.html',func_SuaanhnhandienView, name=' sua anh nhan dien '),
     path('baocao.html',func_BaocaoView, name=' bao cao '),
     path('tinhluong.html', func_TinhluongView, name=' tinh luong '),

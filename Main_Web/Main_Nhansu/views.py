@@ -27,7 +27,7 @@ def func_Nhansuview(request, *args, **kwargs): # *args, **kwargs
    idnhanvien = str(current_user)
    em = Employees.objects.get(EmployeeId=idnhanvien)
    print(em)
-   Data = { "nhanvien": em}
+   Data = {"nhanvien": em}
     
    if request.method=='GET':
       employees = Employees.objects.all()
@@ -64,7 +64,6 @@ def func_Nhansuview(request, *args, **kwargs): # *args, **kwargs
     #  return render(request, "nhansu.html", {"employee": employees_serializer.data})
       return redirect(func_SuanhansuView,manhanvien)
    return render(request, "nhansu.html", Data)
-   
 
 
 def func_Themnhanvienview(request, *args, **kwargs): # *args, **kwargs

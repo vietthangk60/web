@@ -1,10 +1,10 @@
-mobiscroll.setOptions({
+setOptions({
         //locale: mobiscroll.localeEn,  // Specify language like: locale: mobiscroll.localePl or omit setting to use default
         theme: 'ios',                 // Specify theme like: theme: 'ios' or omit setting to use default
         themeVariant: 'light'         // More info about themeVariant: https://docs.mobiscroll.com/5-15-1/javascript/eventcalendar#opt-themeVariant
     });
     
-    var calendar = mobiscroll.eventcalendar('#demo-event-listing', {
+    var calendar = eventcalendar('#demo-event-listing', {
         view: {                       // More info about view: https://docs.mobiscroll.com/5-15-1/javascript/eventcalendar#opt-view
             timeline: {
                 type: 'week',
@@ -144,7 +144,7 @@ mobiscroll.setOptions({
     document.querySelectorAll('.event-listing-view-change').forEach(function (elm) {
         elm.addEventListener('change', function (ev) {
             switch (ev.target.value) {
-                /*case 'workweek':
+                case 'workweek':
                     calendar.setOptions({
                         view: {                       // More info about view: https://docs.mobiscroll.com/5-15-1/javascript/eventcalendar#opt-view
                             timeline: {
@@ -155,7 +155,7 @@ mobiscroll.setOptions({
                             }
                         }
                     })
-                    break;*/
+                    break;
                 case 'week':
                     calendar.setOptions({
                         view: {                       // More info about view: https://docs.mobiscroll.com/5-15-1/javascript/eventcalendar#opt-view
@@ -180,8 +180,8 @@ mobiscroll.setOptions({
         });
     });
     
-    /*mobiscroll.util.http.getJson('https://trial.mobiscroll.com/timeline-events/', function (events) {
+    mobiscroll.util.http.getJson('https://trial.mobiscroll.com/timeline-events/', function (events) {
         calendar.setEvents(events);
-    }, 'jsonp');*/
+    }, 'jsonp');
 
     
