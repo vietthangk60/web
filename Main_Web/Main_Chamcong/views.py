@@ -52,7 +52,22 @@ def func_DanhsachCamView(request, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
    # print(request.user)
     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
-    return render(request, "danhsach_cam.html", {})
+
+ if request.method == 'POST':
+      if request.method == 'POST':
+           tmp_xacnhan = request.POST.get("sua")
+      if tmp_xacnhan == "1":
+         logout(request)
+         return redirect(func_DXChamcongView)
+
+ current_user = request.user
+ print("user_name", current_user)
+ idnhanvien = str(current_user)
+ em = Employees.objects.get(EmployeeId=idnhanvien)
+ print(em)
+
+ Data = {"nhanvien": em}
+ return render(request, "danhsach_cam.html", Data)
  
 def func_LienketCamView(request, *args, **kwargs):  # *args, **kwargs
    # print(args, kwargs)
@@ -75,5 +90,16 @@ def func_DXChamcongView(request, *args, **kwargs):  # *args, **kwargs
 
        if request.user.is_authenticated:
          return redirect(func_ChamcongView)
+
+       return render(request, "login.html", {"data": ""})
+
+def func_DXCamView(request, *args, **kwargs):  # *args, **kwargs
+     # print(args, kwargs)
+     # print(request.user)
+     #return HttpResponse("<h1>Hello World</h1>") # string of HTML code
+    if request.method == 'GET':
+
+       if request.user.is_authenticated:
+         return redirect(func_LienketCamView)
 
        return render(request, "login.html", {"data": ""})

@@ -24,7 +24,7 @@ from Main_Nhansu.views import func_Nhansuview, func_SuanhansuView, func_DXView, 
 from Main_Giaoviec.views import func_VieccuatoiView, func_DuanView, func_ThemduanView, func_DXVieccuatoiView,  func_DXDuanView, func_KanBanView
 from Main_Yeucau.views import func_YeucauView, func_YeucauduyetView, func_TuchoiView, func_DMVSView, func_NghiphepView, func_NghiviecView, func_DXYeucauView, func_DXDuyetView, func_DXTuchoiView
 from Main_Taoyeucau.views import yeucauApi
-from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView, func_DXChamcongView, func_DanhsachCamView, func_LienketCamView
+from Main_Chamcong.views import func_ChamcongView, func_CaidatchamcongView, func_SuaanhnhandienView, func_ChamcongwebView, func_DXChamcongView, func_DanhsachCamView, func_LienketCamView, func_DXCamView
 from Main_Baocao.views import func_BaocaoView, func_TinhluongView, func_TinhthuongView, func_DXBaocaoView, func_DXLuongView, func_DXThuongView
 from django.urls import path
 from Main_ThemnhanVien.views import employeeApi
@@ -62,6 +62,7 @@ urlpatterns = [
     path('login.html', func_DXView, name=' dx '),
     path('login.html', func_DXThemnhanvienView, name=' dx '),
     path('login.html', func_DXChamcongView, name=' dxcc '),
+    path('login.html', func_DXCamView, name=' dx '),
     path('login.html', func_DXVieccuatoiView, name=' dx '),
     path('login.html', func_DXDuanView, name=' dx '),
     path('login.html', func_DXYeucauView, name=' dx '),
