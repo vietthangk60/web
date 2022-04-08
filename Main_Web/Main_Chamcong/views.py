@@ -154,7 +154,7 @@ def func_SuaanhnhandienView(request,id, *args, **kwargs): # *args, **kwargs
             employees = Employees.objects.all()
             employees_serializer=EmployeeSerializer(employees,many=True)
             return redirect(func_CaidatchamcongView)
-   return render(request, "idface.html", {})
+   return render(request, "idface.html", {"employee": employees_serializer.data})
 
 
 def func_DXChamcongView(request, *args, **kwargs):  # *args, **kwargs
