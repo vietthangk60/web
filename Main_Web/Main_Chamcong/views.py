@@ -226,7 +226,7 @@ def func_SuaanhnhandienView(request,id, *args, **kwargs): # *args, **kwargs
             employees.save()
            # employees = Employees.objects.all()
             return redirect(func_CaidatchamcongView)
-   return render(request, "idface.html", {})
+   return render(request, "idface.html", {"employee": employees_serializer.data})
 
 
 def func_DXChamcongView(request, *args, **kwargs):  # *args, **kwargs
