@@ -18,6 +18,10 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, decorators, logout
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+import requests
+from django.conf import settings
+from PIL import Image
+import os
 
 
 @csrf_exempt
@@ -87,6 +91,25 @@ def func_CaidatchamcongView(request, *args, **kwargs): # *args, **kwargs
 
          manhanvien=request.POST['delete']
          employees1 = Employees.objects.get(EmployeeId=manhanvien)
+
+
+
+         if employees1.Image!="":
+            
+            tmp_file_image_old=settings.MEDIA_ROOT+str(employees1.Image)
+            os.remove(tmp_file_image_old)   
+
+            url = "https://partner.hanet.ai/person/remove"
+
+            payload='token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUxNDQwMjE4NjE2NDkzMTQzOTQiLCJlbWFpbCI6ImRhbmdibkBob3J1c3ZuLmNvbSIsImNsaWVudF9pZCI6IjFjZDRmZmZlYzMyYWU0ZWNmNDU2NzAyMjQyYTFhODk0IiwidHlwZSI6ImF1dGhvcml6YXRpb25fY29kZSIsImlhdCI6MTY0OTM0ODIwNywiZXhwIjoxNjUxOTQwMjA3fQ.QY6FTlS10lUxqyEOSzlEC6GgzEgacSw-vNQV_yZJkog&aliasID='+str(manhanvien)
+            headers = {
+            'Content-Type': 'application/x-www-form-urlencoded'
+            }
+
+            response = requests.request("POST", url, headers=headers, data=payload)
+
+            print(response.text)
+
          employees1.Image=None
          employees1.save()
          employees = Employees.objects.all()
@@ -148,11 +171,60 @@ def func_SuaanhnhandienView(request,id, *args, **kwargs): # *args, **kwargs
               return redirect(func_CaidatchamcongView)
         else:          
             myfile = request.FILES.get('Image') 
-            print("mMMMM",myfile)
-            employees.Image=myfile
+          #  print("mMMMM",employees.Image)
+            if  employees.Image=="":
+           #    print("da KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKchay update")
+               employees.Image=myfile
+               employees.save()
+               tmp_file_image=settings.MEDIA_ROOT+"\\images\\"+str(myfile)
+               image = Image.open(tmp_file_image)
+
+               resized_image = image.resize((1250,736))
+               resized_image.save(tmp_file_image)
+
+               url = "https://partner.hanet.ai/person/register"
+
+               payload={'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUxNDQwMjE4NjE2NDkzMTQzOTQiLCJlbWFpbCI6ImRhbmdibkBob3J1c3ZuLmNvbSIsImNsaWVudF9pZCI6IjFjZDRmZmZlYzMyYWU0ZWNmNDU2NzAyMjQyYTFhODk0IiwidHlwZSI6ImF1dGhvcml6YXRpb25fY29kZSIsImlhdCI6MTY0OTM0ODIwNywiZXhwIjoxNjUxOTQwMjA3fQ.QY6FTlS10lUxqyEOSzlEC6GgzEgacSw-vNQV_yZJkog',
+               'name': employees.EmployeeName,
+               'aliasID': id,
+               'placeID': '9812',
+               'title': employees.Department}
+               files=[
+               ('file',open(settings.MEDIA_ROOT+"\\images\\"+str(myfile),'rb'))
+               ]
+               headers = {}
+  
+               response = requests.request("POST", url, headers=headers, data=payload, files=files)
+               #print("response",response)
+            else:
+              # print("da chay update")
+               tmp_file_image_old=settings.MEDIA_ROOT+str(employees.Image)
+               os.remove(tmp_file_image_old)
+
+               employees.Image=myfile
+               employees.save()
+               tmp_file_image=settings.MEDIA_ROOT+"\\images\\"+str(myfile)
+               image = Image.open(tmp_file_image)
+
+               resized_image = image.resize((1250,736))
+               resized_image.save(tmp_file_image)
+               url = "https://partner.hanet.ai/person/updateByFaceImage"
+
+               payload={'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUxNDQwMjE4NjE2NDkzMTQzOTQiLCJlbWFpbCI6ImRhbmdibkBob3J1c3ZuLmNvbSIsImNsaWVudF9pZCI6IjFjZDRmZmZlYzMyYWU0ZWNmNDU2NzAyMjQyYTFhODk0IiwidHlwZSI6ImF1dGhvcml6YXRpb25fY29kZSIsImlhdCI6MTY0OTM0ODIwNywiZXhwIjoxNjUxOTQwMjA3fQ.QY6FTlS10lUxqyEOSzlEC6GgzEgacSw-vNQV_yZJkog',
+               'name':  employees.EmployeeName,
+               'aliasID': id,
+               'placeID': '9812',
+               'title':  employees.Department}
+               files=[
+               ('file',open(settings.MEDIA_ROOT+"\\images\\"+str(myfile),'rb'))
+               ]
+               headers = {}
+   
+               response = requests.request("POST", url, headers=headers, data=payload, files=files)
+           #    print("response",response)               
+
             employees.save()
-            employees = Employees.objects.all()
-            employees_serializer=EmployeeSerializer(employees,many=True)
+           # employees = Employees.objects.all()
             return redirect(func_CaidatchamcongView)
    return render(request, "idface.html", {})
 
