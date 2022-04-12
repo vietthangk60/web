@@ -18,7 +18,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, decorators, logout
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-import requests
+#import requests
 from django.conf import settings
 from PIL import Image
 import os
@@ -62,16 +62,11 @@ def func_ChamcongView(request, *args, **kwargs): # *args, **kwargs
                   nhanvienchamcong=Chamcong.objects.create(NguoichamcongId=idnhanvien,Tennguoichamcong=em.EmployeeName,Thongtin="Gio hanh chinh",Ngaycham=data["date"],Giobatdau=data["time"],Gioketthuc=None)
                   nhanvienchamcong.save()              
 
-
-   current_user = request.user
-   
-   idnhanvien = str(current_user)
-   em = Chamcong.objects.all()
-  
-   print("user_name", em)
-   Data = { "nhanvien": em}
-   return render(request, "chamcong.html", Data)
-
+   if request.method=='GET':
+          employees = Employees.objects.all()
+          employees_serializer=EmployeeSerializer(employees,many=True)
+          
+          return render(request, "chamcong.html", {"employee":employees_serializer.data})
 
 def func_CaidatchamcongView(request, *args, **kwargs): # *args, **kwargs
    # print(args, kwargs)
